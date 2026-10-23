@@ -1,0 +1,8 @@
+method <m>
+loop_for for[0]
+operation for[0]/op[0] ^for[0]
+--
+for[0] -body-> for[0]/op[0]
+for[0]/op[0] -back-> for[0]
+<m> -next-> for[0]
+exits: for[0]

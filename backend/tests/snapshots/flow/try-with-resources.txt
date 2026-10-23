@@ -1,0 +1,7 @@
+method <m>
+try try[0] [input:ввод]
+operation try[0]/body/op[0] ^try[0] [input:ввод]
+--
+try[0] -body-> try[0]/body/op[0]
+<m> -next-> try[0]
+exits: try[0]/body/op[0]

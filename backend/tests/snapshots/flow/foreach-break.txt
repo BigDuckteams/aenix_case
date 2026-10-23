@@ -1,0 +1,15 @@
+method <m>
+loop_foreach foreach[0]
+condition foreach[0]/if[0] ^foreach[0]
+break foreach[0]/if[0]/then/break[0] ^foreach[0]
+operation foreach[0]/op[0] ^foreach[0]
+operation op[0]
+--
+foreach[0]/if[0] -true(Да)-> foreach[0]/if[0]/then/break[0]
+foreach[0]/if[0] -false(Нет)-> foreach[0]/op[0]
+foreach[0] -body-> foreach[0]/if[0]
+foreach[0]/op[0] -back-> foreach[0]
+foreach[0] -next-> op[0]
+foreach[0]/if[0]/then/break[0] -break(break)-> op[0]
+<m> -next-> foreach[0]
+exits: op[0]

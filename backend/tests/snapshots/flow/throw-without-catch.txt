@@ -1,0 +1,9 @@
+method <m>
+condition if[0]
+throw if[0]/then/throw[0] [exception:IllegalArgumentException]
+operation op[0]
+--
+if[0] -true(Да)-> if[0]/then/throw[0]
+if[0] -false(Нет)-> op[0]
+<m> -next-> if[0]
+exits: if[0]/then/throw[0], op[0]

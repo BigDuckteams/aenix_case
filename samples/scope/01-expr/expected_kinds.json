@@ -4,7 +4,6 @@
   "kinds": [
     "var_decl",
     "assign",
-    "operation",
-    "condition"
+    "operation"
   ]
 }

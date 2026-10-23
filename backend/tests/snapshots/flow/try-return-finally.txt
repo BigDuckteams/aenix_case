@@ -1,0 +1,11 @@
+method <m>
+try try[0]
+finally try[0]/finally ^try[0]
+return try[0]/body/return[0] ^try[0]
+operation try[0]/finally/op[0] ^try[0]/finally
+--
+try[0] -body-> try[0]/body/return[0]
+try[0] -next(finally)-> try[0]/finally
+try[0]/finally -body-> try[0]/finally/op[0]
+<m> -next-> try[0]
+exits: try[0]/body/return[0], try[0]/finally/op[0]

@@ -12,8 +12,8 @@
         "file": "Main.java",
         "start_line": 1,
         "start_col": 1,
-        "end_line": 995,
-        "end_col": 2
+        "end_line": 996,
+        "end_col": 1
       },
       "complexity": null,
       "findings": {
@@ -28,7 +28,7 @@
           "name": "Main",
           "node_id": "Main.java#Main",
           "method_id": null,
-          "member_kind": null,
+          "member_kind": "class",
           "range": {
             "file": "Main.java",
             "start_line": 21,
@@ -477,8 +477,8 @@
               },
               "complexity": null,
               "findings": {
-                "high": 1,
-                "medium": 0,
+                "high": 0,
+                "medium": 1,
                 "low": 0
               },
               "children": []
@@ -1203,8 +1203,8 @@
               },
               "complexity": "O(n²)",
               "findings": {
-                "high": 1,
-                "medium": 0,
+                "high": 0,
+                "medium": 1,
                 "low": 0
               },
               "children": []
@@ -1621,9 +1621,9 @@
               },
               "complexity": null,
               "findings": {
-                "high": 1,
+                "high": 0,
                 "medium": 0,
-                "low": 0
+                "low": 1
               },
               "children": []
             }
@@ -1635,7 +1635,7 @@
           "name": "Describable",
           "node_id": "Main.java#Describable",
           "method_id": null,
-          "member_kind": null,
+          "member_kind": "interface",
           "range": {
             "file": "Main.java",
             "start_line": 840,
@@ -1702,7 +1702,7 @@
           "name": "OrderStatus",
           "node_id": "Main.java#OrderStatus",
           "method_id": null,
-          "member_kind": null,
+          "member_kind": "enum",
           "range": {
             "file": "Main.java",
             "start_line": 848,
@@ -1717,6 +1717,94 @@
             "low": 0
           },
           "children": [
+            {
+              "id": "Main.java#OrderStatus.NEW",
+              "kind": "member",
+              "name": "NEW",
+              "node_id": "Main.java#OrderStatus.NEW",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 849,
+                "start_col": 5,
+                "end_line": 849,
+                "end_col": 17
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#OrderStatus.PAID",
+              "kind": "member",
+              "name": "PAID",
+              "node_id": "Main.java#OrderStatus.PAID",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 850,
+                "start_col": 5,
+                "end_line": 850,
+                "end_col": 20
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#OrderStatus.SHIPPED",
+              "kind": "member",
+              "name": "SHIPPED",
+              "node_id": "Main.java#OrderStatus.SHIPPED",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 851,
+                "start_col": 5,
+                "end_line": 851,
+                "end_col": 25
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#OrderStatus.CANCELLED",
+              "kind": "member",
+              "name": "CANCELLED",
+              "node_id": "Main.java#OrderStatus.CANCELLED",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 852,
+                "start_col": 5,
+                "end_line": 852,
+                "end_col": 25
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
             {
               "id": "Main.java#OrderStatus.label",
               "kind": "member",
@@ -1813,7 +1901,7 @@
           "name": "Order",
           "node_id": "Main.java#Order",
           "method_id": null,
-          "member_kind": null,
+          "member_kind": "class",
           "range": {
             "file": "Main.java",
             "start_line": 873,
@@ -2364,7 +2452,7 @@
           "name": "CustomerTotal",
           "node_id": "Main.java#CustomerTotal",
           "method_id": null,
-          "member_kind": null,
+          "member_kind": "record",
           "range": {
             "file": "Main.java",
             "start_line": 969,
@@ -2379,6 +2467,94 @@
             "low": 0
           },
           "children": [
+            {
+              "id": "Main.java#CustomerTotal.customer",
+              "kind": "member",
+              "name": "customer",
+              "node_id": "Main.java#CustomerTotal.customer",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 969,
+                "start_col": 1,
+                "end_line": 979,
+                "end_col": 2
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#CustomerTotal.orders",
+              "kind": "member",
+              "name": "orders",
+              "node_id": "Main.java#CustomerTotal.orders",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 969,
+                "start_col": 1,
+                "end_line": 979,
+                "end_col": 2
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#CustomerTotal.total",
+              "kind": "member",
+              "name": "total",
+              "node_id": "Main.java#CustomerTotal.total",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 969,
+                "start_col": 1,
+                "end_line": 979,
+                "end_col": 2
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#CustomerTotal.CustomerTotal(String, int, double)",
+              "kind": "member",
+              "name": "CustomerTotal(String, int, double)",
+              "node_id": "Main.java#CustomerTotal.CustomerTotal(String, int, double)",
+              "method_id": "Main.java#CustomerTotal.CustomerTotal(String, int, double)",
+              "member_kind": "constructor",
+              "range": {
+                "file": "Main.java",
+                "start_line": 970,
+                "start_col": 5,
+                "end_line": 974,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
             {
               "id": "Main.java#CustomerTotal.average()",
               "kind": "member",
@@ -2409,7 +2585,7 @@
           "name": "OrderParseException",
           "node_id": "Main.java#OrderParseException",
           "method_id": null,
-          "member_kind": null,
+          "member_kind": "class",
           "range": {
             "file": "Main.java",
             "start_line": 981,
@@ -2476,7 +2652,7 @@
           "name": "OrderValidationException",
           "node_id": "Main.java#OrderValidationException",
           "method_id": null,
-          "member_kind": null,
+          "member_kind": "class",
           "range": {
             "file": "Main.java",
             "start_line": 989,

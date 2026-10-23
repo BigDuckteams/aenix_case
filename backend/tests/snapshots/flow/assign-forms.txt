@@ -1,0 +1,15 @@
+method <m>
+assign assign[0]
+assign assign[1]
+assign assign[2]
+assign assign[3]
+assign assign[4]
+assign assign[5]
+--
+assign[0] -next-> assign[1]
+assign[1] -next-> assign[2]
+assign[2] -next-> assign[3]
+assign[3] -next-> assign[4]
+assign[4] -next-> assign[5]
+<m> -next-> assign[0]
+exits: assign[5]

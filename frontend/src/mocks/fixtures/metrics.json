@@ -950,9 +950,9 @@
         "type_id": "Main.java#OrderStatus",
         "name": "OrderStatus",
         "file": "Main.java",
-        "lines": 14,
+        "lines": 18,
         "methods": 2,
-        "fields": 1,
+        "fields": 5,
         "lcom4": 1.0
       },
       {
@@ -968,9 +968,9 @@
         "type_id": "Main.java#CustomerTotal",
         "name": "CustomerTotal",
         "file": "Main.java",
-        "lines": 3,
+        "lines": 41,
         "methods": 1,
-        "fields": 0,
+        "fields": 3,
         "lcom4": 1.0
       },
       {

@@ -1,0 +1,8 @@
+method <m>
+var_decl var[0]
+local_type var[0]/local_type[0] ^var[0]
+local_type local_type[0]
+--
+var[0] -next-> local_type[0]
+<m> -next-> var[0]
+exits: local_type[0]

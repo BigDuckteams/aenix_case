@@ -1,0 +1,17 @@
+method <m>
+switch switch[0]
+case switch[0]/case[0] ^switch[0]
+operation switch[0]/case[0]/op[0] ^switch[0]/case[0]
+case switch[0]/case[1] ^switch[0]
+operation switch[0]/case[1]/op[0] ^switch[0]/case[1]
+case switch[0]/case[2] ^switch[0]
+throw switch[0]/case[2]/throw[0] ^switch[0]/case[2] [exception:IllegalStateException]
+--
+switch[0] -case(1)-> switch[0]/case[0]
+switch[0]/case[0] -body-> switch[0]/case[0]/op[0]
+switch[0] -case(2)-> switch[0]/case[1]
+switch[0]/case[1] -body-> switch[0]/case[1]/op[0]
+switch[0] -case(default)-> switch[0]/case[2]
+switch[0]/case[2] -body-> switch[0]/case[2]/throw[0]
+<m> -next-> switch[0]
+exits: switch[0]/case[2]/throw[0], switch[0]/case[0]/op[0], switch[0]/case[1]/op[0]

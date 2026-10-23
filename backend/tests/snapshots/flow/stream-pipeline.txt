@@ -1,0 +1,7 @@
+method <m>
+var_decl var[0]
+lambda var[0]/lambda[0] ^var[0]
+lambda var[0]/lambda[1] ^var[0]
+--
+<m> -next-> var[0]
+exits: var[0]

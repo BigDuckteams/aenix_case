@@ -1,0 +1,25 @@
+method <m>
+try try[0]
+catch try[0]/catch[0] ^try[0]
+catch try[0]/catch[1] ^try[0]
+finally try[0]/finally ^try[0]
+operation try[0]/body/op[0] ^try[0]
+throw try[0]/body/throw[0] ^try[0] [exception:IOException]
+operation try[0]/catch[0]/op[0] ^try[0]/catch[0]
+operation try[0]/catch[1]/op[0] ^try[0]/catch[1]
+operation try[0]/finally/op[0] ^try[0]/finally
+operation op[0]
+--
+try[0]/body/throw[0] -exception(IOException)-> try[0]/catch[0]
+try[0]/body/op[0] -next-> try[0]/body/throw[0]
+try[0] -body-> try[0]/body/op[0]
+try[0] -exception(IOException)-> try[0]/catch[0]
+try[0]/catch[0] -body-> try[0]/catch[0]/op[0]
+try[0] -exception(Exception)-> try[0]/catch[1]
+try[0]/catch[1] -body-> try[0]/catch[1]/op[0]
+try[0]/catch[0]/op[0] -next-> try[0]/finally
+try[0]/catch[1]/op[0] -next-> try[0]/finally
+try[0]/finally -body-> try[0]/finally/op[0]
+try[0]/finally/op[0] -next-> op[0]
+<m> -next-> try[0]
+exits: op[0]

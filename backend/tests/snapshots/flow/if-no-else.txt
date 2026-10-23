@@ -1,0 +1,10 @@
+method <m>
+condition if[0]
+operation if[0]/then/op[0]
+operation op[0]
+--
+if[0] -true(Да)-> if[0]/then/op[0]
+if[0]/then/op[0] -next-> op[0]
+if[0] -false(Нет)-> op[0]
+<m> -next-> if[0]
+exits: op[0]

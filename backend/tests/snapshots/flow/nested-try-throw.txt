@@ -1,0 +1,18 @@
+method <m>
+try try[0]
+catch try[0]/catch[0] ^try[0]
+try try[0]/body/try[0] ^try[0]
+catch try[0]/body/try[0]/catch[0] ^try[0]/body/try[0]
+throw try[0]/body/try[0]/body/throw[0] ^try[0]/body/try[0] [exception:IllegalStateException]
+operation try[0]/body/try[0]/catch[0]/op[0] ^try[0]/body/try[0]/catch[0]
+operation try[0]/catch[0]/op[0] ^try[0]/catch[0]
+--
+try[0]/body/try[0]/body/throw[0] -exception(IllegalStateException)-> try[0]/catch[0]
+try[0]/body/try[0] -body-> try[0]/body/try[0]/body/throw[0]
+try[0]/body/try[0] -exception(IOException)-> try[0]/body/try[0]/catch[0]
+try[0]/body/try[0]/catch[0] -body-> try[0]/body/try[0]/catch[0]/op[0]
+try[0] -body-> try[0]/body/try[0]
+try[0] -exception(RuntimeException)-> try[0]/catch[0]
+try[0]/catch[0] -body-> try[0]/catch[0]/op[0]
+<m> -next-> try[0]
+exits: try[0]/body/try[0]/catch[0]/op[0], try[0]/catch[0]/op[0]

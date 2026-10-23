@@ -5,6 +5,6 @@
     "var_decl",
     "operation",
     "lambda",
-    "loop_foreach"
+    "loop_for"
   ]
 }

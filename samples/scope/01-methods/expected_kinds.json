@@ -7,6 +7,6 @@
     "condition",
     "operation",
     "var_decl",
-    "loop_for"
+    "loop_foreach"
   ]
 }

@@ -1,0 +1,7 @@
+method <m>
+sync sync[0]
+assert assert[0]
+--
+sync[0] -next-> assert[0]
+<m> -next-> sync[0]
+exits: assert[0]

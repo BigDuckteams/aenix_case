@@ -1,0 +1,13 @@
+method <m>
+operation op[0]
+lambda op[0]/lambda[0] ^op[0] [output:вывод]
+var_decl var[0]
+lambda var[0]/lambda[0] ^var[0]
+operation var[0]/lambda[0]/op[0] ^var[0]/lambda[0]
+return var[0]/lambda[0]/return[0] ^var[0]/lambda[0]
+--
+var[0]/lambda[0]/op[0] -next-> var[0]/lambda[0]/return[0]
+var[0]/lambda[0] -body-> var[0]/lambda[0]/op[0]
+op[0] -next-> var[0]
+<m> -next-> op[0]
+exits: var[0]

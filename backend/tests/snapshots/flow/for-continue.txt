@@ -1,0 +1,13 @@
+method <m>
+loop_for for[0]
+condition for[0]/if[0] ^for[0]
+continue for[0]/if[0]/then/continue[0] ^for[0]
+operation for[0]/op[0] ^for[0]
+--
+for[0]/if[0]/then/continue[0] -continue(continue)-> for[0]
+for[0]/if[0] -true(Да)-> for[0]/if[0]/then/continue[0]
+for[0]/if[0] -false(Нет)-> for[0]/op[0]
+for[0] -body-> for[0]/if[0]
+for[0]/op[0] -back-> for[0]
+<m> -next-> for[0]
+exits: for[0]

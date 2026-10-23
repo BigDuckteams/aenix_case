@@ -5,6 +5,7 @@
     "var_decl",
     "operation",
     "return",
-    "condition"
+    "try",
+    "catch"
   ]
 }

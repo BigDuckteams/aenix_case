@@ -1,0 +1,16 @@
+method <m>
+var_decl var[0]
+switch var[0]/switch[0] ^var[0]
+case var[0]/switch[0]/case[0] ^var[0]/switch[0]
+operation var[0]/switch[0]/case[0]/op[0] ^var[0]/switch[0]/case[0]
+case var[0]/switch[0]/case[1] ^var[0]/switch[0]
+yield var[0]/switch[0]/case[1]/yield[0] ^var[0]/switch[0]/case[1]
+operation op[0]
+--
+var[0]/switch[0] -case(1)-> var[0]/switch[0]/case[0]
+var[0]/switch[0]/case[0] -body-> var[0]/switch[0]/case[0]/op[0]
+var[0]/switch[0] -case(default)-> var[0]/switch[0]/case[1]
+var[0]/switch[0]/case[1] -body-> var[0]/switch[0]/case[1]/yield[0]
+var[0] -next-> op[0]
+<m> -next-> var[0]
+exits: op[0]

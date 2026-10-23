@@ -1,0 +1,9 @@
+method <m>
+var_decl var[0]
+var_decl var[1]
+var_decl var[2]
+--
+var[0] -next-> var[1]
+var[1] -next-> var[2]
+<m> -next-> var[0]
+exits: var[2]

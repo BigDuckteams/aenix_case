@@ -46,14 +46,13 @@ describe("PreviewScreen на моках", () => {
     expect(screen.getByRole("button", { name: /buildCsv\(\)/ })).toHaveAttribute("aria-current", "true");
   });
 
-  it("для метода без мока показывает понятную ошибку", async () => {
+  it("показывает схему и для длинного метода: у каждого метода демо есть блок-схема", async () => {
     const user = userEvent.setup();
     await renderScreen();
     await screen.findAllByTestId("flow-node");
     await user.click(screen.getByRole("button", { name: /printReport\(\)/ }));
-    const alert = await screen.findByRole("alert");
-    expect(within(alert).getByText(ru.preview.loadError)).toBeInTheDocument();
-    expect(within(alert).getByText(/нет блок-схемы/)).toBeInTheDocument();
+    await waitFor(() => expect(screen.getAllByTestId("flow-node").length).toBeGreaterThan(30));
+    expect(screen.queryByRole("alert")).not.toBeInTheDocument();
   });
 
   it("фильтр сокращает список методов", async () => {

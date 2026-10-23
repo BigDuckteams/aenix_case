@@ -1,0 +1,188 @@
+implements Main.java#Order -> Main.java#Describable
+counts {'contains': 115, 'calls': 186, 'uses': 179}
+Describable.shortInfo() -> Describable.describe() x1
+Describable.shortInfo() -> Order.describe() x1
+Main.addOrder(Order) -> Main.findOrderById(int) x1
+Main.addOrder(Order) -> Main.validate(Order) x1
+Main.addOrder(Order) -> Order.getCustomer() x1
+Main.addOrder(Order) -> Order.getId() x3
+Main.addOrder(Order) -> Order.getProduct() x1
+Main.addOrder(Order) -> Order.getQuantity() x1
+Main.addOrder(Order) -> OrderValidationException.OrderValidationException(String) x1
+Main.applyDiscount(double) -> Main.discountFor(Order) x1
+Main.applyDiscount(double) -> Main.roundMoney(double) x1
+Main.applyDiscount(double) -> Order.getBasePrice() x1
+Main.applyDiscount(double) -> Order.getStatus() x1
+Main.applyDiscount(double) -> Order.setUnitPrice(double) x1
+Main.applyDiscount(double) -> OrderValidationException.OrderValidationException(String) x1
+Main.averageAmount() -> Order.getStatus() x1
+Main.averageAmount() -> Order.getTotal() x1
+Main.bar(int, int) -> Main.repeat(char, int) x1
+Main.buildCsv() -> Main.formatAmount(double) x1
+Main.buildCsv() -> Order.getCustomer() x1
+Main.buildCsv() -> Order.getId() x1
+Main.buildCsv() -> Order.getProduct() x1
+Main.buildCsv() -> Order.getQuantity() x1
+Main.buildCsv() -> Order.getStatus() x1
+Main.buildCsv() -> Order.getTotal() x1
+Main.buildCsv() -> OrderStatus.getLabel() x1
+Main.changeStatus(int, OrderStatus) -> Main.findOrderById(int) x1
+Main.changeStatus(int, OrderStatus) -> Order.getStatus() x1
+Main.changeStatus(int, OrderStatus) -> Order.setStatus(OrderStatus) x1
+Main.changeStatus(int, OrderStatus) -> OrderStatus.canMoveTo(OrderStatus) x1
+Main.changeStatus(int, OrderStatus) -> OrderStatus.getLabel() x4
+Main.changeStatus(int, OrderStatus) -> OrderValidationException.OrderValidationException(String) x2
+Main.checkCustomer(Order) -> Order.getCustomer() x1
+Main.checkCustomer(Order) -> Order.getId() x3
+Main.checkCustomer(Order) -> OrderValidationException.OrderValidationException(String) x3
+Main.checkId(Order) -> Order.getId() x2
+Main.checkId(Order) -> OrderValidationException.OrderValidationException(String) x1
+Main.checkPrice(Order) -> Order.getId() x2
+Main.checkPrice(Order) -> Order.getUnitPrice() x2
+Main.checkPrice(Order) -> OrderValidationException.OrderValidationException(String) x2
+Main.checkProduct(Order) -> Order.getId() x3
+Main.checkProduct(Order) -> Order.getProduct() x1
+Main.checkProduct(Order) -> OrderValidationException.OrderValidationException(String) x3
+Main.checkQuantity(Order) -> Order.getId() x2
+Main.checkQuantity(Order) -> Order.getQuantity() x2
+Main.checkQuantity(Order) -> OrderValidationException.OrderValidationException(String) x2
+Main.countLargeOrders(int) -> Order.getQuantity() x1
+Main.discountFor(Order) -> Order.getCustomer() x1
+Main.discountFor(Order) -> Order.getQuantity() x2
+Main.distinctCustomers() -> Order.getCustomer() x2
+Main.findAnomalies() -> Main.averageAmount() x1
+Main.findAnomalies() -> Order.getId() x1
+Main.findAnomalies() -> Order.getTotal() x1
+Main.findByCustomer(String) -> Order.getCustomer() x1
+Main.findOrderById(int) -> Order.getId() x1
+Main.main(String[]) -> Main.printFooter() x1
+Main.main(String[]) -> Main.run(Scanner) x1
+Main.maxOrder() -> Order.getTotal() x2
+Main.medianAmount() -> Order.getStatus() x1
+Main.medianAmount() -> Order.getTotal() x1
+Main.mergeDuplicates() -> Order.addQuantity(int) x1
+Main.mergeDuplicates() -> Order.copy() x1
+Main.mergeDuplicates() -> Order.getCustomer() x2
+Main.mergeDuplicates() -> Order.getProduct() x2
+Main.mergeDuplicates() -> Order.getQuantity() x1
+Main.mergeDuplicates() -> Order.getStatus() x2
+Main.minOrder() -> Order.getTotal() x2
+Main.padRight(String, int) -> Main.repeat(char, int) x1
+Main.parseInt(String, String) -> OrderParseException.OrderParseException(String) x1
+Main.parseMoney(String, String) -> OrderParseException.OrderParseException(String) x1
+Main.parseOrder(String[], int) -> Main.normalizeName(String) x2
+Main.parseOrder(String[], int) -> Main.parseInt(String, String) x2
+Main.parseOrder(String[], int) -> Main.parseMoney(String, String) x1
+Main.parseOrder(String[], int) -> Main.requireArg(String[], int, String) x5
+Main.parseOrder(String[], int) -> Order.Order(int, String, String, int, double) x1
+Main.percentile(double) -> Order.getStatus() x1
+Main.percentile(double) -> Order.getTotal() x1
+Main.printByCustomer(String) -> Order.getCustomer() x1
+Main.printByCustomer(String) -> Order.getId() x1
+Main.printByCustomer(String) -> Order.getProduct() x1
+Main.printByCustomer(String) -> Order.getQuantity() x1
+Main.printByCustomer(String) -> Order.getTotal() x2
+Main.printByProduct(String) -> Order.getCustomer() x1
+Main.printByProduct(String) -> Order.getId() x1
+Main.printByProduct(String) -> Order.getProduct() x1
+Main.printByProduct(String) -> Order.getQuantity() x1
+Main.printByProduct(String) -> Order.getTotal() x2
+Main.printCsvSummary() -> Main.buildCsv() x1
+Main.printCustomers() -> Main.distinctCustomers() x1
+Main.printFooter() -> Main.repeat(char, int) x1
+Main.printHeader() -> Main.repeat(char, int) x1
+Main.printOrders(List<Order>) -> Order.getCustomer() x1
+Main.printOrders(List<Order>) -> Order.getId() x1
+Main.printOrders(List<Order>) -> Order.getProduct() x1
+Main.printOrders(List<Order>) -> Order.getQuantity() x1
+Main.printOrders(List<Order>) -> Order.getStatus() x2
+Main.printOrders(List<Order>) -> Order.getTotal() x1
+Main.printOrders(List<Order>) -> OrderStatus.getLabel() x2
+Main.printReport() -> Main.averageAmount() x1
+Main.printReport() -> Main.countByStatusLabel() x1
+Main.printReport() -> Main.countLargeOrders(int) x1
+Main.printReport() -> Main.distinctCustomers() x1
+Main.printReport() -> Main.expensiveProducts(double) x1
+Main.printReport() -> Main.findAnomalies() x1
+Main.printReport() -> Main.formatAmount(double) x2
+Main.printReport() -> Main.padRight(String, int) x1
+Main.printReport() -> Main.printByCustomer(String) x1
+Main.printReport() -> Main.printByProduct(String) x1
+Main.printReport() -> Main.topCustomers(int) x1
+Main.printReport() -> Main.totalAmount() x1
+Main.printReport() -> Order.getProduct() x1
+Main.printReport() -> Order.getQuantity() x1
+Main.printStats() -> Main.averageAmount() x1
+Main.printStats() -> Main.formatAmount(double) x6
+Main.printStats() -> Main.maxOrder() x1
+Main.printStats() -> Main.medianAmount() x1
+Main.printStats() -> Main.minOrder() x1
+Main.printStats() -> Main.percentile(double) x1
+Main.printStats() -> Main.printStatusBars() x1
+Main.printStats() -> Main.totalAmount() x1
+Main.printStats() -> Order.getId() x2
+Main.printStats() -> Order.getTotal() x2
+Main.printStatusBars() -> Main.bar(int, int) x1
+Main.printStatusBars() -> Main.padRight(String, int) x2
+Main.printStatusBars() -> Main.statusHistogram() x1
+Main.printTopCustomers(int) -> CustomerTotal.average() x1
+Main.printTopCustomers(int) -> Main.topCustomers(int) x1
+Main.processCommand(String, Scanner) -> Main.addOrder(Order) x1
+Main.processCommand(String, Scanner) -> Main.applyDiscount(double) x1
+Main.processCommand(String, Scanner) -> Main.changeStatus(int, OrderStatus) x3
+Main.processCommand(String, Scanner) -> Main.findByCustomer(String) x1
+Main.processCommand(String, Scanner) -> Main.mergeDuplicates() x1
+Main.processCommand(String, Scanner) -> Main.parseInt(String, String) x7
+Main.processCommand(String, Scanner) -> Main.parseMoney(String, String) x1
+Main.processCommand(String, Scanner) -> Main.parseOrder(String[], int) x1
+Main.processCommand(String, Scanner) -> Main.printCsvSummary() x1
+Main.processCommand(String, Scanner) -> Main.printCustomers() x1
+Main.processCommand(String, Scanner) -> Main.printHistory() x1
+Main.processCommand(String, Scanner) -> Main.printOrders(List<Order>) x2
+Main.processCommand(String, Scanner) -> Main.printReport() x1
+Main.processCommand(String, Scanner) -> Main.printStats() x1
+Main.processCommand(String, Scanner) -> Main.printTopCustomers(int) x1
+Main.processCommand(String, Scanner) -> Main.processOrders(List<Order>) x1
+Main.processCommand(String, Scanner) -> Main.purgeCancelled() x1
+Main.processCommand(String, Scanner) -> Main.readBatch(Scanner, int) x1
+Main.processCommand(String, Scanner) -> Main.removeOrder(int) x1
+Main.processCommand(String, Scanner) -> Main.requireArg(String[], int, String) x9
+Main.processCommand(String, Scanner) -> Main.showOrder(int) x1
+Main.processCommand(String, Scanner) -> Main.tokenize(String) x1
+Main.processOrders(List<Order>) -> Main.addOrder(Order) x1
+Main.processOrders(List<Order>) -> Order.getId() x2
+Main.processOrders(List<Order>) -> Order.getQuantity() x1
+Main.readBatch(Scanner, int) -> Main.parseOrder(String[], int) x1
+Main.readBatch(Scanner, int) -> Main.tokenize(String) x1
+Main.removeOrder(int) -> Order.getCustomer() x1
+Main.removeOrder(int) -> Order.getId() x1
+Main.removeOrder(int) -> OrderValidationException.OrderValidationException(String) x1
+Main.requireArg(String[], int, String) -> OrderParseException.OrderParseException(String) x1
+Main.run(Scanner) -> Main.printHeader() x1
+Main.run(Scanner) -> Main.processCommand(String, Scanner) x1
+Main.showOrder(int) -> Describable.shortInfo() x1
+Main.showOrder(int) -> Main.findOrderById(int) x1
+Main.showOrder(int) -> Order.describe() x1
+Main.showOrder(int) -> OrderValidationException.OrderValidationException(String) x1
+Main.statusHistogram() -> Order.getStatus() x2
+Main.topCustomers(int) -> CustomerTotal.CustomerTotal(String, int, double) x1
+Main.topCustomers(int) -> Main.topN(List<T>, Comparator<? super T>, int) x1
+Main.topCustomers(int) -> Order.getCustomer() x1
+Main.topCustomers(int) -> Order.getStatus() x1
+Main.topCustomers(int) -> Order.getTotal() x1
+Main.totalAmount() -> Order.getStatus() x1
+Main.totalAmount() -> Order.getTotal() x1
+Main.totalForCustomer(String) -> Order.getCustomer() x1
+Main.totalForCustomer(String) -> Order.getStatus() x1
+Main.totalForCustomer(String) -> Order.getTotal() x1
+Main.totalForProduct(String) -> Order.getProduct() x1
+Main.totalForProduct(String) -> Order.getStatus() x1
+Main.totalForProduct(String) -> Order.getTotal() x1
+Main.validate(Order) -> Main.checkCustomer(Order) x1
+Main.validate(Order) -> Main.checkId(Order) x1
+Main.validate(Order) -> Main.checkPrice(Order) x1
+Main.validate(Order) -> Main.checkProduct(Order) x1
+Main.validate(Order) -> Main.checkQuantity(Order) x1
+Order.copy() -> Order.Order(int, String, String, int, double) x1
+Order.describe() -> Main.formatAmount(double) x1
+Order.describe() -> OrderStatus.getLabel() x1

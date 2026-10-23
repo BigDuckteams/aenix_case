@@ -1,0 +1,33 @@
+## Main.java#Main.<clinit>[0]
+method <m>
+assign assign[0]
+--
+<m> -next-> assign[0]
+exits: assign[0]
+## Main.java#Main.<init>[0]
+method <m>
+assign assign[0]
+--
+<m> -next-> assign[0]
+exits: assign[0]
+## Main.java#Main.Main(int)
+method <m>
+operation op[0] [call:Main(…)]
+assign assign[0]
+--
+op[0] -call-> Main.Main()
+op[0] -next-> assign[0]
+<m> -next-> op[0]
+exits: assign[0]
+## Main.java#Main.Main()
+method <m>
+operation op[0]
+assign assign[0]
+--
+op[0] -next-> assign[0]
+<m> -next-> op[0]
+exits: assign[0]
+## Main.java#Main.Shape.area()
+method <m>
+--
+exits: <m>

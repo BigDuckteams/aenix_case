@@ -18,14 +18,15 @@ describe("resolveMock", () => {
   });
 
   it("выбирает блок-схему по method_id", () => {
-    const id = encodeURIComponent("Main.java#Main.mergeDuplicates()");
-    const reply = resolveMock("GET", url(`/api/projects/1/flow?method_id=${id}`));
+    const key = "Main.java#Main.mergeDuplicates()";
+    const reply = resolveMock("GET", url(`/api/projects/1/flow?method_id=${encodeURIComponent(key)}`));
     expect(reply.status).toBe(200);
-    expect(reply.body).toBe(MOCK_FLOWS.mergeDuplicates);
+    expect(reply.body).toBe(MOCK_FLOWS[key]);
+    expect(Object.keys(MOCK_FLOWS).length).toBeGreaterThan(80);
   });
 
   it("для метода без мока возвращает 404 в формате ошибки", () => {
-    const id = encodeURIComponent("Main.java#Main.printReport()");
+    const id = encodeURIComponent("Main.java#Main.noSuchMethod()");
     const reply = resolveMock("GET", url(`/api/projects/1/flow?method_id=${id}`));
     expect(reply.status).toBe(404);
     expect(reply.body).toMatchObject({ error: { code: "NOT_FOUND" } });

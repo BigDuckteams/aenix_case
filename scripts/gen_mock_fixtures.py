@@ -3,16 +3,16 @@
     cd backend && uv run python ../scripts/gen_mock_fixtures.py          # перезаписать фикстуры
     cd backend && uv run python ../scripts/gen_mock_fixtures.py --check  # только сверить с диском
 
-Фикстуры строятся из `samples/demo-orders/Main.java` (разбор — обёртка tree-sitter из `engine`),
-поэтому диапазоны кода и идентификаторы узлов настоящие. Блок-схемы собирает упрощённый
-построитель ниже; на этапе S2 их заменит настоящий `engine/graph/flow.py`, и фикстуры можно будет
-перегенерировать из него. Каждая фикстура перед записью проверяется Pydantic-схемой контракта
-(`app.schemas`), так что моки не расходятся с OpenAPI.
+Фикстуры строятся из `samples/demo-orders/Main.java` настоящим движком (`engine.java.project`):
+структура, дерево и блок-схемы всех методов — те же, что отдаст backend после S3. Находки, метрики,
+сценарии и запуски — подготовленные данные демо. Каждая фикстура перед записью проверяется
+Pydantic-схемой контракта (`app.schemas`), так что моки не расходятся с OpenAPI.
 """
 
 from __future__ import annotations
 
 import argparse
+import dataclasses
 import json
 import re
 import sys
@@ -38,504 +38,123 @@ from app.schemas.project import (  # noqa: E402
 )
 from app.schemas.transform import FixList  # noqa: E402
 from app.schemas.verify import BuildResult, RunEvent, RunInfo, RunList, ScenarioList  # noqa: E402
-from engine.java.ts import ParsedFile, parse  # noqa: E402
+from engine.graph.model import ApiRange  # noqa: E402
+from engine.java.project import JavaProject  # noqa: E402
 
 SOURCE_PATH = REPO / "samples" / "demo-orders" / "Main.java"
 OUT = REPO / "frontend" / "src" / "mocks" / "fixtures"
 FILE = "Main.java"
 NOW = "2026-10-24T08:00:00Z"
 
-LABELS = {
-    "method": "Метод",
-    "var_decl": "Переменная",
-    "assign": "Присваивание",
-    "operation": "Операция",
-    "condition": "Условие",
-    "loop_foreach": "Цикл (for each)",
-    "loop_for": "Цикл (for)",
-    "loop_while": "Цикл (while)",
-    "return": "Возврат",
-    "break": "Прервать",
-    "continue": "Продолжить",
-    "throw": "Исключение",
-    "code": "Код",
-}
-PATH_NAMES = {
-    "var_decl": "var",
-    "assign": "assign",
-    "operation": "op",
-    "condition": "if",
-    "loop_foreach": "foreach",
-    "loop_for": "for",
-    "loop_while": "while",
-    "return": "return",
-    "break": "break",
-    "continue": "continue",
-    "throw": "throw",
-    "code": "code",
-}
-LOOPS = {"loop_foreach", "loop_for", "loop_while"}
 COMPLEXITY = {
     "mergeDuplicates": "O(n·m)",
     "distinctCustomers": "O(n·m)",
     "buildCsv": "O(n²)",
     "findOrderById": "O(n)",
 }
+CONTENT_HASH = "mock-demo-orders-v3"
+LOOPS = {"loop_foreach", "loop_for", "loop_while"}
 
 
 class Source:
-    """Текст файла, разобранный tree-sitter; диапазоны — через ``range_of`` (байты → UTF-16)."""
+    """Текст демо-монолита и проект движка; диапазоны членов — через разметку строк движка."""
 
     def __init__(self) -> None:
         self.text = SOURCE_PATH.read_text(encoding="utf-8")
-        self.parsed: ParsedFile = parse(self.text)
-        assert self.parsed.ok
+        self.project = JavaProject({FILE: self.text})
+        self.parsed = self.project.parsed(FILE)
+        assert not self.project.syntax_issues()
 
-    def rng(self, node: Any) -> dict[str, Any]:
-        r = self.parsed.range_of(node)
-        return {
-            "file": FILE,
-            "start_line": r.start.line,
-            "start_col": r.start.column,
-            "end_line": r.end.line,
-            "end_col": r.end.column,
+    def rng(self, item: dict) -> dict:
+        span = self.parsed.lines.range(item["start_byte"], item["end_byte"])
+        return dataclasses.asdict(ApiRange.of(FILE, span))
+
+    def txt(self, item: dict) -> str:
+        return self.parsed.source[item["start_byte"] : item["end_byte"]].decode("utf-8")
+
+
+def collect_members(src: Source) -> list[dict]:
+    return [
+        {
+            "id": m.id,
+            "type": m.type_path,
+            "kind": m.kind,
+            "name": m.name,
+            "key": m.key,
+            "params": [p.type for p in m.params],
+            "start_byte": m.start_byte,
+            "end_byte": m.end_byte,
         }
-
-    def txt(self, node: Any) -> str:
-        return self.parsed.text(node)
-
-
-def walk(node: Any):
-    yield node
-    for child in node.children:
-        yield from walk(child)
-
-
-def short(text: str, limit: int = 80) -> str:
-    one = re.sub(r"\s+", " ", text).strip()
-    return one if len(one) <= limit else one[: limit - 1] + "…"
-
-
-# ---------------------------------------------------------------------------------------------
-# Структура проекта
-# ---------------------------------------------------------------------------------------------
-
-
-def collect_members(src: Source) -> tuple[list[dict], list[dict]]:
-    """Типы и члены файла: список словарей с узлом tree-sitter внутри (не сериализуется)."""
-    types: list[dict] = []
-    members: list[dict] = []
-    for node in walk(src.parsed.root):
-        if node.type not in {
-            "class_declaration",
-            "interface_declaration",
-            "enum_declaration",
-            "record_declaration",
-        }:
-            continue
-        name = src.txt(node.child_by_field_name("name"))
-        kind = node.type.removesuffix("_declaration")
-        types.append({"node": node, "name": name, "kind": kind})
-        body = node.child_by_field_name("body")
-        body_children = []
-        for child in body.children:
-            if child.type == "enum_body_declarations":
-                body_children += child.children
-            else:
-                body_children.append(child)
-        for member in body_children:
-            if member.type == "method_declaration":
-                mname = src.txt(member.child_by_field_name("name"))
-                params = member.child_by_field_name("parameters")
-                ptypes = [
-                    src.txt(p.child_by_field_name("type"))
-                    for p in params.children
-                    if p.type == "formal_parameter"
-                ]
-                members.append(
-                    {"node": member, "type": name, "kind": "method", "name": mname, "params": ptypes}
-                )
-            elif member.type == "constructor_declaration":
-                params = member.child_by_field_name("parameters")
-                ptypes = [
-                    src.txt(p.child_by_field_name("type"))
-                    for p in params.children
-                    if p.type == "formal_parameter"
-                ]
-                members.append(
-                    {"node": member, "type": name, "kind": "constructor", "name": name, "params": ptypes}
-                )
-            elif member.type == "field_declaration":
-                declarator = next(c for c in member.children if c.type == "variable_declarator")
-                members.append(
-                    {
-                        "node": member,
-                        "type": name,
-                        "kind": "field",
-                        "name": src.txt(declarator.child_by_field_name("name")),
-                        "params": [],
-                    }
-                )
-    return types, members
-
-
-def member_key(m: dict) -> str:
-    if m["kind"] == "field":
-        return m["name"]
-    return f"{m['name']}({', '.join(m['params'])})"
+        for m in src.project.members()
+    ]
 
 
 def member_id(m: dict) -> str:
-    return f"{FILE}#{m['type']}.{member_key(m)}"
+    return m["id"]
 
 
-def modifiers_of(src: Source, node: Any) -> list[str]:
-    for child in node.children:
-        if child.type == "modifiers":
-            return src.txt(child).split()
-    return []
+def stamp(graph: dict) -> dict:
+    graph["version_id"] = 3
+    graph["content_hash"] = CONTENT_HASH
+    return graph
 
 
-def build_structure(src: Source, types: list[dict], members: list[dict]) -> dict:
-    nodes: list[dict] = []
-    edges: list[dict] = []
-    edge_ids: set[str] = set()
-
-    def add_edge(source: str, target: str, kind: str, weight: int = 1) -> None:
-        eid = f"{kind}:{source}->{target}"
-        if eid not in edge_ids:
-            edge_ids.add(eid)
-            edges.append({"id": eid, "source": source, "target": target, "kind": kind, "weight": weight})
-
-    type_ids = {t["name"]: f"{FILE}#{t['name']}" for t in types}
-    for t in types:
-        rng = src.rng(t["node"])
-        nodes.append(
-            {
-                "id": type_ids[t["name"]],
-                "node_type": "type",
-                "kind": t["kind"],
-                "name": t["name"],
-                "signature": None,
-                "modifiers": modifiers_of(src, t["node"]),
-                "type_params": [],
-                "parent_id": None,
-                "range": rng,
-                "lines": rng["end_line"] - rng["start_line"] + 1,
-                "method_id": None,
-                "complexity": None,
-                "findings_count": 0,
-                "cluster": None,
-            }
-        )
-        for child in t["node"].children:
-            if child.type == "super_interfaces":
-                for ident in walk(child):
-                    if ident.type == "type_identifier" and src.txt(ident) in type_ids:
-                        add_edge(type_ids[t["name"]], type_ids[src.txt(ident)], "implements")
-            if child.type == "superclass":
-                for ident in walk(child):
-                    if ident.type == "type_identifier" and src.txt(ident) in type_ids:
-                        add_edge(type_ids[t["name"]], type_ids[src.txt(ident)], "extends")
-
-    names = {}
-    for m in members:
-        if m["kind"] == "method":
-            names.setdefault(m["name"], []).append(m)
-    findings_by_method = {"mergeDuplicates": 1, "distinctCustomers": 1, "buildCsv": 1, "discountFor": 1,
-                          "readBatch": 1, "printReport": 1}
-    for m in members:
-        rng = src.rng(m["node"])
-        mid = member_id(m)
-        runs_flow = m["kind"] in {"method", "constructor"}
-        nodes.append(
-            {
-                "id": mid,
-                "node_type": "member",
-                "kind": m["kind"],
-                "name": m["name"],
-                "signature": member_key(m),
-                "modifiers": modifiers_of(src, m["node"]),
-                "type_params": [],
-                "parent_id": type_ids[m["type"]],
-                "range": rng,
-                "lines": rng["end_line"] - rng["start_line"] + 1,
-                "method_id": mid if runs_flow else None,
-                "complexity": COMPLEXITY.get(m["name"]) if m["kind"] == "method" else None,
-                "findings_count": findings_by_method.get(m["name"], 0) if m["type"] == "Main" else 0,
-                "cluster": None,
-            }
-        )
-        add_edge(type_ids[m["type"]], mid, "contains")
-        if m["kind"] != "method":
-            continue
-        body = m["node"].child_by_field_name("body")
-        if body is None:
-            continue
-        counts: dict[str, int] = {}
-        for call in walk(body):
-            if call.type == "method_invocation":
-                callee = src.txt(call.child_by_field_name("name"))
-                if callee in names and callee != m["name"]:
-                    counts[callee] = counts.get(callee, 0) + 1
-        for callee, count in counts.items():
-            add_edge(mid, member_id(names[callee][0]), "calls", count)
-    return {
-        "mode": "methods",
-        "nodes": nodes,
-        "edges": edges,
-        "version_id": 3,
-        "content_hash": "mock-demo-orders-v3",
-    }
+def build_structure(src: Source) -> dict:
+    return stamp(dataclasses.asdict(src.project.structure("methods")))
 
 
-def build_tree(structure: dict) -> dict:
-    by_parent: dict[str, list[dict]] = {}
-    for n in structure["nodes"]:
-        by_parent.setdefault(n["parent_id"] or "", []).append(n)
-
-    def tree_node(n: dict) -> dict:
-        is_type = n["node_type"] == "type"
-        count = n["findings_count"]
-        return {
-            "id": n["id"],
-            "kind": "type" if is_type else "member",
-            "name": n["name"] if is_type else n["signature"] or n["name"],
-            "node_id": n["id"],
-            "method_id": n["method_id"],
-            "member_kind": None if is_type else n["kind"],
-            "range": n["range"],
-            "complexity": n["complexity"],
-            "findings": {"high": count, "medium": 0, "low": 0} if count else {"high": 0, "medium": 0, "low": 0},
-            "children": [tree_node(c) for c in by_parent.get(n["id"], [])],
-        }
-
-    types = by_parent.get("", [])
-    last = max(t["range"]["end_line"] for t in types)
-    file_node = {
-        "id": FILE,
-        "kind": "file",
-        "name": FILE,
-        "node_id": None,
-        "method_id": None,
-        "member_kind": None,
-        "range": {"file": FILE, "start_line": 1, "start_col": 1, "end_line": last, "end_col": 2},
-        "complexity": None,
-        "findings": {"high": 0, "medium": 0, "low": 0},
-        "children": [tree_node(t) for t in types],
-    }
-    return {"version_id": 3, "roots": [file_node]}
+def build_tree(src: Source) -> dict:
+    tree = dataclasses.asdict(src.project.tree())
+    tree["version_id"] = 3
+    return tree
 
 
-# ---------------------------------------------------------------------------------------------
-# Блок-схемы (упрощённый построитель; настоящий — engine/graph/flow.py, этап S2)
-# ---------------------------------------------------------------------------------------------
+def build_flows(src: Source) -> dict[str, dict]:
+    """Блок-схемы всех методов, конструкторов и инициализаторов по id члена."""
+    return {g.method_id: stamp(dataclasses.asdict(g)) for g in src.project.flows()}
 
 
-class FlowBuilder:
-    def __init__(self, src: Source, member: dict, method_names: dict[str, str], findings: dict[str, str]):
-        self.src = src
-        self.member = member
-        self.method_names = method_names
-        self.findings = findings  # путь узла → id находки
-        self.base = member_id(member)
-        self.nodes: list[dict] = []
-        self.edges: list[dict] = []
-        self.exits: list[str] = []
-        self.loop_stack: list[dict] = []
-        self.entry = self.base
+def apply_findings(structure: dict, tree: dict, flows: dict[str, dict], findings: dict) -> None:
+    """Накладывает на графы находки (бейджи, счётчики) и оценки сложности демо."""
+    by_method: dict[str, dict[str, int]] = {}
+    for finding in findings["findings"]:
+        method_id = finding["location"]["method_id"]
+        if method_id:
+            counts = by_method.setdefault(method_id, {"high": 0, "medium": 0, "low": 0})
+            counts[finding["severity"]] += 1
+        node_id = finding["location"]["node_id"]
+        method_flow = flows.get(method_id or "")
+        if node_id and method_flow and finding["category"] == "PERF":
+            for node in method_flow["nodes"]:
+                if node["id"] == node_id:
+                    node["badges"].append(
+                        {"kind": "defect", "label": finding["rule_id"], "ref": finding["id"]}
+                    )
+    complexity_by_id: dict[str, str] = {}
+    for node in structure["nodes"]:
+        if node["node_type"] == "member" and node["name"] in COMPLEXITY and node["parent_id"].endswith("#Main"):
+            node["complexity"] = COMPLEXITY[node["name"]]
+            complexity_by_id[node["id"]] = node["complexity"]
+        counts = by_method.get(node["id"])
+        if counts:
+            node["findings_count"] = sum(counts.values())
 
-    def add_node(self, kind: str, node: Any, path: str, parent: str | None, data: dict) -> str:
-        node_id = f"{self.base}/{path}" if path else self.base
-        rng = self.src.rng(node)
-        text = self.src.txt(node)
-        # у контейнеров (циклы, условия) в подписи только заголовок: тело показывают вложенные блоки
-        code = short(text.split("{", 1)[0] if kind in LOOPS | {"condition"} else text, 90)
-        badges = self.badges(kind, node, node_id)
-        self.nodes.append(
-            {
-                "id": node_id,
-                "kind": kind,
-                "label": LABELS[kind],
-                "code": code,
-                "range": rng,
-                "parent_id": parent,
-                "data": data,
-                "badges": badges,
-                "complexity": COMPLEXITY.get(self.member["name"]) if kind in LOOPS and path.count("/") == 0 and path.startswith(("foreach", "for", "while")) else None,
-                "errors": [],
-            }
-        )
-        return node_id
+    def tree_pass(items: list[dict]) -> None:
+        for item in items:
+            counts = by_method.get(item["node_id"] or "")
+            if counts:
+                item["findings"] = counts
+            if item["node_id"] in complexity_by_id:
+                item["complexity"] = complexity_by_id[item["node_id"]]
+            tree_pass(item["children"])
 
-    def badges(self, kind: str, node: Any, node_id: str) -> list[dict]:
-        out: list[dict] = []
-        text = self.src.txt(node)
-        if kind in {"var_decl", "assign", "operation"}:
-            if text.startswith("System.out."):
-                out.append({"kind": "output", "label": "вывод", "ref": None})
-            if text.startswith("System.err."):
-                out.append({"kind": "error_output", "label": "ошибка", "ref": None})
-            for call in walk(node):
-                if call.type == "method_invocation":
-                    callee = self.src.txt(call.child_by_field_name("name"))
-                    if callee in self.method_names and callee != self.member["name"]:
-                        out.append({"kind": "call", "label": f"{callee}()", "ref": self.method_names[callee]})
-                        break
-        finding = self.findings.get(node_id.removeprefix(self.base + "/"))
-        if finding:
-            out.append({"kind": "defect", "label": finding.split(":")[0], "ref": finding})
-        return out
-
-    def edge(self, source: str, target: str, kind: str, label: str | None = None) -> None:
-        self.edges.append(
-            {"id": f"e{len(self.edges)}", "source": source, "target": target, "kind": kind, "label": label}
-        )
-
-    def sequence(self, stmts: list[Any], prefix: str, parent: str | None) -> tuple[str | None, list[tuple[str, str, str | None]]]:
-        entry: str | None = None
-        pending: list[tuple[str, str, str | None]] = []
-        counters: dict[str, int] = {}
-        for stmt in stmts:
-            result = self.statement(stmt, prefix, parent, counters)
-            if result is None:
-                continue
-            first, exits = result
-            if entry is None:
-                entry = first
-            else:
-                for source, kind, label in pending:
-                    self.edge(source, first, kind, label)
-            pending = exits
-        return entry, pending
-
-    def next_path(self, prefix: str, name: str, counters: dict[str, int]) -> str:
-        index = counters.get(name, 0)
-        counters[name] = index + 1
-        return f"{prefix}{name}[{index}]"
-
-    def statement(self, stmt: Any, prefix: str, parent: str | None, counters: dict[str, int]):
-        t = stmt.type
-        src = self.src
-        if t == "block":
-            return self.sequence([c for c in stmt.children if c.is_named and c.type != "comment"], prefix, parent)
-        if t == "local_variable_declaration":
-            decl = next(c for c in stmt.children if c.type == "variable_declarator")
-            value = decl.child_by_field_name("value")
-            path = self.next_path(prefix, "var", counters)
-            data = {
-                "type": src.txt(stmt.child_by_field_name("type")),
-                "name": src.txt(decl.child_by_field_name("name")),
-                "init": src.txt(value) if value is not None else None,
-            }
-            node_id = self.add_node("var_decl", stmt, path, parent, data)
-            return node_id, [(node_id, "next", None)]
-        if t == "expression_statement":
-            expr = stmt.children[0]
-            if expr.type in {"assignment_expression", "update_expression"}:
-                kind, name = "assign", "assign"
-                data: dict[str, Any] = {"expr": src.txt(expr)}
-            else:
-                kind, name = "operation", "op"
-                data = {"expr": src.txt(expr)}
-            node_id = self.add_node(kind, stmt, self.next_path(prefix, name, counters), parent, data)
-            return node_id, [(node_id, "next", None)]
-        if t in {"return_statement", "break_statement", "continue_statement"}:
-            kind = t.removesuffix("_statement")
-            node_id = self.add_node(kind, stmt, self.next_path(prefix, kind, counters), parent, {"expr": src.txt(stmt).rstrip(";")})
-            if kind == "return":
-                self.exits.append(node_id)
-                return node_id, []
-            if kind == "break":
-                self.loop_stack[-1]["breaks"].append(node_id)
-            else:
-                self.edge(node_id, self.loop_stack[-1]["id"], "continue", "continue")
-            return node_id, []
-        if t == "enhanced_for_statement":
-            path = self.next_path(prefix, "foreach", counters)
-            data = {
-                "type": src.txt(stmt.child_by_field_name("type")),
-                "name": src.txt(stmt.child_by_field_name("name")),
-                "iterable": src.txt(stmt.child_by_field_name("value")),
-            }
-            loop_id = self.add_node("loop_foreach", stmt, path, parent, data)
-            ctx = {"id": loop_id, "breaks": []}
-            self.loop_stack.append(ctx)
-            first, body_exits = self.statement(stmt.child_by_field_name("body"), path + "/", loop_id, {})
-            self.loop_stack.pop()
-            if first:
-                self.edge(loop_id, first, "body")
-            for source, _, _ in body_exits:
-                self.edge(source, loop_id, "back")
-            exits = [(loop_id, "next", None)] + [(b, "break", "break") for b in ctx["breaks"]]
-            return loop_id, exits
-        if t == "if_statement":
-            path = self.next_path(prefix, "if", counters)
-            cond = stmt.child_by_field_name("condition")
-            cond_id = self.add_node("condition", stmt, path, parent, {"expr": src.txt(cond)[1:-1]})
-            then_first, then_exits = self.statement(stmt.child_by_field_name("consequence"), path + "/then/", parent, {})
-            if then_first:
-                self.edge(cond_id, then_first, "true", "Да")
-            exits = list(then_exits)
-            alternative = stmt.child_by_field_name("alternative")
-            if alternative is not None:
-                else_first, else_exits = self.statement(alternative, path + "/else/", parent, {})
-                if else_first:
-                    self.edge(cond_id, else_first, "false", "Нет")
-                exits += else_exits
-            else:
-                exits.append((cond_id, "false", "Нет"))
-            return cond_id, exits
-        node_id = self.add_node("code", stmt, self.next_path(prefix, "code", counters), parent, {"text": src.txt(stmt)})
-        return node_id, [(node_id, "next", None)]
-
-    def build(self, version_id: int) -> dict:
-        node = self.member["node"]
-        body = node.child_by_field_name("body")
-        params = [src_param for src_param in node.child_by_field_name("parameters").children if src_param.type == "formal_parameter"]
-        method_node = {
-            "id": self.base,
-            "kind": "method",
-            "label": LABELS["method"],
-            "code": short(self.src.txt(node).split("{", 1)[0]),
-            "range": self.src.rng(node),
-            "parent_id": None,
-            "data": {
-                "name": self.member["name"],
-                "return_type": self.src.txt(node.child_by_field_name("type")),
-                "modifiers": modifiers_of(self.src, node),
-                "params": [
-                    {"type": self.src.txt(p.child_by_field_name("type")), "name": self.src.txt(p.child_by_field_name("name"))}
-                    for p in params
-                ],
-            },
-            "badges": [],
-            "complexity": COMPLEXITY.get(self.member["name"]),
-            "errors": [],
-        }
-        self.nodes.append(method_node)
-        first, tail = self.sequence([c for c in body.children if c.is_named and c.type != "comment"], "", None)
-        if first:
-            self.edge(self.base, first, "next")
-        for source, _, _ in tail:
-            if source not in self.exits:
-                self.exits.append(source)
-        return {
-            "method_id": self.base,
-            "signature": member_key(self.member),
-            "file": FILE,
-            "nodes": self.nodes,
-            "edges": self.edges,
-            "entry": self.base,
-            "exits": self.exits,
-            "version_id": version_id,
-            "content_hash": "mock-demo-orders-v3",
-        }
-
-
-# ---------------------------------------------------------------------------------------------
-# Остальные фикстуры
-# ---------------------------------------------------------------------------------------------
+    tree_pass(tree["roots"])
+    for method_id, complexity in complexity_by_id.items():
+        flow = flows[method_id]
+        flow["nodes"][0]["complexity"] = complexity
+        for node in flow["nodes"]:
+            if node["kind"] in LOOPS and node["parent_id"] is None:
+                node["complexity"] = complexity
 
 
 def find_line(src: Source, needle: str, start: int = 0) -> int:
@@ -546,7 +165,7 @@ def find_line(src: Source, needle: str, start: int = 0) -> int:
 
 
 def method_range(members: list[dict], src: Source, name: str) -> dict:
-    return src.rng(next(m["node"] for m in members if m["type"] == "Main" and m["name"] == name))
+    return src.rng(next(m for m in members if m["type"] == "Main" and m["name"] == name))
 
 
 def build_findings(src: Source, members: list[dict], flows: dict[str, dict]) -> dict:
@@ -735,9 +354,8 @@ def build_metrics(src: Source, members: list[dict]) -> dict:
     for m in members:
         if m["kind"] != "method":
             continue
-        rng = src.rng(m["node"])
-        text = src.txt(m["node"])
-        params = m["node"].child_by_field_name("parameters")
+        rng = src.rng(m)
+        text = src.txt(m)
         method_metrics.append(
             {
                 "method_id": member_id(m),
@@ -747,7 +365,7 @@ def build_metrics(src: Source, members: list[dict]) -> dict:
                 "cyclomatic": cyclomatic(text),
                 "cognitive": cyclomatic(text) + text.count("{") // 6,
                 "max_nesting": max(1, text.count("{") // 5),
-                "params": len([p for p in params.children if p.type == "formal_parameter"]),
+                "params": len(m["params"]),
                 "complexity": COMPLEXITY.get(m["name"]),
             }
         )
@@ -756,7 +374,7 @@ def build_metrics(src: Source, members: list[dict]) -> dict:
         by_type.setdefault(m["type"], []).append(m)
     type_metrics = []
     for name, ms in by_type.items():
-        lines = sum(src.rng(m["node"])["end_line"] - src.rng(m["node"])["start_line"] + 1 for m in ms)
+        lines = sum(src.rng(m)["end_line"] - src.rng(m)["start_line"] + 1 for m in ms)
         type_metrics.append(
             {
                 "type_id": f"{FILE}#{name}",
@@ -1006,15 +624,24 @@ CHECK = False
 
 
 def write(name: str, data: Any) -> None:
-    if name.startswith("flow-"):
-        FlowGraph.model_validate(data)
+    if name == "flows":
+        TypeAdapter(dict[str, FlowGraph]).validate_python(data)
     elif name == "run-8-events":
         TypeAdapter(list[RunEvent]).validate_python(data)
     elif VALIDATORS.get(name) is not None:
         VALIDATORS[name].model_validate(data)
+    # блок-схемы всех методов — одной строкой: файл большой и руками его не читают
+    if name == "flows":
+        text = json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n"
+    else:
+        text = json.dumps(data, ensure_ascii=False, indent=2) + "\n"
+    target = OUT / f"{name}.json"
+    if CHECK:
+        if not target.exists() or target.read_bytes().decode("utf-8") != text:
+            STALE.append(target.name)
+        return
     OUT.mkdir(parents=True, exist_ok=True)
-    text = json.dumps(data, ensure_ascii=False, indent=2) + "\n"
-    (OUT / f"{name}.json").write_text(text, encoding="utf-8", newline="\n")
+    target.write_text(text, encoding="utf-8", newline="\n")
 
 
 def main() -> int:
@@ -1025,30 +652,22 @@ def main() -> int:
     parser.add_argument("--check", action="store_true", help="не писать, а сверить с файлами")
     CHECK = parser.parse_args().check
     src = Source()
-    types, members = collect_members(src)
-    structure = build_structure(src, types, members)
-    tree = build_tree(structure)
-
-    method_names = {m["name"]: member_id(m) for m in members if m["kind"] == "method"}
-    finding_ids = {
-        "mergeDuplicates": {"foreach[0]": "PERF-01:{id}/foreach[0]"},
-        "distinctCustomers": {"foreach[0]": "PERF-02:{id}/foreach[0]"},
-        "buildCsv": {"foreach[0]": "PERF-03:{id}/foreach[0]"},
-        "findOrderById": {},
+    members = collect_members(src)
+    structure = build_structure(src)
+    tree = build_tree(src)
+    flows_by_id = build_flows(src)
+    flows = {
+        name: flows_by_id[member_id(next(m for m in members if m["type"] == "Main" and m["name"] == name))]
+        for name in ("mergeDuplicates", "distinctCustomers", "buildCsv", "findOrderById")
     }
-    flows: dict[str, dict] = {}
-    for name, marks in finding_ids.items():
-        member = next(m for m in members if m["type"] == "Main" and m["name"] == name)
-        marks = {path: fid.format(id=member_id(member)) for path, fid in marks.items()}
-        flows[name] = FlowBuilder(src, member, method_names, marks).build(version_id=3)
 
     for name, data in build_static().items():
         write(name, data)
+    findings = build_findings(src, members, flows)
+    apply_findings(structure, tree, flows_by_id, findings)
     write("tree", tree)
     write("structure", structure)
-    for name, flow in flows.items():
-        write(f"flow-{name}", flow)
-    findings = build_findings(src, members, flows)
+    write("flows", flows_by_id)
     write("findings", findings)
     titles = {
         "OPT-01": "Индексация по ключу вместо вложенного поиска",

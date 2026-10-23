@@ -2,10 +2,11 @@ import { describe, expect, it } from "vitest";
 
 import type { components } from "@/lib/api/schema";
 import { flowOutline, methodGroups, nodeDepth } from "@/lib/graph/outline";
-import flowJson from "@/mocks/fixtures/flow-mergeDuplicates.json";
+import flowsJson from "@/mocks/fixtures/flows.json";
 import structureJson from "@/mocks/fixtures/structure.json";
 
-const flow = flowJson as unknown as components["schemas"]["FlowGraph"];
+const flows = flowsJson as unknown as Record<string, components["schemas"]["FlowGraph"]>;
+const flow = flows["Main.java#Main.mergeDuplicates()"];
 const structure = structureJson as unknown as components["schemas"]["StructureGraph"];
 
 describe("nodeDepth", () => {
@@ -36,7 +37,9 @@ describe("flowOutline", () => {
     const condition = items.find((item) => item.node.id.endsWith("foreach[0]/if[0]"));
     const labels = condition?.outgoing.map(({ edge }) => edge.label);
     expect(labels).toContain("Да");
-    expect(condition?.outgoing.every(({ target }) => target !== undefined)).toBe(true);
+    // рёбра call ведут в схемы других методов, остальные — к блокам этой схемы
+    const local = condition?.outgoing.filter(({ edge }) => edge.kind !== "call") ?? [];
+    expect(local.every(({ target }) => target !== undefined)).toBe(true);
   });
 });
 

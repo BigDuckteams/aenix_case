@@ -1,0 +1,41 @@
+method <m>
+var_decl var[0]
+loop_foreach foreach[0]
+var_decl foreach[0]/var[0] ^foreach[0]
+loop_foreach foreach[0]/foreach[0] ^foreach[0]
+condition foreach[0]/foreach[0]/if[0] ^foreach[0]/foreach[0] [call:getCustomer() call:getProduct() call:getStatus()]
+operation foreach[0]/foreach[0]/if[0]/then/op[0] ^foreach[0]/foreach[0] [call:addQuantity() call:getQuantity()]
+assign foreach[0]/foreach[0]/if[0]/then/assign[0] ^foreach[0]/foreach[0]
+break foreach[0]/foreach[0]/if[0]/then/break[0] ^foreach[0]/foreach[0]
+condition foreach[0]/if[0] ^foreach[0]
+operation foreach[0]/if[0]/then/op[0] ^foreach[0] [call:copy()]
+var_decl var[1]
+operation op[0]
+operation op[1]
+return return[0]
+--
+foreach[0]/foreach[0]/if[0] -call-> Order.getCustomer()
+foreach[0]/foreach[0]/if[0] -call-> Order.getProduct()
+foreach[0]/foreach[0]/if[0] -call-> Order.getStatus()
+foreach[0]/foreach[0]/if[0]/then/op[0] -call-> Order.addQuantity(int)
+foreach[0]/foreach[0]/if[0]/then/op[0] -call-> Order.getQuantity()
+foreach[0]/foreach[0]/if[0]/then/op[0] -next-> foreach[0]/foreach[0]/if[0]/then/assign[0]
+foreach[0]/foreach[0]/if[0]/then/assign[0] -next-> foreach[0]/foreach[0]/if[0]/then/break[0]
+foreach[0]/foreach[0]/if[0] -true(Да)-> foreach[0]/foreach[0]/if[0]/then/op[0]
+foreach[0]/foreach[0] -body-> foreach[0]/foreach[0]/if[0]
+foreach[0]/foreach[0]/if[0] -back(Нет)-> foreach[0]/foreach[0]
+foreach[0]/var[0] -next-> foreach[0]/foreach[0]
+foreach[0]/if[0]/then/op[0] -call-> Order.copy()
+foreach[0]/if[0] -true(Да)-> foreach[0]/if[0]/then/op[0]
+foreach[0]/foreach[0] -next-> foreach[0]/if[0]
+foreach[0]/foreach[0]/if[0]/then/break[0] -break(break)-> foreach[0]/if[0]
+foreach[0] -body-> foreach[0]/var[0]
+foreach[0]/if[0]/then/op[0] -back-> foreach[0]
+foreach[0]/if[0] -back(Нет)-> foreach[0]
+var[0] -next-> foreach[0]
+foreach[0] -next-> var[1]
+var[1] -next-> op[0]
+op[0] -next-> op[1]
+op[1] -next-> return[0]
+<m> -next-> var[0]
+exits: return[0]

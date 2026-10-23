@@ -6,10 +6,7 @@ import fileMain from "./fixtures/file-main.json";
 import files from "./fixtures/files.json";
 import findings from "./fixtures/findings.json";
 import fixes from "./fixtures/fixes.json";
-import flowBuildCsv from "./fixtures/flow-buildCsv.json";
-import flowDistinctCustomers from "./fixtures/flow-distinctCustomers.json";
-import flowFindOrderById from "./fixtures/flow-findOrderById.json";
-import flowMergeDuplicates from "./fixtures/flow-mergeDuplicates.json";
+import flows from "./fixtures/flows.json";
 import health from "./fixtures/health.json";
 import metrics from "./fixtures/metrics.json";
 import palette from "./fixtures/palette.json";
@@ -24,12 +21,8 @@ import structure from "./fixtures/structure.json";
 import tree from "./fixtures/tree.json";
 import versions from "./fixtures/versions.json";
 
-export const MOCK_FLOWS: Record<string, unknown> = {
-  mergeDuplicates: flowMergeDuplicates,
-  distinctCustomers: flowDistinctCustomers,
-  buildCsv: flowBuildCsv,
-  findOrderById: flowFindOrderById,
-};
+// Блок-схемы всех методов демо-монолита по id члена (их строит настоящий движок).
+export const MOCK_FLOWS: Record<string, unknown> = flows;
 
 type Params = Record<string, string>;
 type Reply = { status?: number; body: unknown };
@@ -58,14 +51,9 @@ const routes: Array<[method: string, pattern: string, handler: Handler]> = [
     "/api/projects/:id/flow",
     (_, url) => {
       const methodId = url.searchParams.get("method_id") ?? "";
-      const name = /\.(\w+)\(/.exec(methodId)?.[1] ?? "";
       return (
-        MOCK_FLOWS[name] ??
-        error(
-          404,
-          "NOT_FOUND",
-          `В моках нет блок-схемы для ${methodId || "метода"} (есть: ${Object.keys(MOCK_FLOWS).join(", ")})`,
-        )
+        MOCK_FLOWS[methodId] ??
+        error(404, "NOT_FOUND", `В моках нет блок-схемы для ${methodId || "метода"}`)
       );
     },
   ],

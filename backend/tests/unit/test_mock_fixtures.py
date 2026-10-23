@@ -23,7 +23,9 @@ def load(name: str) -> dict:
     return json.loads((FIXTURES / f"{name}.json").read_text(encoding="utf-8"))
 
 
-FLOWS = sorted(p.stem for p in FIXTURES.glob("flow-*.json"))
+FLOWS: dict[str, dict] = load("flows")
+FLOW_IDS = sorted(FLOWS)
+MERGE = "Main.java#Main.mergeDuplicates()"
 
 
 def test_fixtures_are_up_to_date_with_generator():
@@ -38,13 +40,13 @@ def test_fixtures_are_up_to_date_with_generator():
     assert proc.returncode == 0, proc.stdout + proc.stderr
 
 
-@pytest.mark.parametrize("name", FLOWS)
-def test_flow_graph_is_consistent(name):
-    flow = FlowGraph.model_validate(load(name))
+@pytest.mark.parametrize("method_id", FLOW_IDS)
+def test_flow_graph_is_consistent(method_id):
+    flow = FlowGraph.model_validate(FLOWS[method_id])
     ids = {n.id for n in flow.nodes}
     assert len(ids) == len(flow.nodes), "дубли id узлов"
     assert flow.entry in ids and set(flow.exits) <= ids
-    assert flow.nodes[0].kind == "method" and flow.nodes[0].id == flow.method_id
+    assert flow.nodes[0].kind == "method" and flow.nodes[0].id == flow.method_id == method_id
     for node in flow.nodes:
         assert node.parent_id is None or node.parent_id in ids
         assert node.range.start_line <= node.range.end_line
@@ -52,21 +54,26 @@ def test_flow_graph_is_consistent(name):
     assert len(edge_ids) == len(set(edge_ids))
     for edge in flow.edges:
         assert edge.source in ids
-        if edge.kind != "call":  # ребро call ведёт в схему другого метода
+        if edge.kind == "call":  # ребро call ведёт в схему другого метода
+            assert edge.target in FLOWS, edge
+        else:
             assert edge.target in ids, edge
-    # каждый узел достижим из входа
+    # каждый узел достижим из входа: по рёбрам и от контейнера к вложенным блокам
     reachable, stack = {flow.entry}, [flow.entry]
     while stack:
         current = stack.pop()
-        for edge in flow.edges:
-            if edge.source == current and edge.target in ids and edge.target not in reachable:
-                reachable.add(edge.target)
-                stack.append(edge.target)
+        nxt = [e.target for e in flow.edges if e.source == current] + [
+            n.id for n in flow.nodes if n.parent_id == current
+        ]
+        for target in nxt:
+            if target in ids and target not in reachable:
+                reachable.add(target)
+                stack.append(target)
     assert reachable == ids
 
 
 def test_main_flow_has_loop_condition_and_call_in_15_to_20_nodes():
-    flow = FlowGraph.model_validate(load("flow-mergeDuplicates"))
+    flow = FlowGraph.model_validate(FLOWS[MERGE])
     kinds = {n.kind for n in flow.nodes}
     assert 15 <= len(flow.nodes) <= 20
     assert {"method", "loop_foreach", "condition", "operation", "return", "break"} <= kinds
@@ -77,7 +84,7 @@ def test_main_flow_has_loop_condition_and_call_in_15_to_20_nodes():
 
 def test_flow_ranges_match_the_source_file():
     source = (DEMO / "Main.java").read_text(encoding="utf-8").splitlines()
-    flow = FlowGraph.model_validate(load("flow-buildCsv"))
+    flow = FlowGraph.model_validate(FLOWS["Main.java#Main.buildCsv()"])
     loop = next(n for n in flow.nodes if n.kind == "loop_foreach")
     assert source[loop.range.start_line - 1].strip().startswith("for (Order order : orders)")
     assert "csv +=" in source[loop.range.start_line]
@@ -95,10 +102,11 @@ def test_structure_tree_and_flows_agree():
     assert len(ids) == len(structure.nodes)
     for edge in structure.edges:
         assert edge.source in ids and edge.target in ids, edge
-    assert {e.kind for e in structure.edges} == {"contains", "calls", "implements"}
+    assert {e.kind for e in structure.edges} == {"contains", "calls", "implements", "uses"}
     method_ids = {n.method_id for n in structure.nodes if n.method_id}
-    for name in FLOWS:
-        assert load(name)["method_id"] in method_ids
+    assert set(FLOWS) == method_ids, (
+        "блок-схема есть у каждого метода, конструктора и инициализатора"
+    )
 
     def collect(nodes) -> set[str]:
         found = set()
@@ -117,7 +125,7 @@ def test_structure_tree_and_flows_agree():
 def test_findings_point_at_real_nodes():
     analysis = AnalysisResponse.model_validate(load("findings"))
     structure = {n["id"] for n in load("structure")["nodes"]}
-    flow_nodes = {n["id"] for name in FLOWS for n in load(name)["nodes"]}
+    flow_nodes = {n["id"] for flow in FLOWS.values() for n in flow["nodes"]}
     rules = {f.rule_id for f in analysis.findings}
     assert {"PERF-01", "PERF-02", "PERF-03", "BUG-01", "BUG-02", "MAINT-01", "MAINT-05"} <= rules
     assert len({f.id for f in analysis.findings}) == len(analysis.findings)
@@ -132,11 +140,11 @@ def test_findings_point_at_real_nodes():
     fixes = load("fixes")["fixes"]
     assert {f["finding_id"] for f in fixes} <= {f.id for f in analysis.findings}
     defects = {
-        b.ref
-        for name in FLOWS
-        for n in FlowGraph.model_validate(load(name)).nodes
-        for b in n.badges
-        if b.kind == "defect"
+        b["ref"]
+        for flow in FLOWS.values()
+        for n in flow["nodes"]
+        for b in n["badges"]
+        if b["kind"] == "defect"
     }
     assert defects <= {f.id for f in analysis.findings}
 

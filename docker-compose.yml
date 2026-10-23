@@ -1,0 +1,43 @@
+# Запуск: docker compose up --build   →   http://localhost:3000
+# Наружу открыт только frontend; он проксирует /api/* в backend внутри сети compose.
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      JB_DATA_DIR: /data
+      JB_MAX_PARALLEL_RUNS: "4"
+      JB_RUN_TIMEOUT_S: "10"
+      # JB_SEED_DEMO: "1"   # создать проект demo-orders при старте (появится в S3.9)
+    volumes:
+      - jb-data:/data
+    mem_limit: 2g
+    cpus: 2
+    pids_limit: 512
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health', timeout=3)"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      args:
+        BACKEND_URL: http://backend:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  jb-data:

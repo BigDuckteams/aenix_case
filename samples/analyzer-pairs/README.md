@@ -1,0 +1,1 @@
+Пример со слайда 5 кейса: вложенный перебор `for (Item a : items) for (Item b : items) if (a.id().equals(b.id())) merge(a, b)` (O(n²), повторная обработка пар) и перебор пар `findPairs`; цель диагностики PERF-01 и оптимизации OPT-01.

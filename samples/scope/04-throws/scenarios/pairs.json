@@ -1,0 +1,7 @@
+{
+  "name": "pairs",
+  "description": "Разные пары",
+  "stdin": "10 20\n5 x\n300 400\n7 8\n",
+  "args": [],
+  "expected_stdout": "среднее 15\nввод-вывод: неверное значение «x» (причина: NumberFormatException)\nобщее: слишком большое среднее: 350\nсреднее 7"
+}

@@ -1,0 +1,12 @@
+{
+  "description": "Iterable и Iterator: явный итератор с remove, for each по своему Iterable",
+  "section": "3",
+  "kinds": [
+    "loop_while",
+    "loop_foreach",
+    "condition",
+    "var_decl",
+    "operation",
+    "return"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "invalid",
+  "description": "Недопустимая координата",
+  "stdin": "2\n-2000 0\n7 7\n",
+  "args": [],
+  "expected_stdout": "ошибка: координата слишком мала\nPoint[x=7, y=7] расстояние 9.899\nсумма Point[x=7, y=7] x=7 y=7\ntrue false\nLabel[text=метка, priority=2] 5"
+}

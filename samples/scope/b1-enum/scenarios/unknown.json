@@ -1,0 +1,7 @@
+{
+  "name": "unknown",
+  "description": "Неизвестный уровень",
+  "stdin": "2 -3 EXTREME\n",
+  "args": [],
+  "expected_stdout": "2 + -3 = -1 (ADD, 0)\n2 * -3 = -6 (MULTIPLY, 1)\n2 - -3 = 5 (SUBTRACT, 2)\nMERCURY: 3.70\nEARTH: 9.80\nJUPITER: 24.81\nнет такого уровня: EXTREME\n{LOW=3, MEDIUM=6, HIGH=4}\nh"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "frozen",
+  "description": "Заморозка счёта",
+  "stdin": "50\nw 10\nfreeze\nw 10\n",
+  "args": [],
+  "expected_stdout": "снято 10, остаток 40\nотказ: счёт заморожен"
+}

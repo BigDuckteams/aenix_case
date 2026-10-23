@@ -1,0 +1,12 @@
+{
+  "description": "record: компактный конструктор, методы, статические члены, вложенные record",
+  "section": "bonus",
+  "kinds": [
+    "method",
+    "var_decl",
+    "operation",
+    "return",
+    "condition",
+    "loop_foreach"
+  ]
+}

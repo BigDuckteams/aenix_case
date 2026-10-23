@@ -1,0 +1,10 @@
+{
+  "description": "Optional: of, empty, ofNullable, map, filter, orElse, ifPresent",
+  "section": "3",
+  "kinds": [
+    "var_decl",
+    "operation",
+    "return",
+    "condition"
+  ]
+}

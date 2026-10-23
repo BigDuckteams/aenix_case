@@ -1,0 +1,11 @@
+{
+  "description": "Интерфейсы: абстрактные, default и static методы, несколько реализаций",
+  "section": "1",
+  "kinds": [
+    "method",
+    "return",
+    "var_decl",
+    "operation",
+    "loop_foreach"
+  ]
+}

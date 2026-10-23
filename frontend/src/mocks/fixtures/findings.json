@@ -1,0 +1,1369 @@
+{
+  "version_id": 3,
+  "findings": [
+    {
+      "id": "PERF-01:Main.java#Main.mergeDuplicates()/foreach[0]",
+      "rule_id": "PERF-01",
+      "severity": "high",
+      "category": "PERF",
+      "title": "Вложенный цикл — O(n·m)",
+      "location": {
+        "file": "Main.java",
+        "start_line": 559,
+        "end_line": 573,
+        "node_id": "Main.java#Main.mergeDuplicates()/foreach[0]",
+        "method_id": "Main.java#Main.mergeDuplicates()"
+      },
+      "explanation": "Внешний цикл по orders для каждого заказа обходит список merged целиком в поисках пары (клиент, товар, статус). Число сравнений растёт как n·m, где m — число различных пар.",
+      "defect": "Повторный линейный поиск по уже собранному списку",
+      "risk": "На 8000 заказов метод занимает секунды и растёт квадратично",
+      "recommendation": "Индексировать merged по ключу (клиент, товар, статус) в LinkedHashMap",
+      "complexity": {
+        "current": "O(n·m)",
+        "after": "O(n)",
+        "confidence": "exact",
+        "contributions": [
+          {
+            "node_id": "Main.java#Main.mergeDuplicates()/foreach[0]",
+            "factor": "n",
+            "why": "цикл по всем заказам"
+          },
+          {
+            "node_id": "Main.java#Main.mergeDuplicates()/foreach[0]/foreach[0]",
+            "factor": "m",
+            "why": "поиск по списку merged"
+          }
+        ],
+        "reason": null
+      },
+      "fix": {
+        "fix_id": "OPT-01",
+        "available": true,
+        "behavior_preserving": true,
+        "preconditions": [
+          {
+            "name": "Внутренний цикл — поиск совпадения по ключу",
+            "passed": true,
+            "reason": null
+          },
+          {
+            "name": "Тело зависит только от пары",
+            "passed": true,
+            "reason": null
+          },
+          {
+            "name": "Порядок сохраняется (LinkedHashMap)",
+            "passed": true,
+            "reason": null
+          }
+        ]
+      },
+      "evidence": {
+        "static": [
+          {
+            "kind": "loop",
+            "text": "for (Order candidate : orders)",
+            "node_id": "Main.java#Main.mergeDuplicates()/foreach[0]"
+          },
+          {
+            "kind": "loop",
+            "text": "for (Order existing : merged)",
+            "node_id": "Main.java#Main.mergeDuplicates()/foreach[0]/foreach[0]"
+          }
+        ],
+        "dynamic": null
+      }
+    },
+    {
+      "id": "PERF-02:Main.java#Main.distinctCustomers()/foreach[0]",
+      "rule_id": "PERF-02",
+      "severity": "high",
+      "category": "PERF",
+      "title": "contains по ArrayList в цикле — O(n·m)",
+      "location": {
+        "file": "Main.java",
+        "start_line": 501,
+        "end_line": 505,
+        "node_id": "Main.java#Main.distinctCustomers()/foreach[0]",
+        "method_id": "Main.java#Main.distinctCustomers()"
+      },
+      "explanation": "result.contains(...) выполняет линейный поиск по ArrayList на каждой итерации цикла по заказам.",
+      "defect": "Список используется как множество",
+      "risk": "Квадратичный рост при увеличении числа клиентов",
+      "recommendation": "Хранить встреченных клиентов в HashSet, список оставить для порядка",
+      "complexity": {
+        "current": "O(n·m)",
+        "after": "O(n)",
+        "confidence": "exact",
+        "contributions": [
+          {
+            "node_id": "Main.java#Main.distinctCustomers()/foreach[0]",
+            "factor": "n",
+            "why": "цикл по заказам"
+          }
+        ],
+        "reason": null
+      },
+      "fix": {
+        "fix_id": "OPT-02",
+        "available": true,
+        "behavior_preserving": true,
+        "preconditions": [
+          {
+            "name": "Список не изменяется иначе как добавлением",
+            "passed": true,
+            "reason": null
+          },
+          {
+            "name": "String имеет корректные equals/hashCode",
+            "passed": true,
+            "reason": null
+          }
+        ]
+      },
+      "evidence": {
+        "static": [
+          {
+            "kind": "call",
+            "text": "result.contains(order.getCustomer())",
+            "node_id": "Main.java#Main.distinctCustomers()/foreach[0]/if[0]"
+          }
+        ],
+        "dynamic": null
+      }
+    },
+    {
+      "id": "PERF-03:Main.java#Main.buildCsv()/foreach[0]",
+      "rule_id": "PERF-03",
+      "severity": "medium",
+      "category": "PERF",
+      "title": "Конкатенация строк в цикле — O(n²)",
+      "location": {
+        "file": "Main.java",
+        "start_line": 582,
+        "end_line": 586,
+        "node_id": "Main.java#Main.buildCsv()/foreach[0]",
+        "method_id": "Main.java#Main.buildCsv()"
+      },
+      "explanation": "Переменная csv типа String накапливается оператором += в цикле: каждый шаг копирует всю строку.",
+      "defect": "Копирование строки на каждой итерации",
+      "risk": "Время и память растут квадратично с числом заказов",
+      "recommendation": "Накапливать в StringBuilder и вызвать toString() после цикла",
+      "complexity": {
+        "current": "O(n²)",
+        "after": "O(n)",
+        "confidence": "exact",
+        "contributions": [
+          {
+            "node_id": "Main.java#Main.buildCsv()/foreach[0]",
+            "factor": "n",
+            "why": "копирование растущей строки"
+          }
+        ],
+        "reason": null
+      },
+      "fix": {
+        "fix_id": "OPT-03",
+        "available": true,
+        "behavior_preserving": true,
+        "preconditions": [
+          {
+            "name": "Переменная локальная и типа String",
+            "passed": true,
+            "reason": null
+          },
+          {
+            "name": "Используется только для накопления",
+            "passed": true,
+            "reason": null
+          }
+        ]
+      },
+      "evidence": {
+        "static": [
+          {
+            "kind": "assign",
+            "text": "csv += …",
+            "node_id": "Main.java#Main.buildCsv()/foreach[0]/assign[0]"
+          }
+        ],
+        "dynamic": null
+      }
+    },
+    {
+      "id": "BUG-01:Main.java#Main.discountFor(Order):615",
+      "rule_id": "BUG-01",
+      "severity": "high",
+      "category": "BUG",
+      "title": "Сравнение строк по ==",
+      "location": {
+        "file": "Main.java",
+        "start_line": 615,
+        "end_line": 615,
+        "node_id": null,
+        "method_id": "Main.java#Main.discountFor(Order)"
+      },
+      "explanation": "order.getCustomer() == VIP_CUSTOMER сравнивает ссылки, а не содержимое: имя клиента приходит из ввода и никогда не совпадает с константой.",
+      "defect": "Скидка VIP-клиенту никогда не применяется",
+      "risk": "Тихая потеря скидки",
+      "recommendation": "Заменить на VIP_CUSTOMER.equals(order.getCustomer())",
+      "complexity": null,
+      "fix": {
+        "fix_id": "FIX-01",
+        "available": true,
+        "behavior_preserving": false,
+        "preconditions": [
+          {
+            "name": "Оба операнда типа String",
+            "passed": true,
+            "reason": null
+          }
+        ]
+      },
+      "evidence": {
+        "static": [
+          {
+            "kind": "literal",
+            "text": "== VIP_CUSTOMER",
+            "node_id": null
+          }
+        ],
+        "dynamic": null
+      }
+    },
+    {
+      "id": "BUG-02:Main.java#Main.readBatch(Scanner, int):199",
+      "rule_id": "BUG-02",
+      "severity": "medium",
+      "category": "BUG",
+      "title": "Пустой catch",
+      "location": {
+        "file": "Main.java",
+        "start_line": 199,
+        "end_line": 200,
+        "node_id": null,
+        "method_id": "Main.java#Main.readBatch(Scanner, int)"
+      },
+      "explanation": "Блок catch (OrderParseException e) пуст: битые строки пакета молча пропускаются и не попадают в счётчик ошибок.",
+      "defect": "Исключение проглатывается",
+      "risk": "Ошибки ввода остаются незамеченными",
+      "recommendation": "Вывести сообщение в stderr и увеличить errorCount",
+      "complexity": null,
+      "fix": {
+        "fix_id": "FIX-02",
+        "available": true,
+        "behavior_preserving": false,
+        "preconditions": [
+          {
+            "name": "Тело catch пусто",
+            "passed": true,
+            "reason": null
+          }
+        ]
+      },
+      "evidence": {
+        "static": [
+          {
+            "kind": "catch",
+            "text": "catch (OrderParseException e) { }",
+            "node_id": null
+          }
+        ],
+        "dynamic": null
+      }
+    },
+    {
+      "id": "MAINT-01:Main.java#Main.printReport()",
+      "rule_id": "MAINT-01",
+      "severity": "low",
+      "category": "MAINT",
+      "title": "Длинный метод",
+      "location": {
+        "file": "Main.java",
+        "start_line": 793,
+        "end_line": 837,
+        "node_id": null,
+        "method_id": "Main.java#Main.printReport()"
+      },
+      "explanation": "Метод printReport занимает 45 строк при пороге 30.",
+      "defect": "Метод делает много независимых шагов",
+      "risk": "Сложно читать и менять",
+      "recommendation": "Выделить разделы отчёта в отдельные методы",
+      "complexity": null,
+      "fix": {
+        "fix_id": "REF-01",
+        "available": false,
+        "behavior_preserving": true,
+        "preconditions": [
+          {
+            "name": "Выделяемый фрагмент не меняет несколько переменных",
+            "passed": false,
+            "reason": "Требуется выбор фрагмента (этап S9)"
+          }
+        ]
+      },
+      "evidence": {
+        "static": [
+          {
+            "kind": "metric",
+            "text": "LOC > 30",
+            "node_id": null
+          }
+        ],
+        "dynamic": null
+      }
+    },
+    {
+      "id": "MAINT-05:Main.java#Main",
+      "rule_id": "MAINT-05",
+      "severity": "medium",
+      "category": "MAINT",
+      "title": "God-class: разбор, анализ, преобразования и вывод в одном классе",
+      "location": {
+        "file": "Main.java",
+        "start_line": 21,
+        "end_line": 838,
+        "node_id": "Main.java#Main",
+        "method_id": null
+      },
+      "explanation": "Класс Main содержит более 40 методов четырёх ролей (parse, analyze, optimize, print) и общее состояние.",
+      "defect": "Одна ответственность на всё",
+      "risk": "Любое изменение затрагивает весь файл",
+      "recommendation": "Разбить на Parser, Analyzer, Optimizer, Printer",
+      "complexity": null,
+      "fix": {
+        "fix_id": "REF-04",
+        "available": false,
+        "behavior_preserving": true,
+        "preconditions": [
+          {
+            "name": "Кластеры членов найдены",
+            "passed": true,
+            "reason": null
+          }
+        ]
+      },
+      "evidence": {
+        "static": [
+          {
+            "kind": "metric",
+            "text": "методов > 20",
+            "node_id": null
+          }
+        ],
+        "dynamic": null
+      }
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "by_severity": {
+      "high": 3,
+      "medium": 3,
+      "low": 1
+    },
+    "by_category": {
+      "PERF": 3,
+      "BUG": 2,
+      "MAINT": 2
+    },
+    "fixable": 5
+  },
+  "complexity": {
+    "current": "O(n²)",
+    "optimized": "O(n)"
+  },
+  "metrics": {
+    "totals": {
+      "lines": 995,
+      "code_lines": 867,
+      "files": 1,
+      "types": 7,
+      "methods": 83,
+      "cyclomatic_avg": 2.81,
+      "cyclomatic_max": 22,
+      "duplication_percent": 6.5,
+      "lcom4_avg": 1.5
+    },
+    "methods": [
+      {
+        "method_id": "Main.java#Main.main(String[])",
+        "name": "main",
+        "file": "Main.java",
+        "lines": 7,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.run(Scanner)",
+        "name": "run",
+        "file": "Main.java",
+        "lines": 23,
+        "cyclomatic": 7,
+        "cognitive": 8,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.processCommand(String, Scanner)",
+        "name": "processCommand",
+        "file": "Main.java",
+        "lines": 76,
+        "cyclomatic": 22,
+        "cognitive": 22,
+        "max_nesting": 1,
+        "params": 2,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.tokenize(String)",
+        "name": "tokenize",
+        "file": "Main.java",
+        "lines": 4,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.requireArg(String[], int, String)",
+        "name": "requireArg",
+        "file": "Main.java",
+        "lines": 6,
+        "cyclomatic": 2,
+        "cognitive": 2,
+        "max_nesting": 1,
+        "params": 3,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.parseInt(String, String)",
+        "name": "parseInt",
+        "file": "Main.java",
+        "lines": 7,
+        "cyclomatic": 2,
+        "cognitive": 2,
+        "max_nesting": 1,
+        "params": 2,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.parseMoney(String, String)",
+        "name": "parseMoney",
+        "file": "Main.java",
+        "lines": 7,
+        "cyclomatic": 2,
+        "cognitive": 2,
+        "max_nesting": 1,
+        "params": 2,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.parseOrder(String[], int)",
+        "name": "parseOrder",
+        "file": "Main.java",
+        "lines": 8,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 2,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.normalizeName(String)",
+        "name": "normalizeName",
+        "file": "Main.java",
+        "lines": 7,
+        "cyclomatic": 2,
+        "cognitive": 2,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.readBatch(Scanner, int)",
+        "name": "readBatch",
+        "file": "Main.java",
+        "lines": 11,
+        "cyclomatic": 4,
+        "cognitive": 4,
+        "max_nesting": 1,
+        "params": 2,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.validate(Order)",
+        "name": "validate",
+        "file": "Main.java",
+        "lines": 7,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.checkId(Order)",
+        "name": "checkId",
+        "file": "Main.java",
+        "lines": 5,
+        "cyclomatic": 2,
+        "cognitive": 2,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.checkCustomer(Order)",
+        "name": "checkCustomer",
+        "file": "Main.java",
+        "lines": 12,
+        "cyclomatic": 5,
+        "cognitive": 5,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.checkProduct(Order)",
+        "name": "checkProduct",
+        "file": "Main.java",
+        "lines": 12,
+        "cyclomatic": 5,
+        "cognitive": 5,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.checkQuantity(Order)",
+        "name": "checkQuantity",
+        "file": "Main.java",
+        "lines": 8,
+        "cyclomatic": 3,
+        "cognitive": 3,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.checkPrice(Order)",
+        "name": "checkPrice",
+        "file": "Main.java",
+        "lines": 8,
+        "cyclomatic": 3,
+        "cognitive": 3,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.findOrderById(int)",
+        "name": "findOrderById",
+        "file": "Main.java",
+        "lines": 8,
+        "cyclomatic": 3,
+        "cognitive": 3,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": "O(n)"
+      },
+      {
+        "method_id": "Main.java#Main.addOrder(Order)",
+        "name": "addOrder",
+        "file": "Main.java",
+        "lines": 9,
+        "cyclomatic": 2,
+        "cognitive": 2,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.processOrders(List<Order>)",
+        "name": "processOrders",
+        "file": "Main.java",
+        "lines": 18,
+        "cyclomatic": 4,
+        "cognitive": 5,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.changeStatus(int, OrderStatus)",
+        "name": "changeStatus",
+        "file": "Main.java",
+        "lines": 13,
+        "cyclomatic": 3,
+        "cognitive": 3,
+        "max_nesting": 1,
+        "params": 2,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.removeOrder(int)",
+        "name": "removeOrder",
+        "file": "Main.java",
+        "lines": 10,
+        "cyclomatic": 3,
+        "cognitive": 3,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.purgeCancelled()",
+        "name": "purgeCancelled",
+        "file": "Main.java",
+        "lines": 5,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.findByCustomer(String)",
+        "name": "findByCustomer",
+        "file": "Main.java",
+        "lines": 10,
+        "cyclomatic": 3,
+        "cognitive": 3,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.showOrder(int)",
+        "name": "showOrder",
+        "file": "Main.java",
+        "lines": 8,
+        "cyclomatic": 2,
+        "cognitive": 2,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.totalAmount()",
+        "name": "totalAmount",
+        "file": "Main.java",
+        "lines": 9,
+        "cyclomatic": 3,
+        "cognitive": 3,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.averageAmount()",
+        "name": "averageAmount",
+        "file": "Main.java",
+        "lines": 14,
+        "cyclomatic": 4,
+        "cognitive": 4,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.medianAmount()",
+        "name": "medianAmount",
+        "file": "Main.java",
+        "lines": 17,
+        "cyclomatic": 5,
+        "cognitive": 5,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.percentile(double)",
+        "name": "percentile",
+        "file": "Main.java",
+        "lines": 15,
+        "cyclomatic": 4,
+        "cognitive": 4,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.maxOrder()",
+        "name": "maxOrder",
+        "file": "Main.java",
+        "lines": 9,
+        "cyclomatic": 4,
+        "cognitive": 4,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.minOrder()",
+        "name": "minOrder",
+        "file": "Main.java",
+        "lines": 9,
+        "cyclomatic": 4,
+        "cognitive": 4,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.statusHistogram()",
+        "name": "statusHistogram",
+        "file": "Main.java",
+        "lines": 10,
+        "cyclomatic": 3,
+        "cognitive": 3,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.totalForCustomer(String)",
+        "name": "totalForCustomer",
+        "file": "Main.java",
+        "lines": 9,
+        "cyclomatic": 4,
+        "cognitive": 4,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.totalForProduct(String)",
+        "name": "totalForProduct",
+        "file": "Main.java",
+        "lines": 9,
+        "cyclomatic": 4,
+        "cognitive": 4,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.topCustomers(int)",
+        "name": "topCustomers",
+        "file": "Main.java",
+        "lines": 18,
+        "cyclomatic": 4,
+        "cognitive": 4,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.topN(List<T>, Comparator<? super T>, int)",
+        "name": "topN",
+        "file": "Main.java",
+        "lines": 5,
+        "cyclomatic": 2,
+        "cognitive": 2,
+        "max_nesting": 1,
+        "params": 3,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.distinctCustomers()",
+        "name": "distinctCustomers",
+        "file": "Main.java",
+        "lines": 9,
+        "cyclomatic": 3,
+        "cognitive": 3,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": "O(n·m)"
+      },
+      {
+        "method_id": "Main.java#Main.findAnomalies()",
+        "name": "findAnomalies",
+        "file": "Main.java",
+        "lines": 10,
+        "cyclomatic": 4,
+        "cognitive": 4,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.countByStatusLabel()",
+        "name": "countByStatusLabel",
+        "file": "Main.java",
+        "lines": 5,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.streamTotalForCustomer(String)",
+        "name": "streamTotalForCustomer",
+        "file": "Main.java",
+        "lines": 7,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.expensiveProducts(double)",
+        "name": "expensiveProducts",
+        "file": "Main.java",
+        "lines": 8,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.countLargeOrders(int)",
+        "name": "countLargeOrders",
+        "file": "Main.java",
+        "lines": 9,
+        "cyclomatic": 3,
+        "cognitive": 3,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.mergeDuplicates()",
+        "name": "mergeDuplicates",
+        "file": "Main.java",
+        "lines": 22,
+        "cyclomatic": 7,
+        "cognitive": 7,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": "O(n·m)"
+      },
+      {
+        "method_id": "Main.java#Main.buildCsv()",
+        "name": "buildCsv",
+        "file": "Main.java",
+        "lines": 9,
+        "cyclomatic": 2,
+        "cognitive": 2,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": "O(n²)"
+      },
+      {
+        "method_id": "Main.java#Main.applyDiscount(double)",
+        "name": "applyDiscount",
+        "file": "Main.java",
+        "lines": 15,
+        "cyclomatic": 5,
+        "cognitive": 5,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.discountFor(Order)",
+        "name": "discountFor",
+        "file": "Main.java",
+        "lines": 14,
+        "cyclomatic": 5,
+        "cognitive": 5,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.roundMoney(double)",
+        "name": "roundMoney",
+        "file": "Main.java",
+        "lines": 3,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.printHeader()",
+        "name": "printHeader",
+        "file": "Main.java",
+        "lines": 5,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.printFooter()",
+        "name": "printFooter",
+        "file": "Main.java",
+        "lines": 4,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.repeat(char, int)",
+        "name": "repeat",
+        "file": "Main.java",
+        "lines": 7,
+        "cyclomatic": 2,
+        "cognitive": 2,
+        "max_nesting": 1,
+        "params": 2,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.formatAmount(double)",
+        "name": "formatAmount",
+        "file": "Main.java",
+        "lines": 3,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.padRight(String, int)",
+        "name": "padRight",
+        "file": "Main.java",
+        "lines": 6,
+        "cyclomatic": 2,
+        "cognitive": 2,
+        "max_nesting": 1,
+        "params": 2,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.printOrders(List<Order>)",
+        "name": "printOrders",
+        "file": "Main.java",
+        "lines": 18,
+        "cyclomatic": 4,
+        "cognitive": 4,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.printStats()",
+        "name": "printStats",
+        "file": "Main.java",
+        "lines": 16,
+        "cyclomatic": 2,
+        "cognitive": 2,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.printStatusBars()",
+        "name": "printStatusBars",
+        "file": "Main.java",
+        "lines": 14,
+        "cyclomatic": 4,
+        "cognitive": 4,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.bar(int, int)",
+        "name": "bar",
+        "file": "Main.java",
+        "lines": 4,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 2,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.printTopCustomers(int)",
+        "name": "printTopCustomers",
+        "file": "Main.java",
+        "lines": 13,
+        "cyclomatic": 3,
+        "cognitive": 3,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.printCustomers()",
+        "name": "printCustomers",
+        "file": "Main.java",
+        "lines": 16,
+        "cyclomatic": 4,
+        "cognitive": 4,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.printCsvSummary()",
+        "name": "printCsvSummary",
+        "file": "Main.java",
+        "lines": 8,
+        "cyclomatic": 3,
+        "cognitive": 3,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.printHistory()",
+        "name": "printHistory",
+        "file": "Main.java",
+        "lines": 9,
+        "cyclomatic": 3,
+        "cognitive": 3,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.printByCustomer(String)",
+        "name": "printByCustomer",
+        "file": "Main.java",
+        "lines": 13,
+        "cyclomatic": 3,
+        "cognitive": 3,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.printByProduct(String)",
+        "name": "printByProduct",
+        "file": "Main.java",
+        "lines": 13,
+        "cyclomatic": 3,
+        "cognitive": 3,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Main.printReport()",
+        "name": "printReport",
+        "file": "Main.java",
+        "lines": 45,
+        "cyclomatic": 9,
+        "cognitive": 10,
+        "max_nesting": 2,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Describable.describe()",
+        "name": "describe",
+        "file": "Main.java",
+        "lines": 1,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Describable.shortInfo()",
+        "name": "shortInfo",
+        "file": "Main.java",
+        "lines": 3,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#OrderStatus.getLabel()",
+        "name": "getLabel",
+        "file": "Main.java",
+        "lines": 3,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#OrderStatus.canMoveTo(OrderStatus)",
+        "name": "canMoveTo",
+        "file": "Main.java",
+        "lines": 7,
+        "cyclomatic": 6,
+        "cognitive": 6,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Order.getId()",
+        "name": "getId",
+        "file": "Main.java",
+        "lines": 3,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Order.getCustomer()",
+        "name": "getCustomer",
+        "file": "Main.java",
+        "lines": 3,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Order.getProduct()",
+        "name": "getProduct",
+        "file": "Main.java",
+        "lines": 3,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Order.getQuantity()",
+        "name": "getQuantity",
+        "file": "Main.java",
+        "lines": 3,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Order.getUnitPrice()",
+        "name": "getUnitPrice",
+        "file": "Main.java",
+        "lines": 3,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Order.getBasePrice()",
+        "name": "getBasePrice",
+        "file": "Main.java",
+        "lines": 3,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Order.getStatus()",
+        "name": "getStatus",
+        "file": "Main.java",
+        "lines": 3,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Order.setStatus(OrderStatus)",
+        "name": "setStatus",
+        "file": "Main.java",
+        "lines": 3,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Order.setUnitPrice(double)",
+        "name": "setUnitPrice",
+        "file": "Main.java",
+        "lines": 3,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Order.addQuantity(int)",
+        "name": "addQuantity",
+        "file": "Main.java",
+        "lines": 3,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Order.getTotal()",
+        "name": "getTotal",
+        "file": "Main.java",
+        "lines": 3,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Order.copy()",
+        "name": "copy",
+        "file": "Main.java",
+        "lines": 5,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Order.describe()",
+        "name": "describe",
+        "file": "Main.java",
+        "lines": 5,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Order.equals(Object)",
+        "name": "equals",
+        "file": "Main.java",
+        "lines": 10,
+        "cyclomatic": 3,
+        "cognitive": 3,
+        "max_nesting": 1,
+        "params": 1,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Order.hashCode()",
+        "name": "hashCode",
+        "file": "Main.java",
+        "lines": 4,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#Order.toString()",
+        "name": "toString",
+        "file": "Main.java",
+        "lines": 4,
+        "cyclomatic": 1,
+        "cognitive": 1,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      },
+      {
+        "method_id": "Main.java#CustomerTotal.average()",
+        "name": "average",
+        "file": "Main.java",
+        "lines": 3,
+        "cyclomatic": 2,
+        "cognitive": 2,
+        "max_nesting": 1,
+        "params": 0,
+        "complexity": null
+      }
+    ],
+    "types": [
+      {
+        "type_id": "Main.java#Main",
+        "name": "Main",
+        "file": "Main.java",
+        "lines": 728,
+        "methods": 62,
+        "fields": 10,
+        "lcom4": 4.0
+      },
+      {
+        "type_id": "Main.java#Describable",
+        "name": "Describable",
+        "file": "Main.java",
+        "lines": 4,
+        "methods": 2,
+        "fields": 0,
+        "lcom4": 1.0
+      },
+      {
+        "type_id": "Main.java#OrderStatus",
+        "name": "OrderStatus",
+        "file": "Main.java",
+        "lines": 14,
+        "methods": 2,
+        "fields": 1,
+        "lcom4": 1.0
+      },
+      {
+        "type_id": "Main.java#Order",
+        "name": "Order",
+        "file": "Main.java",
+        "lines": 76,
+        "methods": 16,
+        "fields": 7,
+        "lcom4": 1.0
+      },
+      {
+        "type_id": "Main.java#CustomerTotal",
+        "name": "CustomerTotal",
+        "file": "Main.java",
+        "lines": 3,
+        "methods": 1,
+        "fields": 0,
+        "lcom4": 1.0
+      },
+      {
+        "type_id": "Main.java#OrderParseException",
+        "name": "OrderParseException",
+        "file": "Main.java",
+        "lines": 4,
+        "methods": 0,
+        "fields": 1,
+        "lcom4": 1.0
+      },
+      {
+        "type_id": "Main.java#OrderValidationException",
+        "name": "OrderValidationException",
+        "file": "Main.java",
+        "lines": 4,
+        "methods": 0,
+        "fields": 1,
+        "lcom4": 1.0
+      }
+    ]
+  }
+}

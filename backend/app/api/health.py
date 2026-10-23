@@ -5,19 +5,18 @@ from sqlalchemy import text
 from sqlmodel import Session
 
 from app import __version__
+from app.api.common import ERROR_RESPONSES
 from app.config import Settings, get_settings
 from app.db.session import get_session
-from app.errors import ErrorResponse
 from app.schemas.health import HealthResponse
 from engine.runtime.jdk import MIN_JDK_MAJOR, detect_jdk
 
-router = APIRouter(tags=["health"])
+router = APIRouter(tags=["health"], responses=ERROR_RESPONSES)
 
 
 @router.get(
     "/health",
     response_model=HealthResponse,
-    responses={500: {"model": ErrorResponse}},
     summary="Состояние сервиса: версия, JDK, БД",
 )
 def health(

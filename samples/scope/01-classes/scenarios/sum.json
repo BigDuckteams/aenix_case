@@ -1,0 +1,7 @@
+{
+  "name": "sum",
+  "description": "Имя и несколько чисел",
+  "stdin": "итого 5 10 -3 7\n",
+  "args": [],
+  "expected_stdout": "итого: 19"
+}

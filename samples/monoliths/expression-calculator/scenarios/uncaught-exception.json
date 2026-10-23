@@ -1,0 +1,8 @@
+{
+  "name": "uncaught-exception",
+  "description": "Необработанное исключение: команда boom, код выхода 1",
+  "stdin": "let x = 5\neval x * 2\nboom\neval x + 1\n",
+  "args": [],
+  "expected_exit_code": 1,
+  "expected_stdout": "=== Калькулятор выражений ===\nКоманды: let, eval, tokens, rpn, tree, simplify, check, vars, table, batch, report, quit\n----------------------------------------\nx := 5\nx * 2 = 10"
+}

@@ -1,0 +1,11 @@
+{
+  "description": "Наследование: abstract, super, @Override, полиморфизм",
+  "section": "1",
+  "kinds": [
+    "method",
+    "return",
+    "loop_foreach",
+    "var_decl",
+    "operation"
+  ]
+}

@@ -1,0 +1,4671 @@
+{
+  "mode": "methods",
+  "nodes": [
+    {
+      "id": "Main.java#Main",
+      "node_type": "type",
+      "kind": "class",
+      "name": "Main",
+      "signature": null,
+      "modifiers": [
+        "public"
+      ],
+      "type_params": [],
+      "parent_id": null,
+      "range": {
+        "file": "Main.java",
+        "start_line": 21,
+        "start_col": 1,
+        "end_line": 838,
+        "end_col": 2
+      },
+      "lines": 818,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Describable",
+      "node_type": "type",
+      "kind": "interface",
+      "name": "Describable",
+      "signature": null,
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": null,
+      "range": {
+        "file": "Main.java",
+        "start_line": 840,
+        "start_col": 1,
+        "end_line": 846,
+        "end_col": 2
+      },
+      "lines": 7,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#OrderStatus",
+      "node_type": "type",
+      "kind": "enum",
+      "name": "OrderStatus",
+      "signature": null,
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": null,
+      "range": {
+        "file": "Main.java",
+        "start_line": 848,
+        "start_col": 1,
+        "end_line": 871,
+        "end_col": 2
+      },
+      "lines": 24,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order",
+      "node_type": "type",
+      "kind": "class",
+      "name": "Order",
+      "signature": null,
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": null,
+      "range": {
+        "file": "Main.java",
+        "start_line": 873,
+        "start_col": 1,
+        "end_line": 967,
+        "end_col": 2
+      },
+      "lines": 95,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#CustomerTotal",
+      "node_type": "type",
+      "kind": "record",
+      "name": "CustomerTotal",
+      "signature": null,
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": null,
+      "range": {
+        "file": "Main.java",
+        "start_line": 969,
+        "start_col": 1,
+        "end_line": 979,
+        "end_col": 2
+      },
+      "lines": 11,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#OrderParseException",
+      "node_type": "type",
+      "kind": "class",
+      "name": "OrderParseException",
+      "signature": null,
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": null,
+      "range": {
+        "file": "Main.java",
+        "start_line": 981,
+        "start_col": 1,
+        "end_line": 987,
+        "end_col": 2
+      },
+      "lines": 7,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#OrderValidationException",
+      "node_type": "type",
+      "kind": "class",
+      "name": "OrderValidationException",
+      "signature": null,
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": null,
+      "range": {
+        "file": "Main.java",
+        "start_line": 989,
+        "start_col": 1,
+        "end_line": 995,
+        "end_col": 2
+      },
+      "lines": 7,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.MAX_QUANTITY",
+      "node_type": "member",
+      "kind": "field",
+      "name": "MAX_QUANTITY",
+      "signature": "MAX_QUANTITY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 23,
+        "start_col": 5,
+        "end_line": 23,
+        "end_col": 50
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.MAX_PRICE",
+      "node_type": "member",
+      "kind": "field",
+      "name": "MAX_PRICE",
+      "signature": "MAX_PRICE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 24,
+        "start_col": 5,
+        "end_line": 24,
+        "end_col": 54
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.MAX_NAME_LENGTH",
+      "node_type": "member",
+      "kind": "field",
+      "name": "MAX_NAME_LENGTH",
+      "signature": "MAX_NAME_LENGTH",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 25,
+        "start_col": 5,
+        "end_line": 25,
+        "end_col": 51
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.VIP_CUSTOMER",
+      "node_type": "member",
+      "kind": "field",
+      "name": "VIP_CUSTOMER",
+      "signature": "VIP_CUSTOMER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 26,
+        "start_col": 5,
+        "end_line": 26,
+        "end_col": 57
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.CANCELLED_LABEL",
+      "node_type": "member",
+      "kind": "field",
+      "name": "CANCELLED_LABEL",
+      "signature": "CANCELLED_LABEL",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 27,
+        "start_col": 5,
+        "end_line": 27,
+        "end_col": 61
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.orders",
+      "node_type": "member",
+      "kind": "field",
+      "name": "orders",
+      "signature": "orders",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 29,
+        "start_col": 5,
+        "end_line": 29,
+        "end_col": 58
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.history",
+      "node_type": "member",
+      "kind": "field",
+      "name": "history",
+      "signature": "history",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 30,
+        "start_col": 5,
+        "end_line": 30,
+        "end_col": 60
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.commandCount",
+      "node_type": "member",
+      "kind": "field",
+      "name": "commandCount",
+      "signature": "commandCount",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 31,
+        "start_col": 5,
+        "end_line": 31,
+        "end_col": 30
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.errorCount",
+      "node_type": "member",
+      "kind": "field",
+      "name": "errorCount",
+      "signature": "errorCount",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 32,
+        "start_col": 5,
+        "end_line": 32,
+        "end_col": 28
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.discountPercent",
+      "node_type": "member",
+      "kind": "field",
+      "name": "discountPercent",
+      "signature": "discountPercent",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 33,
+        "start_col": 5,
+        "end_line": 33,
+        "end_col": 36
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.main(String[])",
+      "node_type": "member",
+      "kind": "method",
+      "name": "main",
+      "signature": "main(String[])",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 35,
+        "start_col": 5,
+        "end_line": 41,
+        "end_col": 6
+      },
+      "lines": 7,
+      "method_id": "Main.java#Main.main(String[])",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.run(Scanner)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "run",
+      "signature": "run(Scanner)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 47,
+        "start_col": 5,
+        "end_line": 69,
+        "end_col": 6
+      },
+      "lines": 23,
+      "method_id": "Main.java#Main.run(Scanner)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.processCommand(String, Scanner)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "processCommand",
+      "signature": "processCommand(String, Scanner)",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 71,
+        "start_col": 5,
+        "end_line": 146,
+        "end_col": 6
+      },
+      "lines": 76,
+      "method_id": "Main.java#Main.processCommand(String, Scanner)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.tokenize(String)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "tokenize",
+      "signature": "tokenize(String)",
+      "modifiers": [
+        "static"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 148,
+        "start_col": 5,
+        "end_line": 151,
+        "end_col": 6
+      },
+      "lines": 4,
+      "method_id": "Main.java#Main.tokenize(String)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.requireArg(String[], int, String)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "requireArg",
+      "signature": "requireArg(String[], int, String)",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 153,
+        "start_col": 5,
+        "end_line": 158,
+        "end_col": 6
+      },
+      "lines": 6,
+      "method_id": "Main.java#Main.requireArg(String[], int, String)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.parseInt(String, String)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "parseInt",
+      "signature": "parseInt(String, String)",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 160,
+        "start_col": 5,
+        "end_line": 166,
+        "end_col": 6
+      },
+      "lines": 7,
+      "method_id": "Main.java#Main.parseInt(String, String)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.parseMoney(String, String)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "parseMoney",
+      "signature": "parseMoney(String, String)",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 168,
+        "start_col": 5,
+        "end_line": 174,
+        "end_col": 6
+      },
+      "lines": 7,
+      "method_id": "Main.java#Main.parseMoney(String, String)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.parseOrder(String[], int)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "parseOrder",
+      "signature": "parseOrder(String[], int)",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 176,
+        "start_col": 5,
+        "end_line": 183,
+        "end_col": 6
+      },
+      "lines": 8,
+      "method_id": "Main.java#Main.parseOrder(String[], int)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.normalizeName(String)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "normalizeName",
+      "signature": "normalizeName(String)",
+      "modifiers": [
+        "static"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 185,
+        "start_col": 5,
+        "end_line": 191,
+        "end_col": 6
+      },
+      "lines": 7,
+      "method_id": "Main.java#Main.normalizeName(String)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.readBatch(Scanner, int)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "readBatch",
+      "signature": "readBatch(Scanner, int)",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 193,
+        "start_col": 5,
+        "end_line": 203,
+        "end_col": 6
+      },
+      "lines": 11,
+      "method_id": "Main.java#Main.readBatch(Scanner, int)",
+      "complexity": null,
+      "findings_count": 1,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.validate(Order)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "validate",
+      "signature": "validate(Order)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 209,
+        "start_col": 5,
+        "end_line": 215,
+        "end_col": 6
+      },
+      "lines": 7,
+      "method_id": "Main.java#Main.validate(Order)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.checkId(Order)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "checkId",
+      "signature": "checkId(Order)",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 217,
+        "start_col": 5,
+        "end_line": 221,
+        "end_col": 6
+      },
+      "lines": 5,
+      "method_id": "Main.java#Main.checkId(Order)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.checkCustomer(Order)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "checkCustomer",
+      "signature": "checkCustomer(Order)",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 223,
+        "start_col": 5,
+        "end_line": 234,
+        "end_col": 6
+      },
+      "lines": 12,
+      "method_id": "Main.java#Main.checkCustomer(Order)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.checkProduct(Order)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "checkProduct",
+      "signature": "checkProduct(Order)",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 236,
+        "start_col": 5,
+        "end_line": 247,
+        "end_col": 6
+      },
+      "lines": 12,
+      "method_id": "Main.java#Main.checkProduct(Order)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.checkQuantity(Order)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "checkQuantity",
+      "signature": "checkQuantity(Order)",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 249,
+        "start_col": 5,
+        "end_line": 256,
+        "end_col": 6
+      },
+      "lines": 8,
+      "method_id": "Main.java#Main.checkQuantity(Order)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.checkPrice(Order)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "checkPrice",
+      "signature": "checkPrice(Order)",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 258,
+        "start_col": 5,
+        "end_line": 265,
+        "end_col": 6
+      },
+      "lines": 8,
+      "method_id": "Main.java#Main.checkPrice(Order)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.findOrderById(int)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "findOrderById",
+      "signature": "findOrderById(int)",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 271,
+        "start_col": 5,
+        "end_line": 278,
+        "end_col": 6
+      },
+      "lines": 8,
+      "method_id": "Main.java#Main.findOrderById(int)",
+      "complexity": "O(n)",
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.addOrder(Order)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "addOrder",
+      "signature": "addOrder(Order)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 280,
+        "start_col": 5,
+        "end_line": 288,
+        "end_col": 6
+      },
+      "lines": 9,
+      "method_id": "Main.java#Main.addOrder(Order)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.processOrders(List<Order>)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "processOrders",
+      "signature": "processOrders(List<Order>)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 290,
+        "start_col": 5,
+        "end_line": 307,
+        "end_col": 6
+      },
+      "lines": 18,
+      "method_id": "Main.java#Main.processOrders(List<Order>)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.changeStatus(int, OrderStatus)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "changeStatus",
+      "signature": "changeStatus(int, OrderStatus)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 309,
+        "start_col": 5,
+        "end_line": 321,
+        "end_col": 6
+      },
+      "lines": 13,
+      "method_id": "Main.java#Main.changeStatus(int, OrderStatus)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.removeOrder(int)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "removeOrder",
+      "signature": "removeOrder(int)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 323,
+        "start_col": 5,
+        "end_line": 332,
+        "end_col": 6
+      },
+      "lines": 10,
+      "method_id": "Main.java#Main.removeOrder(int)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.purgeCancelled()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "purgeCancelled",
+      "signature": "purgeCancelled()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 334,
+        "start_col": 5,
+        "end_line": 338,
+        "end_col": 6
+      },
+      "lines": 5,
+      "method_id": "Main.java#Main.purgeCancelled()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.findByCustomer(String)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "findByCustomer",
+      "signature": "findByCustomer(String)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 340,
+        "start_col": 5,
+        "end_line": 349,
+        "end_col": 6
+      },
+      "lines": 10,
+      "method_id": "Main.java#Main.findByCustomer(String)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.showOrder(int)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "showOrder",
+      "signature": "showOrder(int)",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 351,
+        "start_col": 5,
+        "end_line": 358,
+        "end_col": 6
+      },
+      "lines": 8,
+      "method_id": "Main.java#Main.showOrder(int)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.totalAmount()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "totalAmount",
+      "signature": "totalAmount()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 364,
+        "start_col": 5,
+        "end_line": 372,
+        "end_col": 6
+      },
+      "lines": 9,
+      "method_id": "Main.java#Main.totalAmount()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.averageAmount()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "averageAmount",
+      "signature": "averageAmount()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 374,
+        "start_col": 5,
+        "end_line": 387,
+        "end_col": 6
+      },
+      "lines": 14,
+      "method_id": "Main.java#Main.averageAmount()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.medianAmount()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "medianAmount",
+      "signature": "medianAmount()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 389,
+        "start_col": 5,
+        "end_line": 405,
+        "end_col": 6
+      },
+      "lines": 17,
+      "method_id": "Main.java#Main.medianAmount()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.percentile(double)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "percentile",
+      "signature": "percentile(double)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 407,
+        "start_col": 5,
+        "end_line": 421,
+        "end_col": 6
+      },
+      "lines": 15,
+      "method_id": "Main.java#Main.percentile(double)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.maxOrder()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "maxOrder",
+      "signature": "maxOrder()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 423,
+        "start_col": 5,
+        "end_line": 431,
+        "end_col": 6
+      },
+      "lines": 9,
+      "method_id": "Main.java#Main.maxOrder()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.minOrder()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "minOrder",
+      "signature": "minOrder()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 433,
+        "start_col": 5,
+        "end_line": 441,
+        "end_col": 6
+      },
+      "lines": 9,
+      "method_id": "Main.java#Main.minOrder()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.statusHistogram()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "statusHistogram",
+      "signature": "statusHistogram()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 443,
+        "start_col": 5,
+        "end_line": 452,
+        "end_col": 6
+      },
+      "lines": 10,
+      "method_id": "Main.java#Main.statusHistogram()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.totalForCustomer(String)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "totalForCustomer",
+      "signature": "totalForCustomer(String)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 454,
+        "start_col": 5,
+        "end_line": 462,
+        "end_col": 6
+      },
+      "lines": 9,
+      "method_id": "Main.java#Main.totalForCustomer(String)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.totalForProduct(String)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "totalForProduct",
+      "signature": "totalForProduct(String)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 464,
+        "start_col": 5,
+        "end_line": 472,
+        "end_col": 6
+      },
+      "lines": 9,
+      "method_id": "Main.java#Main.totalForProduct(String)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.topCustomers(int)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "topCustomers",
+      "signature": "topCustomers(int)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 474,
+        "start_col": 5,
+        "end_line": 491,
+        "end_col": 6
+      },
+      "lines": 18,
+      "method_id": "Main.java#Main.topCustomers(int)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.topN(List<T>, Comparator<? super T>, int)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "topN",
+      "signature": "topN(List<T>, Comparator<? super T>, int)",
+      "modifiers": [
+        "static"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 493,
+        "start_col": 5,
+        "end_line": 497,
+        "end_col": 6
+      },
+      "lines": 5,
+      "method_id": "Main.java#Main.topN(List<T>, Comparator<? super T>, int)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.distinctCustomers()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "distinctCustomers",
+      "signature": "distinctCustomers()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 499,
+        "start_col": 5,
+        "end_line": 507,
+        "end_col": 6
+      },
+      "lines": 9,
+      "method_id": "Main.java#Main.distinctCustomers()",
+      "complexity": "O(n·m)",
+      "findings_count": 1,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.findAnomalies()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "findAnomalies",
+      "signature": "findAnomalies()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 509,
+        "start_col": 5,
+        "end_line": 518,
+        "end_col": 6
+      },
+      "lines": 10,
+      "method_id": "Main.java#Main.findAnomalies()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.countByStatusLabel()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "countByStatusLabel",
+      "signature": "countByStatusLabel()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 520,
+        "start_col": 5,
+        "end_line": 524,
+        "end_col": 6
+      },
+      "lines": 5,
+      "method_id": "Main.java#Main.countByStatusLabel()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.streamTotalForCustomer(String)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "streamTotalForCustomer",
+      "signature": "streamTotalForCustomer(String)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 526,
+        "start_col": 5,
+        "end_line": 532,
+        "end_col": 6
+      },
+      "lines": 7,
+      "method_id": "Main.java#Main.streamTotalForCustomer(String)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.expensiveProducts(double)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "expensiveProducts",
+      "signature": "expensiveProducts(double)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 534,
+        "start_col": 5,
+        "end_line": 541,
+        "end_col": 6
+      },
+      "lines": 8,
+      "method_id": "Main.java#Main.expensiveProducts(double)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.countLargeOrders(int)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "countLargeOrders",
+      "signature": "countLargeOrders(int)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 543,
+        "start_col": 5,
+        "end_line": 551,
+        "end_col": 6
+      },
+      "lines": 9,
+      "method_id": "Main.java#Main.countLargeOrders(int)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.mergeDuplicates()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "mergeDuplicates",
+      "signature": "mergeDuplicates()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 557,
+        "start_col": 5,
+        "end_line": 578,
+        "end_col": 6
+      },
+      "lines": 22,
+      "method_id": "Main.java#Main.mergeDuplicates()",
+      "complexity": "O(n·m)",
+      "findings_count": 1,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.buildCsv()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "buildCsv",
+      "signature": "buildCsv()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 580,
+        "start_col": 5,
+        "end_line": 588,
+        "end_col": 6
+      },
+      "lines": 9,
+      "method_id": "Main.java#Main.buildCsv()",
+      "complexity": "O(n²)",
+      "findings_count": 1,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.applyDiscount(double)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "applyDiscount",
+      "signature": "applyDiscount(double)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 590,
+        "start_col": 5,
+        "end_line": 604,
+        "end_col": 6
+      },
+      "lines": 15,
+      "method_id": "Main.java#Main.applyDiscount(double)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.discountFor(Order)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "discountFor",
+      "signature": "discountFor(Order)",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 606,
+        "start_col": 5,
+        "end_line": 619,
+        "end_col": 6
+      },
+      "lines": 14,
+      "method_id": "Main.java#Main.discountFor(Order)",
+      "complexity": null,
+      "findings_count": 1,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.roundMoney(double)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "roundMoney",
+      "signature": "roundMoney(double)",
+      "modifiers": [
+        "static"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 621,
+        "start_col": 5,
+        "end_line": 623,
+        "end_col": 6
+      },
+      "lines": 3,
+      "method_id": "Main.java#Main.roundMoney(double)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.printHeader()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "printHeader",
+      "signature": "printHeader()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 629,
+        "start_col": 5,
+        "end_line": 633,
+        "end_col": 6
+      },
+      "lines": 5,
+      "method_id": "Main.java#Main.printHeader()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.printFooter()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "printFooter",
+      "signature": "printFooter()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 635,
+        "start_col": 5,
+        "end_line": 638,
+        "end_col": 6
+      },
+      "lines": 4,
+      "method_id": "Main.java#Main.printFooter()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.repeat(char, int)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "repeat",
+      "signature": "repeat(char, int)",
+      "modifiers": [
+        "static"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 640,
+        "start_col": 5,
+        "end_line": 646,
+        "end_col": 6
+      },
+      "lines": 7,
+      "method_id": "Main.java#Main.repeat(char, int)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.formatAmount(double)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "formatAmount",
+      "signature": "formatAmount(double)",
+      "modifiers": [
+        "static"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 648,
+        "start_col": 5,
+        "end_line": 650,
+        "end_col": 6
+      },
+      "lines": 3,
+      "method_id": "Main.java#Main.formatAmount(double)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.padRight(String, int)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "padRight",
+      "signature": "padRight(String, int)",
+      "modifiers": [
+        "static"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 652,
+        "start_col": 5,
+        "end_line": 657,
+        "end_col": 6
+      },
+      "lines": 6,
+      "method_id": "Main.java#Main.padRight(String, int)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.printOrders(List<Order>)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "printOrders",
+      "signature": "printOrders(List<Order>)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 659,
+        "start_col": 5,
+        "end_line": 676,
+        "end_col": 6
+      },
+      "lines": 18,
+      "method_id": "Main.java#Main.printOrders(List<Order>)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.printStats()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "printStats",
+      "signature": "printStats()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 678,
+        "start_col": 5,
+        "end_line": 693,
+        "end_col": 6
+      },
+      "lines": 16,
+      "method_id": "Main.java#Main.printStats()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.printStatusBars()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "printStatusBars",
+      "signature": "printStatusBars()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 695,
+        "start_col": 5,
+        "end_line": 708,
+        "end_col": 6
+      },
+      "lines": 14,
+      "method_id": "Main.java#Main.printStatusBars()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.bar(int, int)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "bar",
+      "signature": "bar(int, int)",
+      "modifiers": [
+        "static"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 710,
+        "start_col": 5,
+        "end_line": 713,
+        "end_col": 6
+      },
+      "lines": 4,
+      "method_id": "Main.java#Main.bar(int, int)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.printTopCustomers(int)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "printTopCustomers",
+      "signature": "printTopCustomers(int)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 715,
+        "start_col": 5,
+        "end_line": 727,
+        "end_col": 6
+      },
+      "lines": 13,
+      "method_id": "Main.java#Main.printTopCustomers(int)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.printCustomers()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "printCustomers",
+      "signature": "printCustomers()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 729,
+        "start_col": 5,
+        "end_line": 744,
+        "end_col": 6
+      },
+      "lines": 16,
+      "method_id": "Main.java#Main.printCustomers()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.printCsvSummary()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "printCsvSummary",
+      "signature": "printCsvSummary()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 746,
+        "start_col": 5,
+        "end_line": 753,
+        "end_col": 6
+      },
+      "lines": 8,
+      "method_id": "Main.java#Main.printCsvSummary()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.printHistory()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "printHistory",
+      "signature": "printHistory()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 755,
+        "start_col": 5,
+        "end_line": 763,
+        "end_col": 6
+      },
+      "lines": 9,
+      "method_id": "Main.java#Main.printHistory()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.printByCustomer(String)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "printByCustomer",
+      "signature": "printByCustomer(String)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 765,
+        "start_col": 5,
+        "end_line": 777,
+        "end_col": 6
+      },
+      "lines": 13,
+      "method_id": "Main.java#Main.printByCustomer(String)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.printByProduct(String)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "printByProduct",
+      "signature": "printByProduct(String)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 779,
+        "start_col": 5,
+        "end_line": 791,
+        "end_col": 6
+      },
+      "lines": 13,
+      "method_id": "Main.java#Main.printByProduct(String)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Main.printReport()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "printReport",
+      "signature": "printReport()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Main",
+      "range": {
+        "file": "Main.java",
+        "start_line": 793,
+        "start_col": 5,
+        "end_line": 837,
+        "end_col": 6
+      },
+      "lines": 45,
+      "method_id": "Main.java#Main.printReport()",
+      "complexity": null,
+      "findings_count": 1,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Describable.describe()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "describe",
+      "signature": "describe()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Describable",
+      "range": {
+        "file": "Main.java",
+        "start_line": 841,
+        "start_col": 5,
+        "end_line": 841,
+        "end_col": 23
+      },
+      "lines": 1,
+      "method_id": "Main.java#Describable.describe()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Describable.shortInfo()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "shortInfo",
+      "signature": "shortInfo()",
+      "modifiers": [
+        "default"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Describable",
+      "range": {
+        "file": "Main.java",
+        "start_line": 843,
+        "start_col": 5,
+        "end_line": 845,
+        "end_col": 6
+      },
+      "lines": 3,
+      "method_id": "Main.java#Describable.shortInfo()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#OrderStatus.label",
+      "node_type": "member",
+      "kind": "field",
+      "name": "label",
+      "signature": "label",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#OrderStatus",
+      "range": {
+        "file": "Main.java",
+        "start_line": 854,
+        "start_col": 5,
+        "end_line": 854,
+        "end_col": 32
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#OrderStatus.OrderStatus(String)",
+      "node_type": "member",
+      "kind": "constructor",
+      "name": "OrderStatus",
+      "signature": "OrderStatus(String)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#OrderStatus",
+      "range": {
+        "file": "Main.java",
+        "start_line": 856,
+        "start_col": 5,
+        "end_line": 858,
+        "end_col": 6
+      },
+      "lines": 3,
+      "method_id": "Main.java#OrderStatus.OrderStatus(String)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#OrderStatus.getLabel()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "getLabel",
+      "signature": "getLabel()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#OrderStatus",
+      "range": {
+        "file": "Main.java",
+        "start_line": 860,
+        "start_col": 5,
+        "end_line": 862,
+        "end_col": 6
+      },
+      "lines": 3,
+      "method_id": "Main.java#OrderStatus.getLabel()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#OrderStatus.canMoveTo(OrderStatus)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "canMoveTo",
+      "signature": "canMoveTo(OrderStatus)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#OrderStatus",
+      "range": {
+        "file": "Main.java",
+        "start_line": 864,
+        "start_col": 5,
+        "end_line": 870,
+        "end_col": 6
+      },
+      "lines": 7,
+      "method_id": "Main.java#OrderStatus.canMoveTo(OrderStatus)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.id",
+      "node_type": "member",
+      "kind": "field",
+      "name": "id",
+      "signature": "id",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 874,
+        "start_col": 5,
+        "end_line": 874,
+        "end_col": 26
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.customer",
+      "node_type": "member",
+      "kind": "field",
+      "name": "customer",
+      "signature": "customer",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 875,
+        "start_col": 5,
+        "end_line": 875,
+        "end_col": 35
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.product",
+      "node_type": "member",
+      "kind": "field",
+      "name": "product",
+      "signature": "product",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 876,
+        "start_col": 5,
+        "end_line": 876,
+        "end_col": 34
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.quantity",
+      "node_type": "member",
+      "kind": "field",
+      "name": "quantity",
+      "signature": "quantity",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 877,
+        "start_col": 5,
+        "end_line": 877,
+        "end_col": 26
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.unitPrice",
+      "node_type": "member",
+      "kind": "field",
+      "name": "unitPrice",
+      "signature": "unitPrice",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 878,
+        "start_col": 5,
+        "end_line": 878,
+        "end_col": 30
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.basePrice",
+      "node_type": "member",
+      "kind": "field",
+      "name": "basePrice",
+      "signature": "basePrice",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 879,
+        "start_col": 5,
+        "end_line": 879,
+        "end_col": 36
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.status",
+      "node_type": "member",
+      "kind": "field",
+      "name": "status",
+      "signature": "status",
+      "modifiers": [
+        "private"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 880,
+        "start_col": 5,
+        "end_line": 880,
+        "end_col": 50
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.Order(int, String, String, int, double)",
+      "node_type": "member",
+      "kind": "constructor",
+      "name": "Order",
+      "signature": "Order(int, String, String, int, double)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 882,
+        "start_col": 5,
+        "end_line": 889,
+        "end_col": 6
+      },
+      "lines": 8,
+      "method_id": "Main.java#Order.Order(int, String, String, int, double)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.getId()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "getId",
+      "signature": "getId()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 891,
+        "start_col": 5,
+        "end_line": 893,
+        "end_col": 6
+      },
+      "lines": 3,
+      "method_id": "Main.java#Order.getId()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.getCustomer()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "getCustomer",
+      "signature": "getCustomer()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 895,
+        "start_col": 5,
+        "end_line": 897,
+        "end_col": 6
+      },
+      "lines": 3,
+      "method_id": "Main.java#Order.getCustomer()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.getProduct()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "getProduct",
+      "signature": "getProduct()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 899,
+        "start_col": 5,
+        "end_line": 901,
+        "end_col": 6
+      },
+      "lines": 3,
+      "method_id": "Main.java#Order.getProduct()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.getQuantity()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "getQuantity",
+      "signature": "getQuantity()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 903,
+        "start_col": 5,
+        "end_line": 905,
+        "end_col": 6
+      },
+      "lines": 3,
+      "method_id": "Main.java#Order.getQuantity()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.getUnitPrice()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "getUnitPrice",
+      "signature": "getUnitPrice()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 907,
+        "start_col": 5,
+        "end_line": 909,
+        "end_col": 6
+      },
+      "lines": 3,
+      "method_id": "Main.java#Order.getUnitPrice()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.getBasePrice()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "getBasePrice",
+      "signature": "getBasePrice()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 911,
+        "start_col": 5,
+        "end_line": 913,
+        "end_col": 6
+      },
+      "lines": 3,
+      "method_id": "Main.java#Order.getBasePrice()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.getStatus()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "getStatus",
+      "signature": "getStatus()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 915,
+        "start_col": 5,
+        "end_line": 917,
+        "end_col": 6
+      },
+      "lines": 3,
+      "method_id": "Main.java#Order.getStatus()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.setStatus(OrderStatus)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "setStatus",
+      "signature": "setStatus(OrderStatus)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 919,
+        "start_col": 5,
+        "end_line": 921,
+        "end_col": 6
+      },
+      "lines": 3,
+      "method_id": "Main.java#Order.setStatus(OrderStatus)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.setUnitPrice(double)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "setUnitPrice",
+      "signature": "setUnitPrice(double)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 923,
+        "start_col": 5,
+        "end_line": 925,
+        "end_col": 6
+      },
+      "lines": 3,
+      "method_id": "Main.java#Order.setUnitPrice(double)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.addQuantity(int)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "addQuantity",
+      "signature": "addQuantity(int)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 927,
+        "start_col": 5,
+        "end_line": 929,
+        "end_col": 6
+      },
+      "lines": 3,
+      "method_id": "Main.java#Order.addQuantity(int)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.getTotal()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "getTotal",
+      "signature": "getTotal()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 931,
+        "start_col": 5,
+        "end_line": 933,
+        "end_col": 6
+      },
+      "lines": 3,
+      "method_id": "Main.java#Order.getTotal()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.copy()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "copy",
+      "signature": "copy()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 935,
+        "start_col": 5,
+        "end_line": 939,
+        "end_col": 6
+      },
+      "lines": 5,
+      "method_id": "Main.java#Order.copy()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.describe()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "describe",
+      "signature": "describe()",
+      "modifiers": [
+        "@Override",
+        "public"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 941,
+        "start_col": 5,
+        "end_line": 945,
+        "end_col": 6
+      },
+      "lines": 5,
+      "method_id": "Main.java#Order.describe()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.equals(Object)",
+      "node_type": "member",
+      "kind": "method",
+      "name": "equals",
+      "signature": "equals(Object)",
+      "modifiers": [
+        "@Override",
+        "public"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 947,
+        "start_col": 5,
+        "end_line": 956,
+        "end_col": 6
+      },
+      "lines": 10,
+      "method_id": "Main.java#Order.equals(Object)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.hashCode()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "hashCode",
+      "signature": "hashCode()",
+      "modifiers": [
+        "@Override",
+        "public"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 958,
+        "start_col": 5,
+        "end_line": 961,
+        "end_col": 6
+      },
+      "lines": 4,
+      "method_id": "Main.java#Order.hashCode()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#Order.toString()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "toString",
+      "signature": "toString()",
+      "modifiers": [
+        "@Override",
+        "public"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#Order",
+      "range": {
+        "file": "Main.java",
+        "start_line": 963,
+        "start_col": 5,
+        "end_line": 966,
+        "end_col": 6
+      },
+      "lines": 4,
+      "method_id": "Main.java#Order.toString()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#CustomerTotal.average()",
+      "node_type": "member",
+      "kind": "method",
+      "name": "average",
+      "signature": "average()",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#CustomerTotal",
+      "range": {
+        "file": "Main.java",
+        "start_line": 976,
+        "start_col": 5,
+        "end_line": 978,
+        "end_col": 6
+      },
+      "lines": 3,
+      "method_id": "Main.java#CustomerTotal.average()",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#OrderParseException.serialVersionUID",
+      "node_type": "member",
+      "kind": "field",
+      "name": "serialVersionUID",
+      "signature": "serialVersionUID",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#OrderParseException",
+      "range": {
+        "file": "Main.java",
+        "start_line": 982,
+        "start_col": 5,
+        "end_line": 982,
+        "end_col": 53
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#OrderParseException.OrderParseException(String)",
+      "node_type": "member",
+      "kind": "constructor",
+      "name": "OrderParseException",
+      "signature": "OrderParseException(String)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#OrderParseException",
+      "range": {
+        "file": "Main.java",
+        "start_line": 984,
+        "start_col": 5,
+        "end_line": 986,
+        "end_col": 6
+      },
+      "lines": 3,
+      "method_id": "Main.java#OrderParseException.OrderParseException(String)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#OrderValidationException.serialVersionUID",
+      "node_type": "member",
+      "kind": "field",
+      "name": "serialVersionUID",
+      "signature": "serialVersionUID",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type_params": [],
+      "parent_id": "Main.java#OrderValidationException",
+      "range": {
+        "file": "Main.java",
+        "start_line": 990,
+        "start_col": 5,
+        "end_line": 990,
+        "end_col": 53
+      },
+      "lines": 1,
+      "method_id": null,
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    },
+    {
+      "id": "Main.java#OrderValidationException.OrderValidationException(String)",
+      "node_type": "member",
+      "kind": "constructor",
+      "name": "OrderValidationException",
+      "signature": "OrderValidationException(String)",
+      "modifiers": [],
+      "type_params": [],
+      "parent_id": "Main.java#OrderValidationException",
+      "range": {
+        "file": "Main.java",
+        "start_line": 992,
+        "start_col": 5,
+        "end_line": 994,
+        "end_col": 6
+      },
+      "lines": 3,
+      "method_id": "Main.java#OrderValidationException.OrderValidationException(String)",
+      "complexity": null,
+      "findings_count": 0,
+      "cluster": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "implements:Main.java#Order->Main.java#Describable",
+      "source": "Main.java#Order",
+      "target": "Main.java#Describable",
+      "kind": "implements",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.MAX_QUANTITY",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.MAX_QUANTITY",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.MAX_PRICE",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.MAX_PRICE",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.MAX_NAME_LENGTH",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.MAX_NAME_LENGTH",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.VIP_CUSTOMER",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.VIP_CUSTOMER",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.CANCELLED_LABEL",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.CANCELLED_LABEL",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.orders",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.orders",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.history",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.history",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.commandCount",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.commandCount",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.errorCount",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.errorCount",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.discountPercent",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.discountPercent",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.main(String[])",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.main(String[])",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.main(String[])->Main.java#Main.run(Scanner)",
+      "source": "Main.java#Main.main(String[])",
+      "target": "Main.java#Main.run(Scanner)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.main(String[])->Main.java#Main.printFooter()",
+      "source": "Main.java#Main.main(String[])",
+      "target": "Main.java#Main.printFooter()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.run(Scanner)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.run(Scanner)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.run(Scanner)->Main.java#Main.printHeader()",
+      "source": "Main.java#Main.run(Scanner)",
+      "target": "Main.java#Main.printHeader()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.run(Scanner)->Main.java#Main.processCommand(String, Scanner)",
+      "source": "Main.java#Main.run(Scanner)",
+      "target": "Main.java#Main.processCommand(String, Scanner)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.processCommand(String, Scanner)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.processCommand(String, Scanner)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.tokenize(String)",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.tokenize(String)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.addOrder(Order)",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.addOrder(Order)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.parseOrder(String[], int)",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.parseOrder(String[], int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.parseInt(String, String)",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.parseInt(String, String)",
+      "kind": "calls",
+      "weight": 7
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.requireArg(String[], int, String)",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.requireArg(String[], int, String)",
+      "kind": "calls",
+      "weight": 9
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.readBatch(Scanner, int)",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.readBatch(Scanner, int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.processOrders(List<Order>)",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.processOrders(List<Order>)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.changeStatus(int, OrderStatus)",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.changeStatus(int, OrderStatus)",
+      "kind": "calls",
+      "weight": 3
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.removeOrder(int)",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.removeOrder(int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.purgeCancelled()",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.purgeCancelled()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.printOrders(List<Order>)",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.printOrders(List<Order>)",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.showOrder(int)",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.showOrder(int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.findByCustomer(String)",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.findByCustomer(String)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.printStats()",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.printStats()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.printTopCustomers(int)",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.printTopCustomers(int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.printCustomers()",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.printCustomers()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.mergeDuplicates()",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.mergeDuplicates()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.printCsvSummary()",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.printCsvSummary()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.applyDiscount(double)",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.applyDiscount(double)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.parseMoney(String, String)",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.parseMoney(String, String)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.printReport()",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.printReport()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processCommand(String, Scanner)->Main.java#Main.printHistory()",
+      "source": "Main.java#Main.processCommand(String, Scanner)",
+      "target": "Main.java#Main.printHistory()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.tokenize(String)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.tokenize(String)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.requireArg(String[], int, String)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.requireArg(String[], int, String)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.parseInt(String, String)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.parseInt(String, String)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.parseMoney(String, String)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.parseMoney(String, String)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.parseOrder(String[], int)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.parseOrder(String[], int)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.parseOrder(String[], int)->Main.java#Main.parseInt(String, String)",
+      "source": "Main.java#Main.parseOrder(String[], int)",
+      "target": "Main.java#Main.parseInt(String, String)",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "calls:Main.java#Main.parseOrder(String[], int)->Main.java#Main.requireArg(String[], int, String)",
+      "source": "Main.java#Main.parseOrder(String[], int)",
+      "target": "Main.java#Main.requireArg(String[], int, String)",
+      "kind": "calls",
+      "weight": 5
+    },
+    {
+      "id": "calls:Main.java#Main.parseOrder(String[], int)->Main.java#Main.parseMoney(String, String)",
+      "source": "Main.java#Main.parseOrder(String[], int)",
+      "target": "Main.java#Main.parseMoney(String, String)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.parseOrder(String[], int)->Main.java#Main.normalizeName(String)",
+      "source": "Main.java#Main.parseOrder(String[], int)",
+      "target": "Main.java#Main.normalizeName(String)",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.normalizeName(String)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.normalizeName(String)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.readBatch(Scanner, int)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.readBatch(Scanner, int)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.readBatch(Scanner, int)->Main.java#Main.parseOrder(String[], int)",
+      "source": "Main.java#Main.readBatch(Scanner, int)",
+      "target": "Main.java#Main.parseOrder(String[], int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.readBatch(Scanner, int)->Main.java#Main.tokenize(String)",
+      "source": "Main.java#Main.readBatch(Scanner, int)",
+      "target": "Main.java#Main.tokenize(String)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.validate(Order)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.validate(Order)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.validate(Order)->Main.java#Main.checkId(Order)",
+      "source": "Main.java#Main.validate(Order)",
+      "target": "Main.java#Main.checkId(Order)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.validate(Order)->Main.java#Main.checkCustomer(Order)",
+      "source": "Main.java#Main.validate(Order)",
+      "target": "Main.java#Main.checkCustomer(Order)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.validate(Order)->Main.java#Main.checkProduct(Order)",
+      "source": "Main.java#Main.validate(Order)",
+      "target": "Main.java#Main.checkProduct(Order)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.validate(Order)->Main.java#Main.checkQuantity(Order)",
+      "source": "Main.java#Main.validate(Order)",
+      "target": "Main.java#Main.checkQuantity(Order)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.validate(Order)->Main.java#Main.checkPrice(Order)",
+      "source": "Main.java#Main.validate(Order)",
+      "target": "Main.java#Main.checkPrice(Order)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.checkId(Order)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.checkId(Order)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.checkId(Order)->Main.java#Order.getId()",
+      "source": "Main.java#Main.checkId(Order)",
+      "target": "Main.java#Order.getId()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.checkCustomer(Order)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.checkCustomer(Order)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.checkCustomer(Order)->Main.java#Order.getCustomer()",
+      "source": "Main.java#Main.checkCustomer(Order)",
+      "target": "Main.java#Order.getCustomer()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.checkCustomer(Order)->Main.java#Order.getId()",
+      "source": "Main.java#Main.checkCustomer(Order)",
+      "target": "Main.java#Order.getId()",
+      "kind": "calls",
+      "weight": 3
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.checkProduct(Order)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.checkProduct(Order)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.checkProduct(Order)->Main.java#Order.getProduct()",
+      "source": "Main.java#Main.checkProduct(Order)",
+      "target": "Main.java#Order.getProduct()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.checkProduct(Order)->Main.java#Order.getId()",
+      "source": "Main.java#Main.checkProduct(Order)",
+      "target": "Main.java#Order.getId()",
+      "kind": "calls",
+      "weight": 3
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.checkQuantity(Order)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.checkQuantity(Order)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.checkQuantity(Order)->Main.java#Order.getQuantity()",
+      "source": "Main.java#Main.checkQuantity(Order)",
+      "target": "Main.java#Order.getQuantity()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "calls:Main.java#Main.checkQuantity(Order)->Main.java#Order.getId()",
+      "source": "Main.java#Main.checkQuantity(Order)",
+      "target": "Main.java#Order.getId()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.checkPrice(Order)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.checkPrice(Order)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.checkPrice(Order)->Main.java#Order.getUnitPrice()",
+      "source": "Main.java#Main.checkPrice(Order)",
+      "target": "Main.java#Order.getUnitPrice()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "calls:Main.java#Main.checkPrice(Order)->Main.java#Order.getId()",
+      "source": "Main.java#Main.checkPrice(Order)",
+      "target": "Main.java#Order.getId()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.findOrderById(int)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.findOrderById(int)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.findOrderById(int)->Main.java#Order.getId()",
+      "source": "Main.java#Main.findOrderById(int)",
+      "target": "Main.java#Order.getId()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.addOrder(Order)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.addOrder(Order)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.addOrder(Order)->Main.java#Main.validate(Order)",
+      "source": "Main.java#Main.addOrder(Order)",
+      "target": "Main.java#Main.validate(Order)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.addOrder(Order)->Main.java#Main.findOrderById(int)",
+      "source": "Main.java#Main.addOrder(Order)",
+      "target": "Main.java#Main.findOrderById(int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.addOrder(Order)->Main.java#Order.getId()",
+      "source": "Main.java#Main.addOrder(Order)",
+      "target": "Main.java#Order.getId()",
+      "kind": "calls",
+      "weight": 3
+    },
+    {
+      "id": "calls:Main.java#Main.addOrder(Order)->Main.java#Order.getCustomer()",
+      "source": "Main.java#Main.addOrder(Order)",
+      "target": "Main.java#Order.getCustomer()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.addOrder(Order)->Main.java#Order.getProduct()",
+      "source": "Main.java#Main.addOrder(Order)",
+      "target": "Main.java#Order.getProduct()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.addOrder(Order)->Main.java#Order.getQuantity()",
+      "source": "Main.java#Main.addOrder(Order)",
+      "target": "Main.java#Order.getQuantity()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.processOrders(List<Order>)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.processOrders(List<Order>)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processOrders(List<Order>)->Main.java#Order.getQuantity()",
+      "source": "Main.java#Main.processOrders(List<Order>)",
+      "target": "Main.java#Order.getQuantity()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processOrders(List<Order>)->Main.java#Main.addOrder(Order)",
+      "source": "Main.java#Main.processOrders(List<Order>)",
+      "target": "Main.java#Main.addOrder(Order)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.processOrders(List<Order>)->Main.java#Order.getId()",
+      "source": "Main.java#Main.processOrders(List<Order>)",
+      "target": "Main.java#Order.getId()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.changeStatus(int, OrderStatus)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.changeStatus(int, OrderStatus)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.changeStatus(int, OrderStatus)->Main.java#Main.findOrderById(int)",
+      "source": "Main.java#Main.changeStatus(int, OrderStatus)",
+      "target": "Main.java#Main.findOrderById(int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.changeStatus(int, OrderStatus)->Main.java#Order.getStatus()",
+      "source": "Main.java#Main.changeStatus(int, OrderStatus)",
+      "target": "Main.java#Order.getStatus()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.changeStatus(int, OrderStatus)->Main.java#OrderStatus.canMoveTo(OrderStatus)",
+      "source": "Main.java#Main.changeStatus(int, OrderStatus)",
+      "target": "Main.java#OrderStatus.canMoveTo(OrderStatus)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.changeStatus(int, OrderStatus)->Main.java#OrderStatus.getLabel()",
+      "source": "Main.java#Main.changeStatus(int, OrderStatus)",
+      "target": "Main.java#OrderStatus.getLabel()",
+      "kind": "calls",
+      "weight": 4
+    },
+    {
+      "id": "calls:Main.java#Main.changeStatus(int, OrderStatus)->Main.java#Order.setStatus(OrderStatus)",
+      "source": "Main.java#Main.changeStatus(int, OrderStatus)",
+      "target": "Main.java#Order.setStatus(OrderStatus)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.removeOrder(int)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.removeOrder(int)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.removeOrder(int)->Main.java#Order.getId()",
+      "source": "Main.java#Main.removeOrder(int)",
+      "target": "Main.java#Order.getId()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "calls:Main.java#Main.removeOrder(int)->Main.java#Order.getCustomer()",
+      "source": "Main.java#Main.removeOrder(int)",
+      "target": "Main.java#Order.getCustomer()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.purgeCancelled()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.purgeCancelled()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.purgeCancelled()->Main.java#Order.getStatus()",
+      "source": "Main.java#Main.purgeCancelled()",
+      "target": "Main.java#Order.getStatus()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.findByCustomer(String)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.findByCustomer(String)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.findByCustomer(String)->Main.java#Order.getCustomer()",
+      "source": "Main.java#Main.findByCustomer(String)",
+      "target": "Main.java#Order.getCustomer()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.showOrder(int)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.showOrder(int)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.showOrder(int)->Main.java#Main.findOrderById(int)",
+      "source": "Main.java#Main.showOrder(int)",
+      "target": "Main.java#Main.findOrderById(int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.showOrder(int)->Main.java#Describable.describe()",
+      "source": "Main.java#Main.showOrder(int)",
+      "target": "Main.java#Describable.describe()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.showOrder(int)->Main.java#Describable.shortInfo()",
+      "source": "Main.java#Main.showOrder(int)",
+      "target": "Main.java#Describable.shortInfo()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.totalAmount()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.totalAmount()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.totalAmount()->Main.java#Order.getStatus()",
+      "source": "Main.java#Main.totalAmount()",
+      "target": "Main.java#Order.getStatus()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.totalAmount()->Main.java#Order.getTotal()",
+      "source": "Main.java#Main.totalAmount()",
+      "target": "Main.java#Order.getTotal()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.averageAmount()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.averageAmount()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.averageAmount()->Main.java#Order.getStatus()",
+      "source": "Main.java#Main.averageAmount()",
+      "target": "Main.java#Order.getStatus()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.averageAmount()->Main.java#Order.getTotal()",
+      "source": "Main.java#Main.averageAmount()",
+      "target": "Main.java#Order.getTotal()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.medianAmount()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.medianAmount()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.medianAmount()->Main.java#Order.getStatus()",
+      "source": "Main.java#Main.medianAmount()",
+      "target": "Main.java#Order.getStatus()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.medianAmount()->Main.java#Order.getTotal()",
+      "source": "Main.java#Main.medianAmount()",
+      "target": "Main.java#Order.getTotal()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.percentile(double)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.percentile(double)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.percentile(double)->Main.java#Order.getStatus()",
+      "source": "Main.java#Main.percentile(double)",
+      "target": "Main.java#Order.getStatus()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.percentile(double)->Main.java#Order.getTotal()",
+      "source": "Main.java#Main.percentile(double)",
+      "target": "Main.java#Order.getTotal()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.maxOrder()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.maxOrder()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.maxOrder()->Main.java#Order.getTotal()",
+      "source": "Main.java#Main.maxOrder()",
+      "target": "Main.java#Order.getTotal()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.minOrder()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.minOrder()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.minOrder()->Main.java#Order.getTotal()",
+      "source": "Main.java#Main.minOrder()",
+      "target": "Main.java#Order.getTotal()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.statusHistogram()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.statusHistogram()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.statusHistogram()->Main.java#Order.getStatus()",
+      "source": "Main.java#Main.statusHistogram()",
+      "target": "Main.java#Order.getStatus()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.totalForCustomer(String)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.totalForCustomer(String)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.totalForCustomer(String)->Main.java#Order.equals(Object)",
+      "source": "Main.java#Main.totalForCustomer(String)",
+      "target": "Main.java#Order.equals(Object)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.totalForCustomer(String)->Main.java#Order.getCustomer()",
+      "source": "Main.java#Main.totalForCustomer(String)",
+      "target": "Main.java#Order.getCustomer()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.totalForCustomer(String)->Main.java#Order.getStatus()",
+      "source": "Main.java#Main.totalForCustomer(String)",
+      "target": "Main.java#Order.getStatus()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.totalForCustomer(String)->Main.java#Order.getTotal()",
+      "source": "Main.java#Main.totalForCustomer(String)",
+      "target": "Main.java#Order.getTotal()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.totalForProduct(String)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.totalForProduct(String)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.totalForProduct(String)->Main.java#Order.equals(Object)",
+      "source": "Main.java#Main.totalForProduct(String)",
+      "target": "Main.java#Order.equals(Object)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.totalForProduct(String)->Main.java#Order.getProduct()",
+      "source": "Main.java#Main.totalForProduct(String)",
+      "target": "Main.java#Order.getProduct()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.totalForProduct(String)->Main.java#Order.getStatus()",
+      "source": "Main.java#Main.totalForProduct(String)",
+      "target": "Main.java#Order.getStatus()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.totalForProduct(String)->Main.java#Order.getTotal()",
+      "source": "Main.java#Main.totalForProduct(String)",
+      "target": "Main.java#Order.getTotal()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.topCustomers(int)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.topCustomers(int)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.topCustomers(int)->Main.java#Order.getStatus()",
+      "source": "Main.java#Main.topCustomers(int)",
+      "target": "Main.java#Order.getStatus()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.topCustomers(int)->Main.java#Order.getCustomer()",
+      "source": "Main.java#Main.topCustomers(int)",
+      "target": "Main.java#Order.getCustomer()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.topCustomers(int)->Main.java#Order.getTotal()",
+      "source": "Main.java#Main.topCustomers(int)",
+      "target": "Main.java#Order.getTotal()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.topCustomers(int)->Main.java#Main.topN(List<T>, Comparator<? super T>, int)",
+      "source": "Main.java#Main.topCustomers(int)",
+      "target": "Main.java#Main.topN(List<T>, Comparator<? super T>, int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.topN(List<T>, Comparator<? super T>, int)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.topN(List<T>, Comparator<? super T>, int)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.distinctCustomers()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.distinctCustomers()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.distinctCustomers()->Main.java#Order.getCustomer()",
+      "source": "Main.java#Main.distinctCustomers()",
+      "target": "Main.java#Order.getCustomer()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.findAnomalies()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.findAnomalies()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.findAnomalies()->Main.java#Main.averageAmount()",
+      "source": "Main.java#Main.findAnomalies()",
+      "target": "Main.java#Main.averageAmount()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.findAnomalies()->Main.java#Order.getTotal()",
+      "source": "Main.java#Main.findAnomalies()",
+      "target": "Main.java#Order.getTotal()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.findAnomalies()->Main.java#Order.getId()",
+      "source": "Main.java#Main.findAnomalies()",
+      "target": "Main.java#Order.getId()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.countByStatusLabel()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.countByStatusLabel()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.countByStatusLabel()->Main.java#OrderStatus.getLabel()",
+      "source": "Main.java#Main.countByStatusLabel()",
+      "target": "Main.java#OrderStatus.getLabel()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.countByStatusLabel()->Main.java#Order.getStatus()",
+      "source": "Main.java#Main.countByStatusLabel()",
+      "target": "Main.java#Order.getStatus()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.streamTotalForCustomer(String)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.streamTotalForCustomer(String)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.streamTotalForCustomer(String)->Main.java#Order.equals(Object)",
+      "source": "Main.java#Main.streamTotalForCustomer(String)",
+      "target": "Main.java#Order.equals(Object)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.streamTotalForCustomer(String)->Main.java#Order.getCustomer()",
+      "source": "Main.java#Main.streamTotalForCustomer(String)",
+      "target": "Main.java#Order.getCustomer()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.streamTotalForCustomer(String)->Main.java#Order.getStatus()",
+      "source": "Main.java#Main.streamTotalForCustomer(String)",
+      "target": "Main.java#Order.getStatus()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.expensiveProducts(double)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.expensiveProducts(double)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.expensiveProducts(double)->Main.java#Order.getUnitPrice()",
+      "source": "Main.java#Main.expensiveProducts(double)",
+      "target": "Main.java#Order.getUnitPrice()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.countLargeOrders(int)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.countLargeOrders(int)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.countLargeOrders(int)->Main.java#Order.getQuantity()",
+      "source": "Main.java#Main.countLargeOrders(int)",
+      "target": "Main.java#Order.getQuantity()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.mergeDuplicates()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.mergeDuplicates()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.mergeDuplicates()->Main.java#Order.equals(Object)",
+      "source": "Main.java#Main.mergeDuplicates()",
+      "target": "Main.java#Order.equals(Object)",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "calls:Main.java#Main.mergeDuplicates()->Main.java#Order.getCustomer()",
+      "source": "Main.java#Main.mergeDuplicates()",
+      "target": "Main.java#Order.getCustomer()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "calls:Main.java#Main.mergeDuplicates()->Main.java#Order.getProduct()",
+      "source": "Main.java#Main.mergeDuplicates()",
+      "target": "Main.java#Order.getProduct()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "calls:Main.java#Main.mergeDuplicates()->Main.java#Order.getStatus()",
+      "source": "Main.java#Main.mergeDuplicates()",
+      "target": "Main.java#Order.getStatus()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "calls:Main.java#Main.mergeDuplicates()->Main.java#Order.addQuantity(int)",
+      "source": "Main.java#Main.mergeDuplicates()",
+      "target": "Main.java#Order.addQuantity(int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.mergeDuplicates()->Main.java#Order.getQuantity()",
+      "source": "Main.java#Main.mergeDuplicates()",
+      "target": "Main.java#Order.getQuantity()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.mergeDuplicates()->Main.java#Order.copy()",
+      "source": "Main.java#Main.mergeDuplicates()",
+      "target": "Main.java#Order.copy()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.buildCsv()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.buildCsv()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.buildCsv()->Main.java#Order.getId()",
+      "source": "Main.java#Main.buildCsv()",
+      "target": "Main.java#Order.getId()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.buildCsv()->Main.java#Order.getCustomer()",
+      "source": "Main.java#Main.buildCsv()",
+      "target": "Main.java#Order.getCustomer()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.buildCsv()->Main.java#Order.getProduct()",
+      "source": "Main.java#Main.buildCsv()",
+      "target": "Main.java#Order.getProduct()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.buildCsv()->Main.java#Order.getQuantity()",
+      "source": "Main.java#Main.buildCsv()",
+      "target": "Main.java#Order.getQuantity()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.buildCsv()->Main.java#Main.formatAmount(double)",
+      "source": "Main.java#Main.buildCsv()",
+      "target": "Main.java#Main.formatAmount(double)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.buildCsv()->Main.java#Order.getTotal()",
+      "source": "Main.java#Main.buildCsv()",
+      "target": "Main.java#Order.getTotal()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.buildCsv()->Main.java#OrderStatus.getLabel()",
+      "source": "Main.java#Main.buildCsv()",
+      "target": "Main.java#OrderStatus.getLabel()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.buildCsv()->Main.java#Order.getStatus()",
+      "source": "Main.java#Main.buildCsv()",
+      "target": "Main.java#Order.getStatus()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.applyDiscount(double)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.applyDiscount(double)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.applyDiscount(double)->Main.java#Order.getStatus()",
+      "source": "Main.java#Main.applyDiscount(double)",
+      "target": "Main.java#Order.getStatus()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.applyDiscount(double)->Main.java#Main.discountFor(Order)",
+      "source": "Main.java#Main.applyDiscount(double)",
+      "target": "Main.java#Main.discountFor(Order)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.applyDiscount(double)->Main.java#Order.setUnitPrice(double)",
+      "source": "Main.java#Main.applyDiscount(double)",
+      "target": "Main.java#Order.setUnitPrice(double)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.applyDiscount(double)->Main.java#Main.roundMoney(double)",
+      "source": "Main.java#Main.applyDiscount(double)",
+      "target": "Main.java#Main.roundMoney(double)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.applyDiscount(double)->Main.java#Order.getBasePrice()",
+      "source": "Main.java#Main.applyDiscount(double)",
+      "target": "Main.java#Order.getBasePrice()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.discountFor(Order)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.discountFor(Order)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.discountFor(Order)->Main.java#Order.getQuantity()",
+      "source": "Main.java#Main.discountFor(Order)",
+      "target": "Main.java#Order.getQuantity()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "calls:Main.java#Main.discountFor(Order)->Main.java#Order.getCustomer()",
+      "source": "Main.java#Main.discountFor(Order)",
+      "target": "Main.java#Order.getCustomer()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.roundMoney(double)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.roundMoney(double)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.printHeader()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.printHeader()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printHeader()->Main.java#Main.repeat(char, int)",
+      "source": "Main.java#Main.printHeader()",
+      "target": "Main.java#Main.repeat(char, int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.printFooter()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.printFooter()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printFooter()->Main.java#Main.repeat(char, int)",
+      "source": "Main.java#Main.printFooter()",
+      "target": "Main.java#Main.repeat(char, int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.repeat(char, int)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.repeat(char, int)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.formatAmount(double)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.formatAmount(double)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.padRight(String, int)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.padRight(String, int)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.padRight(String, int)->Main.java#Main.repeat(char, int)",
+      "source": "Main.java#Main.padRight(String, int)",
+      "target": "Main.java#Main.repeat(char, int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.printOrders(List<Order>)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.printOrders(List<Order>)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printOrders(List<Order>)->Main.java#OrderStatus.getLabel()",
+      "source": "Main.java#Main.printOrders(List<Order>)",
+      "target": "Main.java#OrderStatus.getLabel()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "calls:Main.java#Main.printOrders(List<Order>)->Main.java#Order.getStatus()",
+      "source": "Main.java#Main.printOrders(List<Order>)",
+      "target": "Main.java#Order.getStatus()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "calls:Main.java#Main.printOrders(List<Order>)->Main.java#Order.getId()",
+      "source": "Main.java#Main.printOrders(List<Order>)",
+      "target": "Main.java#Order.getId()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printOrders(List<Order>)->Main.java#Order.getCustomer()",
+      "source": "Main.java#Main.printOrders(List<Order>)",
+      "target": "Main.java#Order.getCustomer()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printOrders(List<Order>)->Main.java#Order.getProduct()",
+      "source": "Main.java#Main.printOrders(List<Order>)",
+      "target": "Main.java#Order.getProduct()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printOrders(List<Order>)->Main.java#Order.getQuantity()",
+      "source": "Main.java#Main.printOrders(List<Order>)",
+      "target": "Main.java#Order.getQuantity()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printOrders(List<Order>)->Main.java#Order.getTotal()",
+      "source": "Main.java#Main.printOrders(List<Order>)",
+      "target": "Main.java#Order.getTotal()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.printStats()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.printStats()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printStats()->Main.java#Main.formatAmount(double)",
+      "source": "Main.java#Main.printStats()",
+      "target": "Main.java#Main.formatAmount(double)",
+      "kind": "calls",
+      "weight": 6
+    },
+    {
+      "id": "calls:Main.java#Main.printStats()->Main.java#Main.totalAmount()",
+      "source": "Main.java#Main.printStats()",
+      "target": "Main.java#Main.totalAmount()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printStats()->Main.java#Main.averageAmount()",
+      "source": "Main.java#Main.printStats()",
+      "target": "Main.java#Main.averageAmount()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printStats()->Main.java#Main.medianAmount()",
+      "source": "Main.java#Main.printStats()",
+      "target": "Main.java#Main.medianAmount()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printStats()->Main.java#Main.maxOrder()",
+      "source": "Main.java#Main.printStats()",
+      "target": "Main.java#Main.maxOrder()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printStats()->Main.java#Main.minOrder()",
+      "source": "Main.java#Main.printStats()",
+      "target": "Main.java#Main.minOrder()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printStats()->Main.java#Order.getId()",
+      "source": "Main.java#Main.printStats()",
+      "target": "Main.java#Order.getId()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "calls:Main.java#Main.printStats()->Main.java#Order.getTotal()",
+      "source": "Main.java#Main.printStats()",
+      "target": "Main.java#Order.getTotal()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "calls:Main.java#Main.printStats()->Main.java#Main.percentile(double)",
+      "source": "Main.java#Main.printStats()",
+      "target": "Main.java#Main.percentile(double)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printStats()->Main.java#Main.printStatusBars()",
+      "source": "Main.java#Main.printStats()",
+      "target": "Main.java#Main.printStatusBars()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.printStatusBars()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.printStatusBars()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printStatusBars()->Main.java#Main.statusHistogram()",
+      "source": "Main.java#Main.printStatusBars()",
+      "target": "Main.java#Main.statusHistogram()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printStatusBars()->Main.java#Main.padRight(String, int)",
+      "source": "Main.java#Main.printStatusBars()",
+      "target": "Main.java#Main.padRight(String, int)",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "calls:Main.java#Main.printStatusBars()->Main.java#OrderStatus.getLabel()",
+      "source": "Main.java#Main.printStatusBars()",
+      "target": "Main.java#OrderStatus.getLabel()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printStatusBars()->Main.java#Main.bar(int, int)",
+      "source": "Main.java#Main.printStatusBars()",
+      "target": "Main.java#Main.bar(int, int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.bar(int, int)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.bar(int, int)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.bar(int, int)->Main.java#Main.repeat(char, int)",
+      "source": "Main.java#Main.bar(int, int)",
+      "target": "Main.java#Main.repeat(char, int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.printTopCustomers(int)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.printTopCustomers(int)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printTopCustomers(int)->Main.java#Main.topCustomers(int)",
+      "source": "Main.java#Main.printTopCustomers(int)",
+      "target": "Main.java#Main.topCustomers(int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printTopCustomers(int)->Main.java#CustomerTotal.average()",
+      "source": "Main.java#Main.printTopCustomers(int)",
+      "target": "Main.java#CustomerTotal.average()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.printCustomers()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.printCustomers()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printCustomers()->Main.java#Main.distinctCustomers()",
+      "source": "Main.java#Main.printCustomers()",
+      "target": "Main.java#Main.distinctCustomers()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.printCsvSummary()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.printCsvSummary()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printCsvSummary()->Main.java#Main.buildCsv()",
+      "source": "Main.java#Main.printCsvSummary()",
+      "target": "Main.java#Main.buildCsv()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.printHistory()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.printHistory()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.printByCustomer(String)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.printByCustomer(String)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printByCustomer(String)->Main.java#Order.equals(Object)",
+      "source": "Main.java#Main.printByCustomer(String)",
+      "target": "Main.java#Order.equals(Object)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printByCustomer(String)->Main.java#Order.getCustomer()",
+      "source": "Main.java#Main.printByCustomer(String)",
+      "target": "Main.java#Order.getCustomer()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printByCustomer(String)->Main.java#Order.getId()",
+      "source": "Main.java#Main.printByCustomer(String)",
+      "target": "Main.java#Order.getId()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printByCustomer(String)->Main.java#Order.getProduct()",
+      "source": "Main.java#Main.printByCustomer(String)",
+      "target": "Main.java#Order.getProduct()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printByCustomer(String)->Main.java#Order.getQuantity()",
+      "source": "Main.java#Main.printByCustomer(String)",
+      "target": "Main.java#Order.getQuantity()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printByCustomer(String)->Main.java#Order.getTotal()",
+      "source": "Main.java#Main.printByCustomer(String)",
+      "target": "Main.java#Order.getTotal()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.printByProduct(String)",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.printByProduct(String)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printByProduct(String)->Main.java#Order.equals(Object)",
+      "source": "Main.java#Main.printByProduct(String)",
+      "target": "Main.java#Order.equals(Object)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printByProduct(String)->Main.java#Order.getProduct()",
+      "source": "Main.java#Main.printByProduct(String)",
+      "target": "Main.java#Order.getProduct()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printByProduct(String)->Main.java#Order.getId()",
+      "source": "Main.java#Main.printByProduct(String)",
+      "target": "Main.java#Order.getId()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printByProduct(String)->Main.java#Order.getCustomer()",
+      "source": "Main.java#Main.printByProduct(String)",
+      "target": "Main.java#Order.getCustomer()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printByProduct(String)->Main.java#Order.getQuantity()",
+      "source": "Main.java#Main.printByProduct(String)",
+      "target": "Main.java#Order.getQuantity()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printByProduct(String)->Main.java#Order.getTotal()",
+      "source": "Main.java#Main.printByProduct(String)",
+      "target": "Main.java#Order.getTotal()",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "contains:Main.java#Main->Main.java#Main.printReport()",
+      "source": "Main.java#Main",
+      "target": "Main.java#Main.printReport()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printReport()->Main.java#Main.formatAmount(double)",
+      "source": "Main.java#Main.printReport()",
+      "target": "Main.java#Main.formatAmount(double)",
+      "kind": "calls",
+      "weight": 2
+    },
+    {
+      "id": "calls:Main.java#Main.printReport()->Main.java#Main.totalAmount()",
+      "source": "Main.java#Main.printReport()",
+      "target": "Main.java#Main.totalAmount()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printReport()->Main.java#Main.averageAmount()",
+      "source": "Main.java#Main.printReport()",
+      "target": "Main.java#Main.averageAmount()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printReport()->Main.java#Main.countLargeOrders(int)",
+      "source": "Main.java#Main.printReport()",
+      "target": "Main.java#Main.countLargeOrders(int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printReport()->Main.java#Main.countByStatusLabel()",
+      "source": "Main.java#Main.printReport()",
+      "target": "Main.java#Main.countByStatusLabel()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printReport()->Main.java#Main.padRight(String, int)",
+      "source": "Main.java#Main.printReport()",
+      "target": "Main.java#Main.padRight(String, int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printReport()->Main.java#Main.topCustomers(int)",
+      "source": "Main.java#Main.printReport()",
+      "target": "Main.java#Main.topCustomers(int)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printReport()->Main.java#Main.distinctCustomers()",
+      "source": "Main.java#Main.printReport()",
+      "target": "Main.java#Main.distinctCustomers()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printReport()->Main.java#Main.printByCustomer(String)",
+      "source": "Main.java#Main.printReport()",
+      "target": "Main.java#Main.printByCustomer(String)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printReport()->Main.java#Order.getProduct()",
+      "source": "Main.java#Main.printReport()",
+      "target": "Main.java#Order.getProduct()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printReport()->Main.java#Order.getQuantity()",
+      "source": "Main.java#Main.printReport()",
+      "target": "Main.java#Order.getQuantity()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printReport()->Main.java#Main.printByProduct(String)",
+      "source": "Main.java#Main.printReport()",
+      "target": "Main.java#Main.printByProduct(String)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printReport()->Main.java#Main.findAnomalies()",
+      "source": "Main.java#Main.printReport()",
+      "target": "Main.java#Main.findAnomalies()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Main.printReport()->Main.java#Main.expensiveProducts(double)",
+      "source": "Main.java#Main.printReport()",
+      "target": "Main.java#Main.expensiveProducts(double)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Describable->Main.java#Describable.describe()",
+      "source": "Main.java#Describable",
+      "target": "Main.java#Describable.describe()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Describable->Main.java#Describable.shortInfo()",
+      "source": "Main.java#Describable",
+      "target": "Main.java#Describable.shortInfo()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Describable.shortInfo()->Main.java#Describable.describe()",
+      "source": "Main.java#Describable.shortInfo()",
+      "target": "Main.java#Describable.describe()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#OrderStatus->Main.java#OrderStatus.label",
+      "source": "Main.java#OrderStatus",
+      "target": "Main.java#OrderStatus.label",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#OrderStatus->Main.java#OrderStatus.OrderStatus(String)",
+      "source": "Main.java#OrderStatus",
+      "target": "Main.java#OrderStatus.OrderStatus(String)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#OrderStatus->Main.java#OrderStatus.getLabel()",
+      "source": "Main.java#OrderStatus",
+      "target": "Main.java#OrderStatus.getLabel()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#OrderStatus->Main.java#OrderStatus.canMoveTo(OrderStatus)",
+      "source": "Main.java#OrderStatus",
+      "target": "Main.java#OrderStatus.canMoveTo(OrderStatus)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.id",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.id",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.customer",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.customer",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.product",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.product",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.quantity",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.quantity",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.unitPrice",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.unitPrice",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.basePrice",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.basePrice",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.status",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.status",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.Order(int, String, String, int, double)",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.Order(int, String, String, int, double)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.getId()",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.getId()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.getCustomer()",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.getCustomer()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.getProduct()",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.getProduct()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.getQuantity()",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.getQuantity()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.getUnitPrice()",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.getUnitPrice()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.getBasePrice()",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.getBasePrice()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.getStatus()",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.getStatus()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.setStatus(OrderStatus)",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.setStatus(OrderStatus)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.setUnitPrice(double)",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.setUnitPrice(double)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.addQuantity(int)",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.addQuantity(int)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.getTotal()",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.getTotal()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.copy()",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.copy()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.describe()",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.describe()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Order.describe()->Main.java#Main.formatAmount(double)",
+      "source": "Main.java#Order.describe()",
+      "target": "Main.java#Main.formatAmount(double)",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "calls:Main.java#Order.describe()->Main.java#OrderStatus.getLabel()",
+      "source": "Main.java#Order.describe()",
+      "target": "Main.java#OrderStatus.getLabel()",
+      "kind": "calls",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.equals(Object)",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.equals(Object)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.hashCode()",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.hashCode()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#Order->Main.java#Order.toString()",
+      "source": "Main.java#Order",
+      "target": "Main.java#Order.toString()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#CustomerTotal->Main.java#CustomerTotal.average()",
+      "source": "Main.java#CustomerTotal",
+      "target": "Main.java#CustomerTotal.average()",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#OrderParseException->Main.java#OrderParseException.serialVersionUID",
+      "source": "Main.java#OrderParseException",
+      "target": "Main.java#OrderParseException.serialVersionUID",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#OrderParseException->Main.java#OrderParseException.OrderParseException(String)",
+      "source": "Main.java#OrderParseException",
+      "target": "Main.java#OrderParseException.OrderParseException(String)",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#OrderValidationException->Main.java#OrderValidationException.serialVersionUID",
+      "source": "Main.java#OrderValidationException",
+      "target": "Main.java#OrderValidationException.serialVersionUID",
+      "kind": "contains",
+      "weight": 1
+    },
+    {
+      "id": "contains:Main.java#OrderValidationException->Main.java#OrderValidationException.OrderValidationException(String)",
+      "source": "Main.java#OrderValidationException",
+      "target": "Main.java#OrderValidationException.OrderValidationException(String)",
+      "kind": "contains",
+      "weight": 1
+    }
+  ],
+  "version_id": 3,
+  "content_hash": "mock-demo-orders-v3"
+}

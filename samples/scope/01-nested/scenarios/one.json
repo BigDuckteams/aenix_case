@@ -1,0 +1,7 @@
+{
+  "name": "one",
+  "description": "Одна пара",
+  "stdin": "1\n7 8\n",
+  "args": [],
+  "expected_stdout": "7+8=15 -> 130\nПривет, мир!"
+}

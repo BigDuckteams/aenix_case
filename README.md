@@ -49,6 +49,14 @@ cd backend  && uv run pytest && uv run ruff check . && uv run ruff format --chec
 cd frontend && pnpm lint && pnpm typecheck && pnpm test
 ```
 
+Корпус примеров и моки:
+
+```bash
+python scripts/verify_corpus.py                          # javac + два прогона каждого сценария (нужен JDK)
+cd frontend && pnpm dev:mock                             # frontend без backend, /preview на моках
+cd backend  && uv run python ../scripts/gen_mock_fixtures.py   # перегенерировать моки после правки схем или demo-orders
+```
+
 ### Контракт API
 
 Схемы API описаны в Pydantic; TypeScript-типы для frontend генерируются из OpenAPI. После изменения схем:
@@ -65,9 +73,9 @@ cd frontend && pnpm gen:api
 ```
 backend/    FastAPI (app/) и ядро без веб-зависимостей (engine/): разбор Java, граф, правка, анализ, запуск, проверка
 frontend/   Next.js, shadcn/ui, граф и редактор
-samples/    корпус Java-примеров (демо-монолит, фикстуры scope)
+samples/    корпус Java-примеров: демо-монолит, фикстуры scope, сломанные и вне рамок (см. samples/README.md)
 reports/    результаты проверки поведения для сдачи
-scripts/    служебные скрипты (doctor.py)
+scripts/    служебные скрипты: doctor.py, verify_corpus.py (проверка корпуса), gen_mock_fixtures.py (моки frontend)
 docs/       документация и план разработки
 ```
 
@@ -76,4 +84,5 @@ docs/       документация и план разработки
 | Этап | Состояние |
 |---|---|
 | S0 Каркас и окружение | сделан: backend, frontend, тесты, CI, Dockerfile; спайк tree-sitter-java зелёный. Сборка Docker-образов не проверена (нет Docker на машине разработки) |
-| S1–S10 | по [плану](docs/plan/README.md) |
+| S1 Контракт API и корпус | сделан: схемы и 65 эндпоинтов-заглушек (`501`), типы и моки frontend (`pnpm dev:mock`, экран `/preview`), корпус `samples/` (демо-монолит 995 строк и ещё 4 монолита, 38 фикстур scope, `broken/`, `out-of-scope/`), `scripts/verify_corpus.py`. Корпус проверен на JDK 17, на JDK 21 его проверит CI (не запускался) |
+| S2–S10 | по [плану](docs/plan/README.md) |

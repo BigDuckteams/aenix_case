@@ -1,0 +1,13 @@
+{
+  "description": "Собственные исключения: проверяемые и непроверяемые, цепочки причин",
+  "section": "4",
+  "kinds": [
+    "try",
+    "throw",
+    "method",
+    "operation",
+    "var_decl",
+    "return",
+    "condition"
+  ]
+}

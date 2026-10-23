@@ -1,0 +1,7 @@
+{
+  "name": "only-default",
+  "description": "Только квадрат по умолчанию",
+  "stdin": "",
+  "args": [],
+  "expected_stdout": "Квадрат площадью 1.00"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "small",
+  "description": "Небольшие числа",
+  "stdin": "65 1234567890123\n",
+  "args": [],
+  "expected_stdout": "byte=65 short=65 char=N\nfloat=21.666666 double=21.666666666666668\nboxed=65 unboxed=66\n127 == 127: true, 1000 equals 1000: true\n1234567890123 21.666666666666668 N false\noverflow=-2147483648 safe=2147483648\nlong -> int: 1912276171\nMIN=-2147483648 MAX=9223372036854775807"
+}

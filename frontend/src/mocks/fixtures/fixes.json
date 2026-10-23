@@ -1,0 +1,54 @@
+{
+  "version_id": 3,
+  "fixes": [
+    {
+      "finding_id": "PERF-01:Main.java#Main.mergeDuplicates()/foreach[0]",
+      "fix_id": "OPT-01",
+      "title": "Индексация по ключу вместо вложенного поиска",
+      "behavior_preserving": true,
+      "available": true
+    },
+    {
+      "finding_id": "PERF-02:Main.java#Main.distinctCustomers()/foreach[0]",
+      "fix_id": "OPT-02",
+      "title": "contains в цикле → HashSet",
+      "behavior_preserving": true,
+      "available": true
+    },
+    {
+      "finding_id": "PERF-03:Main.java#Main.buildCsv()/foreach[0]",
+      "fix_id": "OPT-03",
+      "title": "Конкатенация → StringBuilder",
+      "behavior_preserving": true,
+      "available": true
+    },
+    {
+      "finding_id": "BUG-01:Main.java#Main.discountFor(Order):615",
+      "fix_id": "FIX-01",
+      "title": "== → equals",
+      "behavior_preserving": false,
+      "available": true
+    },
+    {
+      "finding_id": "BUG-02:Main.java#Main.readBatch(Scanner, int):199",
+      "fix_id": "FIX-02",
+      "title": "Заглушка вместо пустого catch",
+      "behavior_preserving": false,
+      "available": true
+    },
+    {
+      "finding_id": "MAINT-01:Main.java#Main.printReport()",
+      "fix_id": "REF-01",
+      "title": "Выделить метод",
+      "behavior_preserving": true,
+      "available": false
+    },
+    {
+      "finding_id": "MAINT-05:Main.java#Main",
+      "fix_id": "REF-04",
+      "title": "Декомпозиция монолита",
+      "behavior_preserving": true,
+      "available": false
+    }
+  ]
+}

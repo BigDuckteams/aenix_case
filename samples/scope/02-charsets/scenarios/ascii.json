@@ -1,0 +1,7 @@
+{
+  "name": "ascii",
+  "description": "Только ASCII",
+  "stdin": "Hello\n",
+  "args": [],
+  "expected_stdout": "символов: 5, байт UTF-8: 5\nбайт ISO-8859-1: 5\nвосстановлено: Hello (true)\nчерез ISO-8859-1 совпадает: true\nпервые байты: 48 65 6c 6c 6f\nкодовых точек: 5"
+}

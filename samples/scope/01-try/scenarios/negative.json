@@ -1,0 +1,7 @@
+{
+  "name": "negative",
+  "description": "Исключение внутри try-with-resources",
+  "stdin": "5 -1 7\n",
+  "args": [],
+  "expected_stdout": "divide(5, -1) завершён\n-5\n7\nоткрыт A\nоткрыт B\nA обрабатывает 5\nзакрыт B\nзакрыт A\nошибка: отрицательное значение: -1\nготово"
+}

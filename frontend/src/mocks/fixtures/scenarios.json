@@ -1,0 +1,202 @@
+{
+  "scenarios": [
+    {
+      "id": 1,
+      "name": "bad-format",
+      "description": "Неверный формат: не числа, нет параметров, битые строки пакета, неизвестные команды",
+      "stdin": "add\nadd x Иванов Хлеб 1 10\nadd 1 Иванов Хлеб один 10\nadd 2 Иванов Хлеб 1 дорого\nadd 3 Иванов Хлеб 1\npay\npay abc\ntop\ntop много\ndiscount\ndiscount много\nbatch 4\n1 Иванов Хлеб 2 10\nбитая строка\n2 Петрова Молоко 1\n3 Сидоров Сыр 3 520\nфыр 12\nlist\nlaunch\n",
+      "args": [],
+      "source": "manual",
+      "size_factor": null,
+      "enabled": true,
+      "stability": "stable",
+      "masks": [],
+      "baseline": {
+        "state": "recorded",
+        "version_id": 1,
+        "duration_ms": 97
+      },
+      "created_at": "2026-10-24T08:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "boundary-values",
+      "description": "Граничные значения: количество, цена, номер, скидка, top 0",
+      "stdin": "add 0 Иванов Хлеб 1 10\nadd -1 Иванов Хлеб 1 10\nadd 1 Иванов Хлеб 1000 100000\nadd 2 Иванов Хлеб 1001 10\nadd 3 Иванов Хлеб 1 100000.01\nadd 4 Иванов Хлеб -5 10\nadd 5 Иванов Хлеб 1 0\nadd 6 Иванов Хлеб 1 0.01\nadd 2147483647 Иванов Хлеб 1 1\nadd 2147483648 Иванов Хлеб 1 1\nlist\nstats\ntop 0\ntop 100\ndiscount 0\ndiscount 50\ndiscount 50.1\ndiscount -1\nlist\nreport\n",
+      "args": [],
+      "source": "manual",
+      "size_factor": null,
+      "enabled": true,
+      "stability": "stable",
+      "masks": [],
+      "baseline": {
+        "state": "recorded",
+        "version_id": 1,
+        "duration_ms": 104
+      },
+      "created_at": "2026-10-24T08:00:00Z"
+    },
+    {
+      "id": 3,
+      "name": "cyrillic",
+      "description": "Кириллица: имена с подчёркиванием, строчные буквы, цифры в начале, длинные имена",
+      "stdin": "add 1 иванов_иван хлеб_бородинский 3 52,75\nadd 2 Ёлкина Мёд 1 340\nadd 3 123клиент Хлеб 1 10\nadd 4 Иванов 7товаров 1 10\nadd 5 Очень_длинная_фамилия_покупателя_которая_не_помещается Хлеб 1 10\nadd 6 Щербаков Щи_капустные 12 36.6\nadd 7 Ёлкина Мёд 4 340\nlist\nfind ёл\nfind ИВАН\ncustomers\ntop 5\nmerge\nlist\ncsv\n",
+      "args": [],
+      "source": "manual",
+      "size_factor": null,
+      "enabled": true,
+      "stability": "stable",
+      "masks": [],
+      "baseline": {
+        "state": "recorded",
+        "version_id": 1,
+        "duration_ms": 111
+      },
+      "created_at": "2026-10-24T08:00:00Z"
+    },
+    {
+      "id": 4,
+      "name": "empty-input",
+      "description": "Пустой ввод: только заголовок и итог",
+      "stdin": "",
+      "args": [],
+      "source": "manual",
+      "size_factor": null,
+      "enabled": true,
+      "stability": "stable",
+      "masks": [],
+      "baseline": {
+        "state": "recorded",
+        "version_id": 1,
+        "duration_ms": 118
+      },
+      "created_at": "2026-10-24T08:00:00Z"
+    },
+    {
+      "id": 5,
+      "name": "large-input",
+      "description": "Большой ввод: 320 заказов пакетом, затем анализ, объединение, CSV, скидка",
+      "stdin": "batch 322\n1 Лебедева Сахар 5 70.25\n2 Егоров Мука 60 62\n3 Павлова Кофе 51 1250.5\n4 Новиков Чай 38 310\n5 Сидоров Молоко 49 80\n6 Попов Масло 48 640\n7 Иванов Молоко 23 80\n8 Белова Чай 14 310\n9 Соколова Яйца 17 105\n10 Попов Чай 56 310\n11 Иванов Кофе 35 1250.5\n",
+      "args": [],
+      "source": "manual",
+      "size_factor": null,
+      "enabled": true,
+      "stability": "stable",
+      "masks": [],
+      "baseline": {
+        "state": "recorded",
+        "version_id": 1,
+        "duration_ms": 125
+      },
+      "created_at": "2026-10-24T08:00:00Z"
+    },
+    {
+      "id": 6,
+      "name": "many-orders",
+      "description": "Сорок заказов пакетом, смена статусов, анализ, объединение, отчёт",
+      "stdin": "batch 40\n1 Новиков Кофе 6 1250.5\n2 Орлова Масло 11 640\n3 Лебедева Рис 16 98.9\n4 Егоров Сыр 21 520\n5 Попов Сахар 26 70.25\n6 Павлова Мука 31 62\n7 Смирнова Молоко 36 80\n8 Зайцев Чай 4 310\n9 Козлов Яйца 9 105\n10 Соколова Хлеб 14 45.5\n11 Сидоров Кофе 19 1250.5\n12 Волков Масло 24 640\n13 Петрова Рис 29 98.9\n14 Морозова Сыр 34 520\n15 Иванов Сахар 2 70.25\n16 Новиков Мука 7 62\n17 Орлова Молоко 12 80\n18 Лебедева Чай 17 310\n19 Егоров Яйца 22 105\n20 Попов Хлеб 27 45.5\n21 Павлова Кофе 32 1250.5\n22 Смирнова Масло 37 640\n23 Зайцев Рис 5 98.9\n24 Козлов Сыр 10 520\n25 Соколова Сахар 15 70.25\n26 Сидоров Мука 20 62\n27 Волков Молоко 25 80\n28 Петрова Чай 30 310\n29 Морозова Яйца 35 105\n30 Иванов Хлеб 3 45.5\n31 Новиков Кофе 8 1250.5\n32 Орлова Масло 13 640\n33 Лебедева Рис 18 98.9\n34 Егоров Сыр 23 520\n35 Попов Сахар 28 70.25\n36 Павлова Мука 33 62\n37 Смирнова Молоко 1 80\n38 Зайцев Чай 6 310\n39 Козлов Яйца 11 105\n40 Соколова Хлеб 16 45.5\npay 1\npay 2\nship 2\ncancel 3\ncancel 4\npay 5\nlist\nstats\ntop 5\ncustomers\nfind ова\nmerge\nstats\ndiscount 7.5\ncsv\nreport\nhistory\npurge\nstats\n",
+      "args": [],
+      "source": "manual",
+      "size_factor": null,
+      "enabled": true,
+      "stability": "stable",
+      "masks": [],
+      "baseline": {
+        "state": "recorded",
+        "version_id": 1,
+        "duration_ms": 132
+      },
+      "created_at": "2026-10-24T08:00:00Z"
+    },
+    {
+      "id": 7,
+      "name": "merge-duplicates",
+      "description": "Объединение одинаковых заказов (клиент, товар, статус) и разные статусы",
+      "stdin": "add 1 Иванов Хлеб 1 10\nadd 2 Иванов Хлеб 2 10\nadd 3 Иванов Хлеб 3 10\nadd 4 Петрова Молоко 1 20\nadd 5 Иванов Молоко 1 20\nadd 6 Петрова Молоко 2 20\npay 3\npay 6\nlist\nmerge\nlist\nmerge\nstats\ncsv\ncustomers\n",
+      "args": [],
+      "source": "manual",
+      "size_factor": null,
+      "enabled": true,
+      "stability": "stable",
+      "masks": [],
+      "baseline": {
+        "state": "recorded",
+        "version_id": 1,
+        "duration_ms": 139
+      },
+      "created_at": "2026-10-24T08:00:00Z"
+    },
+    {
+      "id": 8,
+      "name": "single-order",
+      "description": "Один заказ: добавление, список, статистика, отчёт",
+      "stdin": "add 1 Иванов Хлеб 10 45.5\nlist\nstats\ntop 3\ncustomers\nreport\n",
+      "args": [],
+      "source": "manual",
+      "size_factor": null,
+      "enabled": true,
+      "stability": "stable",
+      "masks": [],
+      "baseline": {
+        "state": "recorded",
+        "version_id": 1,
+        "duration_ms": 146
+      },
+      "created_at": "2026-10-24T08:00:00Z"
+    },
+    {
+      "id": 9,
+      "name": "status-flow",
+      "description": "Жизненный цикл заказа: допустимые и недопустимые переходы, удаление и очистка",
+      "stdin": "add 1 Иванов Хлеб 1 10\nadd 2 Петрова Молоко 2 20\nadd 3 Сидоров Сыр 3 30\nadd 4 Козлов Чай 4 40\npay 1\nship 1\nship 2\npay 2\npay 2\ncancel 2\nship 2\ncancel 3\npay 3\nremove 4\nremove 4\nremove 99\nlist\nstats\npurge\npurge\nlist\n",
+      "args": [],
+      "source": "manual",
+      "size_factor": null,
+      "enabled": true,
+      "stability": "stable",
+      "masks": [],
+      "baseline": {
+        "state": "recorded",
+        "version_id": 1,
+        "duration_ms": 153
+      },
+      "created_at": "2026-10-24T08:00:00Z"
+    },
+    {
+      "id": 10,
+      "name": "uncaught-exception",
+      "description": "Необработанное исключение: команда boom, код выхода 1",
+      "stdin": "add 1 Иванов Хлеб 2 45.5\nadd 2 Петрова Молоко 1 80\nstats\nboom\nadd 3 Сидоров Сыр 1 520\n",
+      "args": [],
+      "source": "manual",
+      "size_factor": null,
+      "enabled": true,
+      "stability": "stable",
+      "masks": [],
+      "baseline": {
+        "state": "recorded",
+        "version_id": 1,
+        "duration_ms": 160
+      },
+      "created_at": "2026-10-24T08:00:00Z"
+    },
+    {
+      "id": 11,
+      "name": "vip-discount",
+      "description": "Скидка и VIP-клиент: проверка ступеней по количеству",
+      "stdin": "add 1 Иванов Хлеб 5 100\nadd 2 Петрова Хлеб 5 100\nadd 3 Иванов Хлеб 15 100\nadd 4 Петрова Хлеб 15 100\nadd 5 Иванов Хлеб 50 100\nadd 6 Петрова Хлеб 50 100\nadd 7 Иванов Хлеб 120 100\nadd 8 Петрова Хлеб 120 100\ndiscount 10\nlist\nshow 1\nshow 2\n",
+      "args": [],
+      "source": "manual",
+      "size_factor": null,
+      "enabled": true,
+      "stability": "stable",
+      "masks": [],
+      "baseline": {
+        "state": "recorded",
+        "version_id": 1,
+        "duration_ms": 167
+      },
+      "created_at": "2026-10-24T08:00:00Z"
+    }
+  ]
+}

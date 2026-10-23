@@ -1,0 +1,7 @@
+{
+  "name": "found",
+  "description": "Число и найденный ключ",
+  "stdin": "42 ключ\n",
+  "args": [],
+  "expected_stdout": "true false\n84\n42\nчисло 42\nесть\nзначение значение\n8\nзначение\ntrue true"
+}

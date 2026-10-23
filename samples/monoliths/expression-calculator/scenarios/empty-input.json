@@ -1,0 +1,7 @@
+{
+  "name": "empty-input",
+  "description": "Пустой ввод: только заголовок и итог",
+  "stdin": "",
+  "args": [],
+  "expected_stdout": "=== Калькулятор выражений ===\nКоманды: let, eval, tokens, rpn, tree, simplify, check, vars, table, batch, report, quit\n----------------------------------------\n----------------------------------------\nКоманд: 0, ошибок: 0, переменных: 0"
+}

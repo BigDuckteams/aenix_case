@@ -1,0 +1,7 @@
+{
+  "name": "none",
+  "description": "Без точек",
+  "stdin": "0\n",
+  "args": [],
+  "expected_stdout": "сумма Point[x=0, y=0] x=0 y=0\ntrue false\nLabel[text=метка, priority=2] 5"
+}

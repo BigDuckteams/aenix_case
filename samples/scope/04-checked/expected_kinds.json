@@ -1,0 +1,12 @@
+{
+  "description": "Проверяемые и непроверяемые исключения; обязательный catch",
+  "section": "4",
+  "kinds": [
+    "try",
+    "throw",
+    "operation",
+    "var_decl",
+    "return",
+    "condition"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "short",
+  "description": "Короткая строка и n = 0",
+  "stdin": "приём!!!\n0\n",
+  "args": [],
+  "expected_stdout": "8 ПРИЁМ!!! приём!!!\nриё|-1|приём!!!\nfalse true false\nприём!!! п\n-1 true true\n\n3 0 1.0 0.0 0 3 2.0\n0 ff 123456789012 2.5 true\ntrue true Ж true -1\n(1, 2) true false true\ntrue null"
+}

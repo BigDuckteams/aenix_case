@@ -1,0 +1,7 @@
+{
+  "name": "not-found",
+  "description": "Не число и отсутствующий ключ",
+  "stdin": "abc другой\n",
+  "args": [],
+  "expected_stdout": "false true\n-1\nне больше десяти\nнет\nпусто запасное\n0\nне найдено: другой\ntrue true"
+}

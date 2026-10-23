@@ -1,0 +1,7 @@
+{
+  "name": "one-cat",
+  "description": "Один кот",
+  "stdin": "cat Барсик\n",
+  "args": [],
+  "expected_stdout": "Барсик говорит мяу"
+}

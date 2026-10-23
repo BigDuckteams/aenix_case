@@ -1,0 +1,10 @@
+{
+  "description": "Comparator: comparing, thenComparing, reversed, лямбды, компаратор-класс",
+  "section": "3",
+  "kinds": [
+    "var_decl",
+    "operation",
+    "loop_foreach",
+    "return"
+  ]
+}

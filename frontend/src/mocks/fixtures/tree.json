@@ -1,0 +1,2543 @@
+{
+  "version_id": 3,
+  "roots": [
+    {
+      "id": "Main.java",
+      "kind": "file",
+      "name": "Main.java",
+      "node_id": null,
+      "method_id": null,
+      "member_kind": null,
+      "range": {
+        "file": "Main.java",
+        "start_line": 1,
+        "start_col": 1,
+        "end_line": 995,
+        "end_col": 2
+      },
+      "complexity": null,
+      "findings": {
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "children": [
+        {
+          "id": "Main.java#Main",
+          "kind": "type",
+          "name": "Main",
+          "node_id": "Main.java#Main",
+          "method_id": null,
+          "member_kind": null,
+          "range": {
+            "file": "Main.java",
+            "start_line": 21,
+            "start_col": 1,
+            "end_line": 838,
+            "end_col": 2
+          },
+          "complexity": null,
+          "findings": {
+            "high": 0,
+            "medium": 0,
+            "low": 0
+          },
+          "children": [
+            {
+              "id": "Main.java#Main.MAX_QUANTITY",
+              "kind": "member",
+              "name": "MAX_QUANTITY",
+              "node_id": "Main.java#Main.MAX_QUANTITY",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 23,
+                "start_col": 5,
+                "end_line": 23,
+                "end_col": 50
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.MAX_PRICE",
+              "kind": "member",
+              "name": "MAX_PRICE",
+              "node_id": "Main.java#Main.MAX_PRICE",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 24,
+                "start_col": 5,
+                "end_line": 24,
+                "end_col": 54
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.MAX_NAME_LENGTH",
+              "kind": "member",
+              "name": "MAX_NAME_LENGTH",
+              "node_id": "Main.java#Main.MAX_NAME_LENGTH",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 25,
+                "start_col": 5,
+                "end_line": 25,
+                "end_col": 51
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.VIP_CUSTOMER",
+              "kind": "member",
+              "name": "VIP_CUSTOMER",
+              "node_id": "Main.java#Main.VIP_CUSTOMER",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 26,
+                "start_col": 5,
+                "end_line": 26,
+                "end_col": 57
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.CANCELLED_LABEL",
+              "kind": "member",
+              "name": "CANCELLED_LABEL",
+              "node_id": "Main.java#Main.CANCELLED_LABEL",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 27,
+                "start_col": 5,
+                "end_line": 27,
+                "end_col": 61
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.orders",
+              "kind": "member",
+              "name": "orders",
+              "node_id": "Main.java#Main.orders",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 29,
+                "start_col": 5,
+                "end_line": 29,
+                "end_col": 58
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.history",
+              "kind": "member",
+              "name": "history",
+              "node_id": "Main.java#Main.history",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 30,
+                "start_col": 5,
+                "end_line": 30,
+                "end_col": 60
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.commandCount",
+              "kind": "member",
+              "name": "commandCount",
+              "node_id": "Main.java#Main.commandCount",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 31,
+                "start_col": 5,
+                "end_line": 31,
+                "end_col": 30
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.errorCount",
+              "kind": "member",
+              "name": "errorCount",
+              "node_id": "Main.java#Main.errorCount",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 32,
+                "start_col": 5,
+                "end_line": 32,
+                "end_col": 28
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.discountPercent",
+              "kind": "member",
+              "name": "discountPercent",
+              "node_id": "Main.java#Main.discountPercent",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 33,
+                "start_col": 5,
+                "end_line": 33,
+                "end_col": 36
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.main(String[])",
+              "kind": "member",
+              "name": "main(String[])",
+              "node_id": "Main.java#Main.main(String[])",
+              "method_id": "Main.java#Main.main(String[])",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 35,
+                "start_col": 5,
+                "end_line": 41,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.run(Scanner)",
+              "kind": "member",
+              "name": "run(Scanner)",
+              "node_id": "Main.java#Main.run(Scanner)",
+              "method_id": "Main.java#Main.run(Scanner)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 47,
+                "start_col": 5,
+                "end_line": 69,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.processCommand(String, Scanner)",
+              "kind": "member",
+              "name": "processCommand(String, Scanner)",
+              "node_id": "Main.java#Main.processCommand(String, Scanner)",
+              "method_id": "Main.java#Main.processCommand(String, Scanner)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 71,
+                "start_col": 5,
+                "end_line": 146,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.tokenize(String)",
+              "kind": "member",
+              "name": "tokenize(String)",
+              "node_id": "Main.java#Main.tokenize(String)",
+              "method_id": "Main.java#Main.tokenize(String)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 148,
+                "start_col": 5,
+                "end_line": 151,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.requireArg(String[], int, String)",
+              "kind": "member",
+              "name": "requireArg(String[], int, String)",
+              "node_id": "Main.java#Main.requireArg(String[], int, String)",
+              "method_id": "Main.java#Main.requireArg(String[], int, String)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 153,
+                "start_col": 5,
+                "end_line": 158,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.parseInt(String, String)",
+              "kind": "member",
+              "name": "parseInt(String, String)",
+              "node_id": "Main.java#Main.parseInt(String, String)",
+              "method_id": "Main.java#Main.parseInt(String, String)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 160,
+                "start_col": 5,
+                "end_line": 166,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.parseMoney(String, String)",
+              "kind": "member",
+              "name": "parseMoney(String, String)",
+              "node_id": "Main.java#Main.parseMoney(String, String)",
+              "method_id": "Main.java#Main.parseMoney(String, String)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 168,
+                "start_col": 5,
+                "end_line": 174,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.parseOrder(String[], int)",
+              "kind": "member",
+              "name": "parseOrder(String[], int)",
+              "node_id": "Main.java#Main.parseOrder(String[], int)",
+              "method_id": "Main.java#Main.parseOrder(String[], int)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 176,
+                "start_col": 5,
+                "end_line": 183,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.normalizeName(String)",
+              "kind": "member",
+              "name": "normalizeName(String)",
+              "node_id": "Main.java#Main.normalizeName(String)",
+              "method_id": "Main.java#Main.normalizeName(String)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 185,
+                "start_col": 5,
+                "end_line": 191,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.readBatch(Scanner, int)",
+              "kind": "member",
+              "name": "readBatch(Scanner, int)",
+              "node_id": "Main.java#Main.readBatch(Scanner, int)",
+              "method_id": "Main.java#Main.readBatch(Scanner, int)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 193,
+                "start_col": 5,
+                "end_line": 203,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 1,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.validate(Order)",
+              "kind": "member",
+              "name": "validate(Order)",
+              "node_id": "Main.java#Main.validate(Order)",
+              "method_id": "Main.java#Main.validate(Order)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 209,
+                "start_col": 5,
+                "end_line": 215,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.checkId(Order)",
+              "kind": "member",
+              "name": "checkId(Order)",
+              "node_id": "Main.java#Main.checkId(Order)",
+              "method_id": "Main.java#Main.checkId(Order)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 217,
+                "start_col": 5,
+                "end_line": 221,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.checkCustomer(Order)",
+              "kind": "member",
+              "name": "checkCustomer(Order)",
+              "node_id": "Main.java#Main.checkCustomer(Order)",
+              "method_id": "Main.java#Main.checkCustomer(Order)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 223,
+                "start_col": 5,
+                "end_line": 234,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.checkProduct(Order)",
+              "kind": "member",
+              "name": "checkProduct(Order)",
+              "node_id": "Main.java#Main.checkProduct(Order)",
+              "method_id": "Main.java#Main.checkProduct(Order)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 236,
+                "start_col": 5,
+                "end_line": 247,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.checkQuantity(Order)",
+              "kind": "member",
+              "name": "checkQuantity(Order)",
+              "node_id": "Main.java#Main.checkQuantity(Order)",
+              "method_id": "Main.java#Main.checkQuantity(Order)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 249,
+                "start_col": 5,
+                "end_line": 256,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.checkPrice(Order)",
+              "kind": "member",
+              "name": "checkPrice(Order)",
+              "node_id": "Main.java#Main.checkPrice(Order)",
+              "method_id": "Main.java#Main.checkPrice(Order)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 258,
+                "start_col": 5,
+                "end_line": 265,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.findOrderById(int)",
+              "kind": "member",
+              "name": "findOrderById(int)",
+              "node_id": "Main.java#Main.findOrderById(int)",
+              "method_id": "Main.java#Main.findOrderById(int)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 271,
+                "start_col": 5,
+                "end_line": 278,
+                "end_col": 6
+              },
+              "complexity": "O(n)",
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.addOrder(Order)",
+              "kind": "member",
+              "name": "addOrder(Order)",
+              "node_id": "Main.java#Main.addOrder(Order)",
+              "method_id": "Main.java#Main.addOrder(Order)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 280,
+                "start_col": 5,
+                "end_line": 288,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.processOrders(List<Order>)",
+              "kind": "member",
+              "name": "processOrders(List<Order>)",
+              "node_id": "Main.java#Main.processOrders(List<Order>)",
+              "method_id": "Main.java#Main.processOrders(List<Order>)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 290,
+                "start_col": 5,
+                "end_line": 307,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.changeStatus(int, OrderStatus)",
+              "kind": "member",
+              "name": "changeStatus(int, OrderStatus)",
+              "node_id": "Main.java#Main.changeStatus(int, OrderStatus)",
+              "method_id": "Main.java#Main.changeStatus(int, OrderStatus)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 309,
+                "start_col": 5,
+                "end_line": 321,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.removeOrder(int)",
+              "kind": "member",
+              "name": "removeOrder(int)",
+              "node_id": "Main.java#Main.removeOrder(int)",
+              "method_id": "Main.java#Main.removeOrder(int)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 323,
+                "start_col": 5,
+                "end_line": 332,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.purgeCancelled()",
+              "kind": "member",
+              "name": "purgeCancelled()",
+              "node_id": "Main.java#Main.purgeCancelled()",
+              "method_id": "Main.java#Main.purgeCancelled()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 334,
+                "start_col": 5,
+                "end_line": 338,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.findByCustomer(String)",
+              "kind": "member",
+              "name": "findByCustomer(String)",
+              "node_id": "Main.java#Main.findByCustomer(String)",
+              "method_id": "Main.java#Main.findByCustomer(String)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 340,
+                "start_col": 5,
+                "end_line": 349,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.showOrder(int)",
+              "kind": "member",
+              "name": "showOrder(int)",
+              "node_id": "Main.java#Main.showOrder(int)",
+              "method_id": "Main.java#Main.showOrder(int)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 351,
+                "start_col": 5,
+                "end_line": 358,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.totalAmount()",
+              "kind": "member",
+              "name": "totalAmount()",
+              "node_id": "Main.java#Main.totalAmount()",
+              "method_id": "Main.java#Main.totalAmount()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 364,
+                "start_col": 5,
+                "end_line": 372,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.averageAmount()",
+              "kind": "member",
+              "name": "averageAmount()",
+              "node_id": "Main.java#Main.averageAmount()",
+              "method_id": "Main.java#Main.averageAmount()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 374,
+                "start_col": 5,
+                "end_line": 387,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.medianAmount()",
+              "kind": "member",
+              "name": "medianAmount()",
+              "node_id": "Main.java#Main.medianAmount()",
+              "method_id": "Main.java#Main.medianAmount()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 389,
+                "start_col": 5,
+                "end_line": 405,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.percentile(double)",
+              "kind": "member",
+              "name": "percentile(double)",
+              "node_id": "Main.java#Main.percentile(double)",
+              "method_id": "Main.java#Main.percentile(double)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 407,
+                "start_col": 5,
+                "end_line": 421,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.maxOrder()",
+              "kind": "member",
+              "name": "maxOrder()",
+              "node_id": "Main.java#Main.maxOrder()",
+              "method_id": "Main.java#Main.maxOrder()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 423,
+                "start_col": 5,
+                "end_line": 431,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.minOrder()",
+              "kind": "member",
+              "name": "minOrder()",
+              "node_id": "Main.java#Main.minOrder()",
+              "method_id": "Main.java#Main.minOrder()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 433,
+                "start_col": 5,
+                "end_line": 441,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.statusHistogram()",
+              "kind": "member",
+              "name": "statusHistogram()",
+              "node_id": "Main.java#Main.statusHistogram()",
+              "method_id": "Main.java#Main.statusHistogram()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 443,
+                "start_col": 5,
+                "end_line": 452,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.totalForCustomer(String)",
+              "kind": "member",
+              "name": "totalForCustomer(String)",
+              "node_id": "Main.java#Main.totalForCustomer(String)",
+              "method_id": "Main.java#Main.totalForCustomer(String)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 454,
+                "start_col": 5,
+                "end_line": 462,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.totalForProduct(String)",
+              "kind": "member",
+              "name": "totalForProduct(String)",
+              "node_id": "Main.java#Main.totalForProduct(String)",
+              "method_id": "Main.java#Main.totalForProduct(String)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 464,
+                "start_col": 5,
+                "end_line": 472,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.topCustomers(int)",
+              "kind": "member",
+              "name": "topCustomers(int)",
+              "node_id": "Main.java#Main.topCustomers(int)",
+              "method_id": "Main.java#Main.topCustomers(int)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 474,
+                "start_col": 5,
+                "end_line": 491,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.topN(List<T>, Comparator<? super T>, int)",
+              "kind": "member",
+              "name": "topN(List<T>, Comparator<? super T>, int)",
+              "node_id": "Main.java#Main.topN(List<T>, Comparator<? super T>, int)",
+              "method_id": "Main.java#Main.topN(List<T>, Comparator<? super T>, int)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 493,
+                "start_col": 5,
+                "end_line": 497,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.distinctCustomers()",
+              "kind": "member",
+              "name": "distinctCustomers()",
+              "node_id": "Main.java#Main.distinctCustomers()",
+              "method_id": "Main.java#Main.distinctCustomers()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 499,
+                "start_col": 5,
+                "end_line": 507,
+                "end_col": 6
+              },
+              "complexity": "O(n·m)",
+              "findings": {
+                "high": 1,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.findAnomalies()",
+              "kind": "member",
+              "name": "findAnomalies()",
+              "node_id": "Main.java#Main.findAnomalies()",
+              "method_id": "Main.java#Main.findAnomalies()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 509,
+                "start_col": 5,
+                "end_line": 518,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.countByStatusLabel()",
+              "kind": "member",
+              "name": "countByStatusLabel()",
+              "node_id": "Main.java#Main.countByStatusLabel()",
+              "method_id": "Main.java#Main.countByStatusLabel()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 520,
+                "start_col": 5,
+                "end_line": 524,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.streamTotalForCustomer(String)",
+              "kind": "member",
+              "name": "streamTotalForCustomer(String)",
+              "node_id": "Main.java#Main.streamTotalForCustomer(String)",
+              "method_id": "Main.java#Main.streamTotalForCustomer(String)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 526,
+                "start_col": 5,
+                "end_line": 532,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.expensiveProducts(double)",
+              "kind": "member",
+              "name": "expensiveProducts(double)",
+              "node_id": "Main.java#Main.expensiveProducts(double)",
+              "method_id": "Main.java#Main.expensiveProducts(double)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 534,
+                "start_col": 5,
+                "end_line": 541,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.countLargeOrders(int)",
+              "kind": "member",
+              "name": "countLargeOrders(int)",
+              "node_id": "Main.java#Main.countLargeOrders(int)",
+              "method_id": "Main.java#Main.countLargeOrders(int)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 543,
+                "start_col": 5,
+                "end_line": 551,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.mergeDuplicates()",
+              "kind": "member",
+              "name": "mergeDuplicates()",
+              "node_id": "Main.java#Main.mergeDuplicates()",
+              "method_id": "Main.java#Main.mergeDuplicates()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 557,
+                "start_col": 5,
+                "end_line": 578,
+                "end_col": 6
+              },
+              "complexity": "O(n·m)",
+              "findings": {
+                "high": 1,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.buildCsv()",
+              "kind": "member",
+              "name": "buildCsv()",
+              "node_id": "Main.java#Main.buildCsv()",
+              "method_id": "Main.java#Main.buildCsv()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 580,
+                "start_col": 5,
+                "end_line": 588,
+                "end_col": 6
+              },
+              "complexity": "O(n²)",
+              "findings": {
+                "high": 1,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.applyDiscount(double)",
+              "kind": "member",
+              "name": "applyDiscount(double)",
+              "node_id": "Main.java#Main.applyDiscount(double)",
+              "method_id": "Main.java#Main.applyDiscount(double)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 590,
+                "start_col": 5,
+                "end_line": 604,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.discountFor(Order)",
+              "kind": "member",
+              "name": "discountFor(Order)",
+              "node_id": "Main.java#Main.discountFor(Order)",
+              "method_id": "Main.java#Main.discountFor(Order)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 606,
+                "start_col": 5,
+                "end_line": 619,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 1,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.roundMoney(double)",
+              "kind": "member",
+              "name": "roundMoney(double)",
+              "node_id": "Main.java#Main.roundMoney(double)",
+              "method_id": "Main.java#Main.roundMoney(double)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 621,
+                "start_col": 5,
+                "end_line": 623,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.printHeader()",
+              "kind": "member",
+              "name": "printHeader()",
+              "node_id": "Main.java#Main.printHeader()",
+              "method_id": "Main.java#Main.printHeader()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 629,
+                "start_col": 5,
+                "end_line": 633,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.printFooter()",
+              "kind": "member",
+              "name": "printFooter()",
+              "node_id": "Main.java#Main.printFooter()",
+              "method_id": "Main.java#Main.printFooter()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 635,
+                "start_col": 5,
+                "end_line": 638,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.repeat(char, int)",
+              "kind": "member",
+              "name": "repeat(char, int)",
+              "node_id": "Main.java#Main.repeat(char, int)",
+              "method_id": "Main.java#Main.repeat(char, int)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 640,
+                "start_col": 5,
+                "end_line": 646,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.formatAmount(double)",
+              "kind": "member",
+              "name": "formatAmount(double)",
+              "node_id": "Main.java#Main.formatAmount(double)",
+              "method_id": "Main.java#Main.formatAmount(double)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 648,
+                "start_col": 5,
+                "end_line": 650,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.padRight(String, int)",
+              "kind": "member",
+              "name": "padRight(String, int)",
+              "node_id": "Main.java#Main.padRight(String, int)",
+              "method_id": "Main.java#Main.padRight(String, int)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 652,
+                "start_col": 5,
+                "end_line": 657,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.printOrders(List<Order>)",
+              "kind": "member",
+              "name": "printOrders(List<Order>)",
+              "node_id": "Main.java#Main.printOrders(List<Order>)",
+              "method_id": "Main.java#Main.printOrders(List<Order>)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 659,
+                "start_col": 5,
+                "end_line": 676,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.printStats()",
+              "kind": "member",
+              "name": "printStats()",
+              "node_id": "Main.java#Main.printStats()",
+              "method_id": "Main.java#Main.printStats()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 678,
+                "start_col": 5,
+                "end_line": 693,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.printStatusBars()",
+              "kind": "member",
+              "name": "printStatusBars()",
+              "node_id": "Main.java#Main.printStatusBars()",
+              "method_id": "Main.java#Main.printStatusBars()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 695,
+                "start_col": 5,
+                "end_line": 708,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.bar(int, int)",
+              "kind": "member",
+              "name": "bar(int, int)",
+              "node_id": "Main.java#Main.bar(int, int)",
+              "method_id": "Main.java#Main.bar(int, int)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 710,
+                "start_col": 5,
+                "end_line": 713,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.printTopCustomers(int)",
+              "kind": "member",
+              "name": "printTopCustomers(int)",
+              "node_id": "Main.java#Main.printTopCustomers(int)",
+              "method_id": "Main.java#Main.printTopCustomers(int)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 715,
+                "start_col": 5,
+                "end_line": 727,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.printCustomers()",
+              "kind": "member",
+              "name": "printCustomers()",
+              "node_id": "Main.java#Main.printCustomers()",
+              "method_id": "Main.java#Main.printCustomers()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 729,
+                "start_col": 5,
+                "end_line": 744,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.printCsvSummary()",
+              "kind": "member",
+              "name": "printCsvSummary()",
+              "node_id": "Main.java#Main.printCsvSummary()",
+              "method_id": "Main.java#Main.printCsvSummary()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 746,
+                "start_col": 5,
+                "end_line": 753,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.printHistory()",
+              "kind": "member",
+              "name": "printHistory()",
+              "node_id": "Main.java#Main.printHistory()",
+              "method_id": "Main.java#Main.printHistory()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 755,
+                "start_col": 5,
+                "end_line": 763,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.printByCustomer(String)",
+              "kind": "member",
+              "name": "printByCustomer(String)",
+              "node_id": "Main.java#Main.printByCustomer(String)",
+              "method_id": "Main.java#Main.printByCustomer(String)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 765,
+                "start_col": 5,
+                "end_line": 777,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.printByProduct(String)",
+              "kind": "member",
+              "name": "printByProduct(String)",
+              "node_id": "Main.java#Main.printByProduct(String)",
+              "method_id": "Main.java#Main.printByProduct(String)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 779,
+                "start_col": 5,
+                "end_line": 791,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Main.printReport()",
+              "kind": "member",
+              "name": "printReport()",
+              "node_id": "Main.java#Main.printReport()",
+              "method_id": "Main.java#Main.printReport()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 793,
+                "start_col": 5,
+                "end_line": 837,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 1,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "Main.java#Describable",
+          "kind": "type",
+          "name": "Describable",
+          "node_id": "Main.java#Describable",
+          "method_id": null,
+          "member_kind": null,
+          "range": {
+            "file": "Main.java",
+            "start_line": 840,
+            "start_col": 1,
+            "end_line": 846,
+            "end_col": 2
+          },
+          "complexity": null,
+          "findings": {
+            "high": 0,
+            "medium": 0,
+            "low": 0
+          },
+          "children": [
+            {
+              "id": "Main.java#Describable.describe()",
+              "kind": "member",
+              "name": "describe()",
+              "node_id": "Main.java#Describable.describe()",
+              "method_id": "Main.java#Describable.describe()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 841,
+                "start_col": 5,
+                "end_line": 841,
+                "end_col": 23
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Describable.shortInfo()",
+              "kind": "member",
+              "name": "shortInfo()",
+              "node_id": "Main.java#Describable.shortInfo()",
+              "method_id": "Main.java#Describable.shortInfo()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 843,
+                "start_col": 5,
+                "end_line": 845,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "Main.java#OrderStatus",
+          "kind": "type",
+          "name": "OrderStatus",
+          "node_id": "Main.java#OrderStatus",
+          "method_id": null,
+          "member_kind": null,
+          "range": {
+            "file": "Main.java",
+            "start_line": 848,
+            "start_col": 1,
+            "end_line": 871,
+            "end_col": 2
+          },
+          "complexity": null,
+          "findings": {
+            "high": 0,
+            "medium": 0,
+            "low": 0
+          },
+          "children": [
+            {
+              "id": "Main.java#OrderStatus.label",
+              "kind": "member",
+              "name": "label",
+              "node_id": "Main.java#OrderStatus.label",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 854,
+                "start_col": 5,
+                "end_line": 854,
+                "end_col": 32
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#OrderStatus.OrderStatus(String)",
+              "kind": "member",
+              "name": "OrderStatus(String)",
+              "node_id": "Main.java#OrderStatus.OrderStatus(String)",
+              "method_id": "Main.java#OrderStatus.OrderStatus(String)",
+              "member_kind": "constructor",
+              "range": {
+                "file": "Main.java",
+                "start_line": 856,
+                "start_col": 5,
+                "end_line": 858,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#OrderStatus.getLabel()",
+              "kind": "member",
+              "name": "getLabel()",
+              "node_id": "Main.java#OrderStatus.getLabel()",
+              "method_id": "Main.java#OrderStatus.getLabel()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 860,
+                "start_col": 5,
+                "end_line": 862,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#OrderStatus.canMoveTo(OrderStatus)",
+              "kind": "member",
+              "name": "canMoveTo(OrderStatus)",
+              "node_id": "Main.java#OrderStatus.canMoveTo(OrderStatus)",
+              "method_id": "Main.java#OrderStatus.canMoveTo(OrderStatus)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 864,
+                "start_col": 5,
+                "end_line": 870,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "Main.java#Order",
+          "kind": "type",
+          "name": "Order",
+          "node_id": "Main.java#Order",
+          "method_id": null,
+          "member_kind": null,
+          "range": {
+            "file": "Main.java",
+            "start_line": 873,
+            "start_col": 1,
+            "end_line": 967,
+            "end_col": 2
+          },
+          "complexity": null,
+          "findings": {
+            "high": 0,
+            "medium": 0,
+            "low": 0
+          },
+          "children": [
+            {
+              "id": "Main.java#Order.id",
+              "kind": "member",
+              "name": "id",
+              "node_id": "Main.java#Order.id",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 874,
+                "start_col": 5,
+                "end_line": 874,
+                "end_col": 26
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.customer",
+              "kind": "member",
+              "name": "customer",
+              "node_id": "Main.java#Order.customer",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 875,
+                "start_col": 5,
+                "end_line": 875,
+                "end_col": 35
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.product",
+              "kind": "member",
+              "name": "product",
+              "node_id": "Main.java#Order.product",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 876,
+                "start_col": 5,
+                "end_line": 876,
+                "end_col": 34
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.quantity",
+              "kind": "member",
+              "name": "quantity",
+              "node_id": "Main.java#Order.quantity",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 877,
+                "start_col": 5,
+                "end_line": 877,
+                "end_col": 26
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.unitPrice",
+              "kind": "member",
+              "name": "unitPrice",
+              "node_id": "Main.java#Order.unitPrice",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 878,
+                "start_col": 5,
+                "end_line": 878,
+                "end_col": 30
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.basePrice",
+              "kind": "member",
+              "name": "basePrice",
+              "node_id": "Main.java#Order.basePrice",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 879,
+                "start_col": 5,
+                "end_line": 879,
+                "end_col": 36
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.status",
+              "kind": "member",
+              "name": "status",
+              "node_id": "Main.java#Order.status",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 880,
+                "start_col": 5,
+                "end_line": 880,
+                "end_col": 50
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.Order(int, String, String, int, double)",
+              "kind": "member",
+              "name": "Order(int, String, String, int, double)",
+              "node_id": "Main.java#Order.Order(int, String, String, int, double)",
+              "method_id": "Main.java#Order.Order(int, String, String, int, double)",
+              "member_kind": "constructor",
+              "range": {
+                "file": "Main.java",
+                "start_line": 882,
+                "start_col": 5,
+                "end_line": 889,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.getId()",
+              "kind": "member",
+              "name": "getId()",
+              "node_id": "Main.java#Order.getId()",
+              "method_id": "Main.java#Order.getId()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 891,
+                "start_col": 5,
+                "end_line": 893,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.getCustomer()",
+              "kind": "member",
+              "name": "getCustomer()",
+              "node_id": "Main.java#Order.getCustomer()",
+              "method_id": "Main.java#Order.getCustomer()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 895,
+                "start_col": 5,
+                "end_line": 897,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.getProduct()",
+              "kind": "member",
+              "name": "getProduct()",
+              "node_id": "Main.java#Order.getProduct()",
+              "method_id": "Main.java#Order.getProduct()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 899,
+                "start_col": 5,
+                "end_line": 901,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.getQuantity()",
+              "kind": "member",
+              "name": "getQuantity()",
+              "node_id": "Main.java#Order.getQuantity()",
+              "method_id": "Main.java#Order.getQuantity()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 903,
+                "start_col": 5,
+                "end_line": 905,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.getUnitPrice()",
+              "kind": "member",
+              "name": "getUnitPrice()",
+              "node_id": "Main.java#Order.getUnitPrice()",
+              "method_id": "Main.java#Order.getUnitPrice()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 907,
+                "start_col": 5,
+                "end_line": 909,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.getBasePrice()",
+              "kind": "member",
+              "name": "getBasePrice()",
+              "node_id": "Main.java#Order.getBasePrice()",
+              "method_id": "Main.java#Order.getBasePrice()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 911,
+                "start_col": 5,
+                "end_line": 913,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.getStatus()",
+              "kind": "member",
+              "name": "getStatus()",
+              "node_id": "Main.java#Order.getStatus()",
+              "method_id": "Main.java#Order.getStatus()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 915,
+                "start_col": 5,
+                "end_line": 917,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.setStatus(OrderStatus)",
+              "kind": "member",
+              "name": "setStatus(OrderStatus)",
+              "node_id": "Main.java#Order.setStatus(OrderStatus)",
+              "method_id": "Main.java#Order.setStatus(OrderStatus)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 919,
+                "start_col": 5,
+                "end_line": 921,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.setUnitPrice(double)",
+              "kind": "member",
+              "name": "setUnitPrice(double)",
+              "node_id": "Main.java#Order.setUnitPrice(double)",
+              "method_id": "Main.java#Order.setUnitPrice(double)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 923,
+                "start_col": 5,
+                "end_line": 925,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.addQuantity(int)",
+              "kind": "member",
+              "name": "addQuantity(int)",
+              "node_id": "Main.java#Order.addQuantity(int)",
+              "method_id": "Main.java#Order.addQuantity(int)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 927,
+                "start_col": 5,
+                "end_line": 929,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.getTotal()",
+              "kind": "member",
+              "name": "getTotal()",
+              "node_id": "Main.java#Order.getTotal()",
+              "method_id": "Main.java#Order.getTotal()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 931,
+                "start_col": 5,
+                "end_line": 933,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.copy()",
+              "kind": "member",
+              "name": "copy()",
+              "node_id": "Main.java#Order.copy()",
+              "method_id": "Main.java#Order.copy()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 935,
+                "start_col": 5,
+                "end_line": 939,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.describe()",
+              "kind": "member",
+              "name": "describe()",
+              "node_id": "Main.java#Order.describe()",
+              "method_id": "Main.java#Order.describe()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 941,
+                "start_col": 5,
+                "end_line": 945,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.equals(Object)",
+              "kind": "member",
+              "name": "equals(Object)",
+              "node_id": "Main.java#Order.equals(Object)",
+              "method_id": "Main.java#Order.equals(Object)",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 947,
+                "start_col": 5,
+                "end_line": 956,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.hashCode()",
+              "kind": "member",
+              "name": "hashCode()",
+              "node_id": "Main.java#Order.hashCode()",
+              "method_id": "Main.java#Order.hashCode()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 958,
+                "start_col": 5,
+                "end_line": 961,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#Order.toString()",
+              "kind": "member",
+              "name": "toString()",
+              "node_id": "Main.java#Order.toString()",
+              "method_id": "Main.java#Order.toString()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 963,
+                "start_col": 5,
+                "end_line": 966,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "Main.java#CustomerTotal",
+          "kind": "type",
+          "name": "CustomerTotal",
+          "node_id": "Main.java#CustomerTotal",
+          "method_id": null,
+          "member_kind": null,
+          "range": {
+            "file": "Main.java",
+            "start_line": 969,
+            "start_col": 1,
+            "end_line": 979,
+            "end_col": 2
+          },
+          "complexity": null,
+          "findings": {
+            "high": 0,
+            "medium": 0,
+            "low": 0
+          },
+          "children": [
+            {
+              "id": "Main.java#CustomerTotal.average()",
+              "kind": "member",
+              "name": "average()",
+              "node_id": "Main.java#CustomerTotal.average()",
+              "method_id": "Main.java#CustomerTotal.average()",
+              "member_kind": "method",
+              "range": {
+                "file": "Main.java",
+                "start_line": 976,
+                "start_col": 5,
+                "end_line": 978,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "Main.java#OrderParseException",
+          "kind": "type",
+          "name": "OrderParseException",
+          "node_id": "Main.java#OrderParseException",
+          "method_id": null,
+          "member_kind": null,
+          "range": {
+            "file": "Main.java",
+            "start_line": 981,
+            "start_col": 1,
+            "end_line": 987,
+            "end_col": 2
+          },
+          "complexity": null,
+          "findings": {
+            "high": 0,
+            "medium": 0,
+            "low": 0
+          },
+          "children": [
+            {
+              "id": "Main.java#OrderParseException.serialVersionUID",
+              "kind": "member",
+              "name": "serialVersionUID",
+              "node_id": "Main.java#OrderParseException.serialVersionUID",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 982,
+                "start_col": 5,
+                "end_line": 982,
+                "end_col": 53
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#OrderParseException.OrderParseException(String)",
+              "kind": "member",
+              "name": "OrderParseException(String)",
+              "node_id": "Main.java#OrderParseException.OrderParseException(String)",
+              "method_id": "Main.java#OrderParseException.OrderParseException(String)",
+              "member_kind": "constructor",
+              "range": {
+                "file": "Main.java",
+                "start_line": 984,
+                "start_col": 5,
+                "end_line": 986,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "Main.java#OrderValidationException",
+          "kind": "type",
+          "name": "OrderValidationException",
+          "node_id": "Main.java#OrderValidationException",
+          "method_id": null,
+          "member_kind": null,
+          "range": {
+            "file": "Main.java",
+            "start_line": 989,
+            "start_col": 1,
+            "end_line": 995,
+            "end_col": 2
+          },
+          "complexity": null,
+          "findings": {
+            "high": 0,
+            "medium": 0,
+            "low": 0
+          },
+          "children": [
+            {
+              "id": "Main.java#OrderValidationException.serialVersionUID",
+              "kind": "member",
+              "name": "serialVersionUID",
+              "node_id": "Main.java#OrderValidationException.serialVersionUID",
+              "method_id": null,
+              "member_kind": "field",
+              "range": {
+                "file": "Main.java",
+                "start_line": 990,
+                "start_col": 5,
+                "end_line": 990,
+                "end_col": 53
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            },
+            {
+              "id": "Main.java#OrderValidationException.OrderValidationException(String)",
+              "kind": "member",
+              "name": "OrderValidationException(String)",
+              "node_id": "Main.java#OrderValidationException.OrderValidationException(String)",
+              "method_id": "Main.java#OrderValidationException.OrderValidationException(String)",
+              "member_kind": "constructor",
+              "range": {
+                "file": "Main.java",
+                "start_line": 992,
+                "start_col": 5,
+                "end_line": 994,
+                "end_col": 6
+              },
+              "complexity": null,
+              "findings": {
+                "high": 0,
+                "medium": 0,
+                "low": 0
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

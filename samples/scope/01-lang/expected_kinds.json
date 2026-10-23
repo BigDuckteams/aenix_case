@@ -1,0 +1,10 @@
+{
+  "description": "java.lang: Object, String, StringBuilder, Math, System, Integer/Long/Double/Character/Boolean",
+  "section": "1",
+  "kinds": [
+    "var_decl",
+    "operation",
+    "condition",
+    "loop_for"
+  ]
+}

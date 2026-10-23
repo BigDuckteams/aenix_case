@@ -1,0 +1,7 @@
+{
+  "name": "no-ops",
+  "description": "Без операций",
+  "stdin": "10\n",
+  "args": [],
+  "expected_stdout": ""
+}

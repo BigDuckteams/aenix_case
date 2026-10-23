@@ -1,0 +1,7 @@
+{
+  "name": "many",
+  "description": "Несколько фигур",
+  "stdin": "circle 1\ncircle 0.5\nsquare 10\nsquare 0\n",
+  "args": [],
+  "expected_stdout": "Квадрат площадью 1.00\nКруг площадью 3.14\nКруг площадью 0.79\nКвадрат площадью 100.00\nКвадрат площадью 0.00"
+}

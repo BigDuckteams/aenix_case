@@ -1,0 +1,12 @@
+{
+  "description": "Пользовательские классы: поля, конструктор, методы, несколько типов в файле",
+  "section": "1",
+  "kinds": [
+    "method",
+    "var_decl",
+    "assign",
+    "operation",
+    "return",
+    "loop_while"
+  ]
+}

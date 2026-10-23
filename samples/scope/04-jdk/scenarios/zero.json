@@ -1,0 +1,7 @@
+{
+  "name": "zero",
+  "description": "Число 0 и конец ввода",
+  "stdin": "0\n",
+  "args": [],
+  "expected_stdout": "0\nшаг 1: ArithmeticException / by zero\n1\n0\nшаг 4: IndexOutOfBoundsException\nшаг 5: IllegalArgumentException слишком короткое слово: 0\nшаг 6: NoSuchElementException\nввод закончился"
+}

@@ -1,0 +1,12 @@
+{
+  "description": "Вложенные, внутренние, локальные и анонимные классы",
+  "section": "1",
+  "kinds": [
+    "method",
+    "local_type",
+    "var_decl",
+    "return",
+    "operation",
+    "loop_for"
+  ]
+}

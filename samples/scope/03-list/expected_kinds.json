@@ -1,0 +1,11 @@
+{
+  "description": "List: ArrayList и LinkedList, add/get/set/remove/contains/indexOf/subList/sort",
+  "section": "3",
+  "kinds": [
+    "var_decl",
+    "operation",
+    "loop_for",
+    "loop_foreach",
+    "condition"
+  ]
+}

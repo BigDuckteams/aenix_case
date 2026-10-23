@@ -1,7 +1,10 @@
+import Link from "next/link";
+
 import { HealthCard } from "@/components/health-card";
+import { Button } from "@/components/ui/button";
 import { ru } from "@/lib/i18n/ru";
 
-// Временная главная страница этапа S0: проверка связки frontend ↔ backend.
+// Временная главная страница: проверка связки frontend ↔ backend и вход в предпросмотр контракта (S1).
 // Список проектов и импорт появятся на этапе S4 (задача S4.2).
 export default function Home() {
   return (
@@ -11,6 +14,9 @@ export default function Home() {
         <p className="text-muted-foreground">{ru.app.subtitle}</p>
       </div>
       <HealthCard />
+      <Button asChild variant="outline">
+        <Link href="/preview">{ru.preview.open}</Link>
+      </Button>
     </main>
   );
 }

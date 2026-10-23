@@ -1,0 +1,11 @@
+{
+  "description": "throws в сигнатурах, цепочка вызовов, обработка на верхнем уровне",
+  "section": "4",
+  "kinds": [
+    "try",
+    "throw",
+    "method",
+    "return",
+    "operation"
+  ]
+}

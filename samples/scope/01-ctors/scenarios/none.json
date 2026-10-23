@@ -1,0 +1,7 @@
+{
+  "name": "none",
+  "description": "Ничего не создаётся",
+  "stdin": "0\n",
+  "args": [],
+  "expected_stdout": "всего создано: 0"
+}

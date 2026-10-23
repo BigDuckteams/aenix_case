@@ -1,0 +1,13 @@
+{
+  "description": "enum: поля, конструкторы, методы, тела констант, values/valueOf, switch, EnumMap",
+  "section": "bonus",
+  "kinds": [
+    "method",
+    "switch",
+    "var_decl",
+    "operation",
+    "return",
+    "loop_foreach",
+    "try"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "zero",
+  "description": "n = 0",
+  "stdin": "0\n",
+  "args": [],
+  "expected_stdout": "сумма 1..0 = 0\nмаксимум = 9\nцифр: 0\nделений пополам: 1"
+}

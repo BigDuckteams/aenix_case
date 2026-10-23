@@ -1,0 +1,12 @@
+{
+  "description": "Дженерики: классы, методы, интерфейсы, ограничения, wildcard, diamond",
+  "section": "bonus",
+  "kinds": [
+    "method",
+    "var_decl",
+    "operation",
+    "return",
+    "loop_foreach",
+    "condition"
+  ]
+}

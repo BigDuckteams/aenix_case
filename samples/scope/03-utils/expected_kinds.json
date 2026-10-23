@@ -1,0 +1,10 @@
+{
+  "description": "Collections и Arrays: sort, max, reverse, unmodifiableList, fill, asList, copyOf, equals",
+  "section": "3",
+  "kinds": [
+    "var_decl",
+    "operation",
+    "try",
+    "loop_foreach"
+  ]
+}

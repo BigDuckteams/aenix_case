@@ -1,0 +1,7 @@
+{
+  "name": "high",
+  "description": "Высокий уровень",
+  "stdin": "0 0 HIGH\n",
+  "args": [],
+  "expected_stdout": "0 + 0 = 0 (ADD, 0)\n0 * 0 = 0 (MULTIPLY, 1)\n0 - 0 = 0 (SUBTRACT, 2)\nMERCURY: 3.70\nEARTH: 9.80\nJUPITER: 24.81\nHIGH -> высокий 1\n{LOW=3, MEDIUM=6, HIGH=4}\nh"
+}

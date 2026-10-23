@@ -1,0 +1,7 @@
+{
+  "name": "two",
+  "description": "Два объекта",
+  "stdin": "2\nальфа\nбета\n",
+  "args": [],
+  "expected_stdout": "item-1 [альфа] count=10 ratio=0.0 active=true slots=1\nitem-2 [бета] count=0 ratio=0.0 active=false slots=нет\nсоздано: 2 из 3"
+}

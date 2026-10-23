@@ -1,0 +1,13 @@
+{
+  "description": "Циклы: for, for each, while, do-while, метки",
+  "section": "1",
+  "kinds": [
+    "loop_for",
+    "loop_foreach",
+    "loop_while",
+    "labeled",
+    "var_decl",
+    "assign",
+    "operation"
+  ]
+}

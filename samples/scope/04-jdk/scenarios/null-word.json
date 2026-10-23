@@ -1,0 +1,7 @@
+{
+  "name": "null-word",
+  "description": "Слово null",
+  "stdin": "null 1\n",
+  "args": [],
+  "expected_stdout": "шаг 0: NumberFormatException For input string: \"null\"\nшаг 1: NumberFormatException For input string: \"null\"\nшаг 2: NullPointerException\nшаг 3: NumberFormatException For input string: \"null\"\nшаг 4: IndexOutOfBoundsException\nслово принято\nшаг 6: NoSuchElementException\n1"
+}

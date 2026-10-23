@@ -1,0 +1,7 @@
+{
+  "name": "other",
+  "description": "Другой адрес",
+  "stdin": "Вася https://host.example/x/y?z=3\n",
+  "args": [],
+  "expected_stdout": "привет, Вася\n[hello, main]\nhttps host.example /x/y\n[z=3]"
+}

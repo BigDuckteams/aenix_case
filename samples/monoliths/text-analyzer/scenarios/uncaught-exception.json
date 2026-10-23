@@ -1,0 +1,8 @@
+{
+  "name": "uncaught-exception",
+  "description": "Необработанное исключение: команда boom, код выхода 1",
+  "stdin": "add Привет, мир!\nwords\nboom\nadd Эта строка не обработается\n",
+  "args": [],
+  "expected_exit_code": 1,
+  "expected_stdout": "=== Анализатор текста ===\nКоманды: add, load, lines, words, freq, find, stats, report, quit\n----------------------------------------\nСлов: 2, уникальных: 2\nСамое длинное: привет\nСредняя длина: 4.50\nМаксимум по алфавиту: привет"
+}

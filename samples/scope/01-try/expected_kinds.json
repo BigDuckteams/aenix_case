@@ -1,0 +1,12 @@
+{
+  "description": "try/catch/finally, multi-catch, throw, try-with-resources",
+  "section": "1",
+  "kinds": [
+    "try",
+    "throw",
+    "operation",
+    "var_decl",
+    "return",
+    "condition"
+  ]
+}

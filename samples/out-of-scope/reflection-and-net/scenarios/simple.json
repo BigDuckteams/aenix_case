@@ -1,0 +1,7 @@
+{
+  "name": "simple",
+  "description": "Простой адрес",
+  "stdin": "мир http://example.com/path?a=1&b=2\n",
+  "args": [],
+  "expected_stdout": "привет, мир\n[hello, main]\nhttp example.com /path\n[a=1, b=2]"
+}

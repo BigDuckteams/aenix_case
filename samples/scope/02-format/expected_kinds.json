@@ -1,0 +1,8 @@
+{
+  "description": "Форматирование: String.format, printf, Formatter, спецификаторы",
+  "section": "2",
+  "kinds": [
+    "var_decl",
+    "operation"
+  ]
+}

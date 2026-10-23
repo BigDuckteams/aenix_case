@@ -1,0 +1,7 @@
+{
+  "name": "empty",
+  "description": "Нет чисел",
+  "stdin": "0\n1\n",
+  "args": [],
+  "expected_stdout": "81 17 25 7\nПРИВЕТ!\n[] [] []\n\n[]\n0 [пусто] 5"
+}

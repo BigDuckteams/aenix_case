@@ -1,0 +1,11 @@
+{
+  "description": "Лямбды, java.util.function, ссылки на методы, замыкания",
+  "section": "bonus",
+  "kinds": [
+    "var_decl",
+    "operation",
+    "lambda",
+    "return",
+    "loop_foreach"
+  ]
+}

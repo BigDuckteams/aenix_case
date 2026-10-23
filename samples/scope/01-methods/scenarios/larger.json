@@ -1,0 +1,7 @@
+{
+  "name": "larger",
+  "description": "n = 12",
+  "stdin": "12\n",
+  "args": [],
+  "expected_stdout": "14 14.75 0 18\n12! = 479001600\nfib(12) = 144\ngcd = 24, 2^n = 4096\nnext = 2"
+}

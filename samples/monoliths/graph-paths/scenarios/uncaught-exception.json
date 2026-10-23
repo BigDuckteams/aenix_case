@@ -1,0 +1,8 @@
+{
+  "name": "uncaught-exception",
+  "description": "Необработанное исключение: команда boom, код выхода 1",
+  "stdin": "edge Москва Тверь 170\nlist\nboom\nedge Тверь Тула 90\n",
+  "args": [],
+  "expected_exit_code": 1,
+  "expected_stdout": "=== Сеть дорог ===\nКоманды: node, edge, oneway, batch, path, bfs, dfs, components, matrix, report, quit\n----------------------------------------\nДобавлен узел Москва\nДобавлен узел Тверь\nДобавлено ребро Москва -- Тверь (170)\n  0  Москва          степень 1, Обычный\n  1  Тверь           степень 1, Обычный"
+}

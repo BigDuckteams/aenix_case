@@ -1,0 +1,10 @@
+{
+  "description": "Типовые исключения JDK: NumberFormat, InputMismatch, NoSuchElement, IllegalArgument, Arithmetic, NullPointer, IndexOutOfBounds",
+  "section": "4",
+  "kinds": [
+    "try",
+    "var_decl",
+    "operation",
+    "loop_for"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "description": "Кодировки: StandardCharsets.UTF_8, PrintStream с UTF-8, байты и строки",
+  "section": "2",
+  "kinds": [
+    "var_decl",
+    "operation",
+    "loop_for"
+  ]
+}

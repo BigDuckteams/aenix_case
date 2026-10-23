@@ -1,0 +1,7 @@
+{
+  "name": "small",
+  "description": "n = 5",
+  "stdin": "5\n",
+  "args": [],
+  "expected_stdout": "7 7.75 0 11\n5! = 120\nfib(5) = 5\ngcd = 6, 2^n = 32\nnext = 2"
+}

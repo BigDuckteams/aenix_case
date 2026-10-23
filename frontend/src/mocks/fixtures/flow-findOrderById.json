@@ -1,0 +1,163 @@
+{
+  "method_id": "Main.java#Main.findOrderById(int)",
+  "signature": "findOrderById(int)",
+  "file": "Main.java",
+  "nodes": [
+    {
+      "id": "Main.java#Main.findOrderById(int)",
+      "kind": "method",
+      "label": "Метод",
+      "code": "private Order findOrderById(int id)",
+      "range": {
+        "file": "Main.java",
+        "start_line": 271,
+        "start_col": 5,
+        "end_line": 278,
+        "end_col": 6
+      },
+      "parent_id": null,
+      "data": {
+        "name": "findOrderById",
+        "return_type": "Order",
+        "modifiers": [
+          "private"
+        ],
+        "params": [
+          {
+            "type": "int",
+            "name": "id"
+          }
+        ]
+      },
+      "badges": [],
+      "complexity": "O(n)",
+      "errors": []
+    },
+    {
+      "id": "Main.java#Main.findOrderById(int)/foreach[0]",
+      "kind": "loop_foreach",
+      "label": "Цикл (for each)",
+      "code": "for (Order order : orders)",
+      "range": {
+        "file": "Main.java",
+        "start_line": 272,
+        "start_col": 9,
+        "end_line": 276,
+        "end_col": 10
+      },
+      "parent_id": null,
+      "data": {
+        "type": "Order",
+        "name": "order",
+        "iterable": "orders"
+      },
+      "badges": [],
+      "complexity": "O(n)",
+      "errors": []
+    },
+    {
+      "id": "Main.java#Main.findOrderById(int)/foreach[0]/if[0]",
+      "kind": "condition",
+      "label": "Условие",
+      "code": "if (order.getId() == id)",
+      "range": {
+        "file": "Main.java",
+        "start_line": 273,
+        "start_col": 13,
+        "end_line": 275,
+        "end_col": 14
+      },
+      "parent_id": "Main.java#Main.findOrderById(int)/foreach[0]",
+      "data": {
+        "expr": "order.getId() == id"
+      },
+      "badges": [],
+      "complexity": null,
+      "errors": []
+    },
+    {
+      "id": "Main.java#Main.findOrderById(int)/foreach[0]/if[0]/then/return[0]",
+      "kind": "return",
+      "label": "Возврат",
+      "code": "return order;",
+      "range": {
+        "file": "Main.java",
+        "start_line": 274,
+        "start_col": 17,
+        "end_line": 274,
+        "end_col": 30
+      },
+      "parent_id": "Main.java#Main.findOrderById(int)/foreach[0]",
+      "data": {
+        "expr": "return order"
+      },
+      "badges": [],
+      "complexity": null,
+      "errors": []
+    },
+    {
+      "id": "Main.java#Main.findOrderById(int)/return[0]",
+      "kind": "return",
+      "label": "Возврат",
+      "code": "return null;",
+      "range": {
+        "file": "Main.java",
+        "start_line": 277,
+        "start_col": 9,
+        "end_line": 277,
+        "end_col": 21
+      },
+      "parent_id": null,
+      "data": {
+        "expr": "return null"
+      },
+      "badges": [],
+      "complexity": null,
+      "errors": []
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "source": "Main.java#Main.findOrderById(int)/foreach[0]/if[0]",
+      "target": "Main.java#Main.findOrderById(int)/foreach[0]/if[0]/then/return[0]",
+      "kind": "true",
+      "label": "Да"
+    },
+    {
+      "id": "e1",
+      "source": "Main.java#Main.findOrderById(int)/foreach[0]",
+      "target": "Main.java#Main.findOrderById(int)/foreach[0]/if[0]",
+      "kind": "body",
+      "label": null
+    },
+    {
+      "id": "e2",
+      "source": "Main.java#Main.findOrderById(int)/foreach[0]/if[0]",
+      "target": "Main.java#Main.findOrderById(int)/foreach[0]",
+      "kind": "back",
+      "label": null
+    },
+    {
+      "id": "e3",
+      "source": "Main.java#Main.findOrderById(int)/foreach[0]",
+      "target": "Main.java#Main.findOrderById(int)/return[0]",
+      "kind": "next",
+      "label": null
+    },
+    {
+      "id": "e4",
+      "source": "Main.java#Main.findOrderById(int)",
+      "target": "Main.java#Main.findOrderById(int)/foreach[0]",
+      "kind": "next",
+      "label": null
+    }
+  ],
+  "entry": "Main.java#Main.findOrderById(int)",
+  "exits": [
+    "Main.java#Main.findOrderById(int)/foreach[0]/if[0]/then/return[0]",
+    "Main.java#Main.findOrderById(int)/return[0]"
+  ],
+  "version_id": 3,
+  "content_hash": "mock-demo-orders-v3"
+}

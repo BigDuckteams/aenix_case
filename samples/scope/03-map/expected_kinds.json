@@ -1,0 +1,11 @@
+{
+  "description": "Map: HashMap, TreeMap, LinkedHashMap; get, put, getOrDefault, merge, computeIfAbsent, entrySet",
+  "section": "3",
+  "kinds": [
+    "var_decl",
+    "operation",
+    "loop_foreach",
+    "loop_while",
+    "condition"
+  ]
+}

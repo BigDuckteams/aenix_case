@@ -1,0 +1,7 @@
+{
+  "name": "big",
+  "description": "n = 12",
+  "stdin": "кто-то там мир\n12\n",
+  "args": [],
+  "expected_stdout": "14 КТО-ТО ТАМ МИР кто-то там мир\nто-|2|кт0-т0 там мир\ntrue false false\nкто-то-там-мир к\n-1 true true\n11,01,9,8,7,6,5,4,3,2,1,0\n12 12 4096.0 3.4641016151377544 0 3 2.0\n1100 ff 123456789012 2.5 true\ntrue true Ж true 1\n(1, 2) true false true\ntrue null"
+}

@@ -1,0 +1,134 @@
+{
+  "blocks": [
+    {
+      "kind": "var_decl",
+      "title": "Переменная",
+      "group": "basic",
+      "color": "blue",
+      "icon": "variable",
+      "fields": [
+        {
+          "name": "type",
+          "label": "Тип",
+          "type": "type",
+          "required": true,
+          "default": "int",
+          "options": []
+        },
+        {
+          "name": "name",
+          "label": "Имя",
+          "type": "identifier",
+          "required": true,
+          "default": null,
+          "options": []
+        },
+        {
+          "name": "value",
+          "label": "Значение",
+          "type": "expression",
+          "required": false,
+          "default": null,
+          "options": []
+        }
+      ],
+      "template": "int count = 0;"
+    },
+    {
+      "kind": "condition",
+      "title": "Условие",
+      "group": "control",
+      "color": "orange",
+      "icon": "git-branch",
+      "fields": [
+        {
+          "name": "expr",
+          "label": "Выражение",
+          "type": "expression",
+          "required": true,
+          "default": null,
+          "options": []
+        },
+        {
+          "name": "add_else",
+          "label": "Добавить else",
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "options": []
+        }
+      ],
+      "template": "if (cond) { }"
+    },
+    {
+      "kind": "loop_foreach",
+      "title": "Цикл (for each)",
+      "group": "control",
+      "color": "teal",
+      "icon": "repeat",
+      "fields": [
+        {
+          "name": "type",
+          "label": "Тип",
+          "type": "type",
+          "required": true,
+          "default": null,
+          "options": []
+        },
+        {
+          "name": "name",
+          "label": "Имя",
+          "type": "identifier",
+          "required": true,
+          "default": null,
+          "options": []
+        },
+        {
+          "name": "iterable",
+          "label": "Коллекция",
+          "type": "expression",
+          "required": true,
+          "default": null,
+          "options": []
+        }
+      ],
+      "template": "for (Order o : orders) { }"
+    },
+    {
+      "kind": "operation",
+      "title": "Операция",
+      "group": "basic",
+      "color": "teal",
+      "icon": "terminal",
+      "fields": [
+        {
+          "name": "expr",
+          "label": "Выражение",
+          "type": "expression",
+          "required": true,
+          "default": null,
+          "options": []
+        }
+      ],
+      "template": "System.out.println(\"…\");"
+    },
+    {
+      "kind": "return",
+      "title": "Возврат",
+      "group": "basic",
+      "color": "green",
+      "icon": "corner-down-left",
+      "fields": [
+        {
+          "name": "expr",
+          "label": "Значение",
+          "type": "expression",
+          "required": false,
+          "default": null,
+          "options": []
+        }
+      ],
+      "template": "return result;"
+    }
+  ]
+}

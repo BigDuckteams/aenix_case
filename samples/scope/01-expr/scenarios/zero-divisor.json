@@ -1,0 +1,7 @@
+{
+  "name": "zero-divisor",
+  "description": "Деление на ноль обходится условием",
+  "stdin": "9 0\n",
+  "args": [],
+  "expected_stdout": "9 9 0 0 0 NaN\nfalse true true true\nfalse true false true\n0 9 9 -10\n36 4 0\nx=32\nнечётное 9 5"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "mixed",
+  "description": "Круг и квадрат",
+  "stdin": "circle 2\nsquare 3.5\n",
+  "args": [],
+  "expected_stdout": "Квадрат площадью 1.00\nКруг площадью 12.57\nКвадрат площадью 12.25"
+}

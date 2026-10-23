@@ -1,0 +1,9 @@
+{
+  "description": "Вывод: print, println, printf, System.err",
+  "section": "2",
+  "kinds": [
+    "operation",
+    "var_decl",
+    "loop_for"
+  ]
+}

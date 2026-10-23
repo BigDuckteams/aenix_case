@@ -1,0 +1,12 @@
+{
+  "description": "Массивы: одномерные, двумерные, ступенчатые, инициализаторы",
+  "section": "1",
+  "kinds": [
+    "var_decl",
+    "loop_for",
+    "loop_foreach",
+    "assign",
+    "operation",
+    "condition"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "uncaught-exception",
+  "description": "Необработанное исключение: команда boom, код выхода 1",
+  "stdin": "receive a1 Хлеб Продукты 5 45\nlist\nboom\nreceive a2 Чай Продукты 3 99\n",
+  "args": [],
+  "expected_exit_code": 1,
+  "expected_stdout": "=== Складской учёт ===\nКоманды: receive, batch, ship, reserve, release, price, list, value, report, quit\n----------------------------------------\nПринят товар A1: Хлеб, 5 шт.\nАртикул  Название         Категория    Остаток Резерв       Цена Статус\nA1       Хлеб             Продукты          5      0      45.00  В продаже\nВсего позиций: 1"
+}

@@ -1,0 +1,10 @@
+{
+  "description": "Фабрики List.of, Set.of, Map.of, copyOf и неизменяемость",
+  "section": "3",
+  "kinds": [
+    "var_decl",
+    "operation",
+    "try",
+    "loop_foreach"
+  ]
+}

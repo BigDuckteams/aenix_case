@@ -1,0 +1,7 @@
+{
+  "name": "zero",
+  "description": "n = 0",
+  "stdin": "0\n",
+  "args": [],
+  "expected_stdout": "2 2.75 0 6\n0! = 1\nfib(0) = 0\ngcd = 48, 2^n = 1\nnext = 2"
+}

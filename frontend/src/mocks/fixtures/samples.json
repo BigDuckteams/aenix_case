@@ -1,0 +1,16 @@
+{
+  "samples": [
+    {
+      "id": "demo-orders",
+      "name": "demo-orders",
+      "description": "Учёт заказов магазина: монолит ≈1000 строк",
+      "lines": 995
+    },
+    {
+      "id": "analyzer-pairs",
+      "name": "analyzer-pairs",
+      "description": "Вложенные циклы и merge (слайд 5)",
+      "lines": 80
+    }
+  ]
+}

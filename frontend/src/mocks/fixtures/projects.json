@@ -1,0 +1,13 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "demo-orders",
+      "created_at": "2026-10-24T08:00:00Z",
+      "updated_at": "2026-10-24T08:00:00Z",
+      "head_version_id": 3,
+      "main_class": "Main",
+      "files_count": 1
+    }
+  ]
+}

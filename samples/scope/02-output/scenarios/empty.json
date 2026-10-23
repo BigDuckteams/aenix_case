@@ -1,0 +1,7 @@
+{
+  "name": "empty",
+  "description": "Пустой ввод",
+  "stdin": "",
+  "args": [],
+  "expected_stdout": "Привет, аноним!\n\n42\n3.5\nж\ntrue\n0\nаноним прислал 6 сообщений\n1, 2, 3\nконец"
+}

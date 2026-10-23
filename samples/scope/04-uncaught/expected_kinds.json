@@ -1,0 +1,11 @@
+{
+  "description": "Необработанное исключение: аварийное завершение с кодом 1",
+  "section": "4",
+  "kinds": [
+    "throw",
+    "condition",
+    "operation",
+    "var_decl",
+    "method"
+  ]
+}

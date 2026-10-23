@@ -1,0 +1,11 @@
+{
+  "description": "Поля: static, final, константы, значения по умолчанию",
+  "section": "1",
+  "kinds": [
+    "var_decl",
+    "assign",
+    "operation",
+    "return",
+    "method"
+  ]
+}

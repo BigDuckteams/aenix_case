@@ -1,0 +1,7 @@
+{
+  "name": "negative",
+  "description": "Отрицательные значения",
+  "stdin": "5\nx -5\ny 5\nx 3\nz 0\ny -5\n0\n",
+  "args": [],
+  "expected_stdout": "x: -5 -> -2\ny: 5 -> 0\nx: 3 -> -2\nz: 0 -> 0\ny: -5 -> 0\nзаписей: 5, с общим id: 4\nпар с суммой 0: 2\nx + y\ny + y"
+}

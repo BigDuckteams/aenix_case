@@ -1,0 +1,7 @@
+{
+  "name": "small",
+  "description": "Маленькое число",
+  "stdin": "7 ключ\n",
+  "args": [],
+  "expected_stdout": "true false\n14\nне больше десяти\nчисло 7\nесть\nзначение значение\n8\nзначение\ntrue true"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "functions",
+  "description": "Встроенные функции: sqrt, abs, floor, ceil, round, min, max, pow, hyp, avg, sq, neg",
+  "stdin": "eval sqrt(2)\neval sqrt(144) + abs(-7.5)\neval floor(2.7) + ceil(2.1) + round(2.5)\neval round(-2.5)\neval min(3, 8) * max(3, 8)\neval pow(2, 10) / sq(4)\neval hyp(5, 12) + avg(10, 20)\neval neg(neg(4))\neval max(min(1, 2), min(3, 4))\nrpn max(min(1, 2), pow(2, 3))\ncheck max(min(1, 2), pow(2, 3)) + sqrt(16)\nsimplify sqrt(16) + 1 * x\n",
+  "args": [],
+  "expected_stdout": "=== Калькулятор выражений ===\nКоманды: let, eval, tokens, rpn, tree, simplify, check, vars, table, batch, report, quit\n----------------------------------------\nsqrt(2) = 1.414214\nsqrt(144) + abs(-7.5) = 19.5\nfloor(2.7) + ceil(2.1) + round(2.5) = 8\nround(-2.5) = -2\nmin(3, 8) * max(3, 8) = 24\npow(2, 10) / sq(4) = 64\nhyp(5, 12) + avg(10, 20) = 28\nneg(neg(4)) = 4\nmax(min(1, 2), min(3, 4)) = 3\n1 2 min/2 2 3 pow/2 max/2\nДерево: 12, ОПЗ: 12\nРезультаты совпали\n(sqrt(16) + (1 * x)) => (sqrt(16) + x)\nУзлов: 6 -> 4\n----------------------------------------\nКоманд: 12, ошибок: 0, переменных: 0"
+}

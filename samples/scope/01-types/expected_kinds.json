@@ -1,0 +1,10 @@
+{
+  "description": "Примитивы, обёртки, автобоксинг, приведение типов, переполнение",
+  "section": "1",
+  "kinds": [
+    "var_decl",
+    "operation",
+    "condition",
+    "assign"
+  ]
+}

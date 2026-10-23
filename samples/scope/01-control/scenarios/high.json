@@ -1,0 +1,7 @@
+{
+  "name": "high",
+  "description": "Высокий балл, февраль",
+  "stdin": "95 2 один\n",
+  "args": [],
+  "expected_stdout": "отлично\n28 зима\n1"
+}

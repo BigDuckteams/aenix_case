@@ -1,0 +1,7 @@
+{
+  "name": "small",
+  "description": "Малый объём работы",
+  "stdin": "10\n",
+  "args": [],
+  "expected_stdout": "счётчик: 40\nсумма: 435"
+}

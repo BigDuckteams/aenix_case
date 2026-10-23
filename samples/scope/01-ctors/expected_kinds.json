@@ -1,0 +1,10 @@
+{
+  "description": "Конструкторы, this(...), super(...), блоки инициализации",
+  "section": "1",
+  "kinds": [
+    "method",
+    "assign",
+    "operation",
+    "var_decl"
+  ]
+}

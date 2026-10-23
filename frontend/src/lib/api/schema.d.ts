@@ -21,10 +21,1405 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/samples": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Встроенные примеры */
+        get: operations["list_samples"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Список проектов */
+        get: operations["list_projects"];
+        put?: never;
+        /**
+         * Создать проект
+         * @description Один из вариантов тела: `multipart/form-data` (`name`, `files[]` или `archive`), `application/json` с файлами либо с `sample_id`. Пути нормализуются (защита от zip-slip), принимаются только `.java` в UTF-8.
+         */
+        post: operations["create_project"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Проект: HEAD, оригинал, настройки, статус gate */
+        get: operations["get_project"];
+        put?: never;
+        post?: never;
+        /** Удалить проект */
+        delete: operations["delete_project"];
+        options?: never;
+        head?: never;
+        /** Имя, главный класс, настройки */
+        patch: operations["patch_project"];
+        trace?: never;
+    };
+    "/api/projects/{project_id}/versions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** История версий */
+        get: operations["list_versions"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/versions/{version_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Версия и её файлы */
+        get: operations["get_version"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/versions/{version_id}/restore": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Сделать версию HEAD (создаётся версия revert) */
+        post: operations["restore_version"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/undo": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** HEAD → родитель */
+        post: operations["undo"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/redo": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** HEAD → потомок, если есть */
+        post: operations["redo"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/files": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Файлы версии */
+        get: operations["list_files"];
+        put?: never;
+        /** Создать файл */
+        post: operations["create_file"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/files/{path}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Содержимое файла */
+        get: operations["get_file"];
+        /**
+         * Сохранить файл
+         * @description Создаёт версию `code_edit`; подряд идущие правки схлопываются. `409 VERSION_CONFLICT`, если `base_version_id` не равен HEAD.
+         */
+        put: operations["save_file"];
+        post?: never;
+        /** Удалить файл (новая версия) */
+        delete: operations["delete_file"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/diff": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Различия версий
+         * @description По файлам: unified diff и тексты обеих сторон.
+         */
+        get: operations["diff_versions"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/parse": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Живой разбор без сохранения
+         * @description Для обновления схемы по мере набора кода: ошибки синтаксиса и граф метода.
+         */
+        post: operations["parse_live"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/structure": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Граф структуры проекта */
+        get: operations["get_structure"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/flow": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Блок-схема метода */
+        get: operations["get_flow"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/tree": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Дерево «Проект»
+         * @description Пакеты → файлы → типы → члены, с бейджами находок и сложностью.
+         */
+        get: operations["get_tree"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/nodes/lookup": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Узел по id в теле запроса
+         * @description Для длинных id, не помещающихся в путь.
+         */
+        post: operations["lookup_node"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/nodes/{node_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Подробности узла
+         * @description Поля (`data`), диапазон, оценка сложности, находки. `node_id` кодируется.
+         */
+        get: operations["get_node"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/locate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Позиция курсора → узел графа
+         * @description Синхронизация редактора с графом (FR-05).
+         */
+        get: operations["locate"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/ops": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Применить операции над графом
+         * @description Пакет применяется атомарно: при ошибке любой операции ни одна не применяется. `409 VERSION_CONFLICT` — `base_version_id` не равен HEAD; `422 INVALID_FRAGMENT` — после правки код не разбирается.
+         */
+        post: operations["apply_ops"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/ops/validate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Сухая проверка операций
+         * @description Ничего не сохраняет: предпросмотр diff и ошибки для подсветки в форме.
+         */
+        post: operations["validate_ops"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/palette": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Блоки палитры и их поля */
+        get: operations["get_palette"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/validate/expression": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Проверить выражение, тип или идентификатор */
+        post: operations["validate_expression"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/analysis": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Полный результат анализа версии */
+        get: operations["get_analysis"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/findings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Находки с фильтрами */
+        get: operations["list_findings"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/findings/{finding_id}/verify": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Динамическая проверка находки
+         * @description Запускает `kind=verify` (бенчмарк или трассировка); дальше — SSE запуска.
+         */
+        post: operations["verify_finding"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/findings/{finding_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Карточка находки
+         * @description Объяснение, вклады в сложность, доказательства, исправление.
+         */
+        get: operations["get_finding"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/complexity": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Оценка сложности узла или фрагмента
+         * @description Задаётся `node_id` либо `file` + `start_line` + `end_line`; ответ с цепочкой вкладов.
+         */
+        get: operations["get_complexity"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/metrics": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Метрики версии */
+        get: operations["get_metrics"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/fixes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Доступные исправления версии */
+        get: operations["list_fixes"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/fixes/{finding_id}/preview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Предпросмотр исправления
+         * @description Diff, ожидаемый эффект и предусловия. `422 PRECONDITION_FAILED`, если не выполнены.
+         */
+        post: operations["preview_fix"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/fixes/{finding_id}/apply": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Применить исправление
+         * @description Создаётся версия-кандидат и запускается gate (`syntax → compile → scenarios`). Зелёный gate делает кандидата HEAD; красный — отклоняет.
+         */
+        post: operations["apply_fix"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/optimize/plan": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** План пакетной оптимизации */
+        post: operations["plan_optimize"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/optimize/apply": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Применить шаги оптимизации по очереди
+         * @description Прогресс шагов приходит в SSE запуска событиями `step`.
+         */
+        post: operations["apply_optimize"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/extract-method/preview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Предпросмотр выделения метода */
+        post: operations["preview_extract_method"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/extract-method/apply": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Выделить метод
+         * @description Создаётся версия-кандидат и запускается gate (`syntax → compile → scenarios`). Зелёный gate делает кандидата HEAD; красный — отклоняет.
+         */
+        post: operations["apply_extract_method"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/decompose/plan": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** План декомпозиции монолита */
+        post: operations["plan_decompose"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/decompose/preview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Предпросмотр декомпозиции по отредактированному плану */
+        post: operations["preview_decompose"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/decompose/apply": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Применить декомпозицию
+         * @description Создаётся версия-кандидат и запускается gate (`syntax → compile → scenarios`). Зелёный gate делает кандидата HEAD; красный — отклоняет.
+         */
+        post: operations["apply_decompose"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/versions/{version_id}/accept": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Подтвердить кандидата после красного gate
+         * @description Для `behavior_preserving = false`: обновляет эталоны затронутых сценариев.
+         */
+        post: operations["accept_candidate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/versions/{version_id}/reject": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Отклонить кандидата */
+        post: operations["reject_candidate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/scenarios": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Сценарии со статусом эталона */
+        get: operations["list_scenarios"];
+        put?: never;
+        /** Создать сценарий */
+        post: operations["create_scenario"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/scenarios/import": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Импорт сценариев
+         * @description Формат `{"scenarios": [...]}`; пары `*.in` + `*.out` frontend собирает в этот же формат.
+         */
+        post: operations["import_scenarios"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/scenarios/export": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Экспорт всех сценариев в JSON */
+        get: operations["export_scenarios"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/scenarios/generate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Сгенерировать сценарии
+         * @description Запуск `kind=generate`; результат — сценарии с `source=generated`.
+         */
+        post: operations["generate_scenarios"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/scenarios/{scenario_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Изменить сценарий (сбрасывает эталон) */
+        put: operations["update_scenario"];
+        post?: never;
+        /** Удалить сценарий */
+        delete: operations["delete_scenario"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/input-schema": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Выведенная схема ввода
+         * @description Для отладки и отображения: как генератор понял формат ввода программы.
+         */
+        get: operations["get_input_schema"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/runs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** История запусков */
+        get: operations["list_runs"];
+        put?: never;
+        /**
+         * Запустить задачу
+         * @description `kind`: `run`, `trace`, `baseline`, `test`, `gate`, `generate`, `benchmark`, `verify`. Ответ `202`; ход выполнения — `GET /runs/{run_id}/events`. `429 BUSY` — слишком много параллельных запусков.
+         */
+        post: operations["create_run"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/runs/{run_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Статус и итог запуска */
+        get: operations["get_run"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/runs/{run_id}/events": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * SSE-поток запуска
+         * @description `text/event-stream`: события `status`, `log`, `gate`, `item`, `step`, `progress`, `result`, `error`, `done` (каждое — `event:` + `data:` JSON). Поздние подписчики получают replay с начала; heartbeat-комментарий каждые 15 секунд.
+         */
+        get: operations["run_events"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/runs/{run_id}/cancel": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Отменить запуск */
+        post: operations["cancel_run"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/runs/{run_id}/report": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Отчёт запуска для скачивания */
+        get: operations["get_run_report"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/build": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Синхронная сборка версии
+         * @description Компиляция HEAD или `version_id`; кеш по хешу. Для быстрых ошибок в маркерах Monaco.
+         */
+        post: operations["build_project"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/export/source": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Исходники версии
+         * @description `format=zip` — архив (`src/…`), `format=file` — один файл по `path`.
+         */
+        get: operations["export_source"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/export/report": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Сводный отчёт
+         * @description Анализ, преобразования и результаты тестов.
+         */
+        get: operations["export_report"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/projects/{project_id}/export/bundle": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Комплект: исходники, отчёты, сценарии
+         * @description Zip для комплекта сдачи; достаточен для воспроизведения бага.
+         */
+        get: operations["export_bundle"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /** AddBranch */
+        AddBranch: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            op: "add_branch";
+            /** Node Id */
+            node_id: string;
+            /**
+             * Branch
+             * @enum {string}
+             */
+            branch: "else" | "else_if" | "catch" | "finally" | "case" | "default";
+            /**
+             * Fields
+             * @default {}
+             */
+            fields?: {
+                [key: string]: unknown;
+            };
+        };
+        /** AddMember */
+        AddMember: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            op: "add_member";
+            /** Type Id */
+            type_id: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "field" | "method" | "constructor";
+            /**
+             * Fields
+             * @default {}
+             */
+            fields?: {
+                [key: string]: unknown;
+            };
+        };
+        /** AnalysisResponse */
+        AnalysisResponse: {
+            /** Version Id */
+            version_id: number;
+            /** Findings */
+            findings: components["schemas"]["Finding"][];
+            summary: components["schemas"]["AnalysisSummary"];
+            complexity: components["schemas"]["ComplexityPair"];
+            metrics: components["schemas"]["Metrics"];
+        };
+        /** AnalysisSummary */
+        AnalysisSummary: {
+            /** Total */
+            total: number;
+            /** By Severity */
+            by_severity: {
+                [key: string]: number;
+            };
+            /** By Category */
+            by_category: {
+                [key: string]: number;
+            };
+            /** Fixable */
+            fixable: number;
+        };
+        /**
+         * ApplyResult
+         * @description Создан кандидат-версия, запущен gate (``kind=gate``).
+         */
+        ApplyResult: {
+            /** Candidate Version Id */
+            candidate_version_id: number;
+            /** Run Id */
+            run_id: number;
+        };
+        /** Badge */
+        Badge: {
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "output" | "error_output" | "input" | "call" | "exception" | "defect";
+            /** Label */
+            label: string;
+            /** Ref */
+            ref: string | null;
+        };
+        /** BaselineStatus */
+        BaselineStatus: {
+            /**
+             * State
+             * @enum {string}
+             */
+            state: "none" | "recorded" | "stale";
+            /** Version Id */
+            version_id: number | null;
+            /** Duration Ms */
+            duration_ms: number | null;
+        };
+        /**
+         * BehaviorDiff
+         * @description Чем фактическое поведение отличается от эталона.
+         */
+        BehaviorDiff: {
+            stdout: components["schemas"]["TextChange"] | null;
+            stderr: components["schemas"]["TextChange"] | null;
+            exit_code: components["schemas"]["ExitCodeChange"] | null;
+            exception: components["schemas"]["ExceptionChange"] | null;
+        };
+        /** BuildRequest */
+        BuildRequest: {
+            /** Version Id */
+            version_id?: number | null;
+        };
+        /** BuildResult */
+        BuildResult: {
+            /** Ok */
+            ok: boolean;
+            /** Diagnostics */
+            diagnostics: components["schemas"]["Diagnostic"][];
+            /** Duration Ms */
+            duration_ms: number;
+            /** Cached */
+            cached: boolean;
+        };
+        /**
+         * CandidateDecision
+         * @description Результат ``accept``/``reject`` кандидата.
+         */
+        CandidateDecision: {
+            version: components["schemas"]["VersionInfo"];
+            /** Head Version Id */
+            head_version_id: number;
+        };
+        /** ComplexityEstimate */
+        ComplexityEstimate: {
+            /** Current */
+            current: string;
+            /** After */
+            after: string | null;
+            /**
+             * Confidence
+             * @enum {string}
+             */
+            confidence: "exact" | "heuristic";
+            /** Contributions */
+            contributions: components["schemas"]["Contribution"][];
+            /** Reason */
+            reason: string | null;
+        };
+        /** ComplexityPair */
+        ComplexityPair: {
+            /** Current */
+            current: string;
+            /** Optimized */
+            optimized: string | null;
+        };
+        /** ComplexityResponse */
+        ComplexityResponse: {
+            /** Node Id */
+            node_id: string | null;
+            range: components["schemas"]["SourceRange"] | null;
+            estimate: components["schemas"]["ComplexityEstimate"];
+        };
+        /**
+         * Contribution
+         * @description Из чего сложилась оценка: узел, множитель и причина.
+         */
+        Contribution: {
+            /** Node Id */
+            node_id: string;
+            /** Factor */
+            factor: string;
+            /** Why */
+            why: string;
+        };
+        /** DecomposeClass */
+        DecomposeClass: {
+            /** Name */
+            name: string;
+            /**
+             * Role
+             * @enum {string}
+             */
+            role: "parser" | "analyzer" | "optimizer" | "printer" | "model" | "util" | "core";
+            /** File */
+            file: string;
+            /** Members */
+            members: string[];
+            /** Lines */
+            lines: number;
+            /** Reason */
+            reason: string;
+        };
+        /** DecomposeEdge */
+        DecomposeEdge: {
+            /** From */
+            from: string;
+            /** To */
+            to: string;
+            /** Calls */
+            calls: number;
+            /** Fields */
+            fields: number;
+        };
+        /**
+         * DecomposeEdit
+         * @description План после правок пользователя (перенос методов между классами, переименование).
+         */
+        DecomposeEdit: {
+            /** Base Version Id */
+            base_version_id: number;
+            plan: components["schemas"]["DecomposePlan"];
+        };
+        /** DecomposeMetrics */
+        DecomposeMetrics: {
+            before: components["schemas"]["DecomposeStat"];
+            after: components["schemas"]["DecomposeStat"];
+        };
+        /** DecomposeOptions */
+        DecomposeOptions: {
+            /** Max Classes */
+            max_classes?: number | null;
+            /** Min Members */
+            min_members?: number | null;
+            /** Seed */
+            seed?: number | null;
+        };
+        /** DecomposePlan */
+        DecomposePlan: {
+            /** Classes */
+            classes: components["schemas"]["DecomposeClass"][];
+            /** Edges */
+            edges: components["schemas"]["DecomposeEdge"][];
+            /** Warnings */
+            warnings: string[];
+            metrics: components["schemas"]["DecomposeMetrics"];
+        };
+        /** DecomposePlanRequest */
+        DecomposePlanRequest: {
+            /** Version Id */
+            version_id?: number | null;
+            options?: components["schemas"]["DecomposeOptions"] | null;
+        };
+        /** DecomposePreview */
+        DecomposePreview: {
+            plan: components["schemas"]["DecomposePlan"];
+            /** Diff */
+            diff: components["schemas"]["FileDiff"][];
+            /** Warnings */
+            warnings: string[];
+        };
+        /** DecomposeStat */
+        DecomposeStat: {
+            /** Lines */
+            lines: number;
+            /** Lcom4 */
+            lcom4: number;
+        };
+        /** DeleteMember */
+        DeleteMember: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            op: "delete_member";
+            /** Member Id */
+            member_id: string;
+        };
+        /** DeleteNode */
+        DeleteNode: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            op: "delete_node";
+            /** Node Id */
+            node_id: string;
+            /**
+             * Mode
+             * @default with_body
+             * @enum {string}
+             */
+            mode?: "with_body" | "unwrap";
+        };
+        /**
+         * Diagnostic
+         * @description Диагностика компилятора, привязанная к строке и (по возможности) к узлу графа.
+         */
+        Diagnostic: {
+            /** File */
+            file: string;
+            /** Line */
+            line: number;
+            /** Column */
+            column: number;
+            /** End Line */
+            end_line: number | null;
+            /** End Column */
+            end_column: number | null;
+            /**
+             * Severity
+             * @enum {string}
+             */
+            severity: "error" | "warning" | "note";
+            /** Message */
+            message: string;
+            /** Node Id */
+            node_id: string | null;
+        };
+        /** DoneData */
+        DoneData: Record<string, never>;
+        /** DoneEvent */
+        DoneEvent: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            event: "done";
+            data: components["schemas"]["DoneData"];
+        };
+        /** DuplicateNode */
+        DuplicateNode: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            op: "duplicate_node";
+            /** Node Id */
+            node_id: string;
+        };
+        /**
+         * DynamicEvidence
+         * @description Результат «Проверить»: прогон на размерах N, 2N, 4N, 8N.
+         */
+        DynamicEvidence: {
+            /** Run Id */
+            run_id: number;
+            /** Samples */
+            samples: components["schemas"]["DynamicSample"][];
+            /** Growth K */
+            growth_k: number | null;
+            /** Verdict */
+            verdict: string | null;
+        };
+        /** DynamicSample */
+        DynamicSample: {
+            /** Size */
+            size: number;
+            /** Time Ms */
+            time_ms: number;
+            /** Hits */
+            hits: number | null;
+        };
+        /** Effect */
+        Effect: {
+            /** Complexity Before */
+            complexity_before: string | null;
+            /** Complexity After */
+            complexity_after: string | null;
+            /** Notes */
+            notes: string | null;
+        };
         /** ErrorBody */
         ErrorBody: {
             /** Code */
@@ -36,9 +1431,422 @@ export interface components {
                 [key: string]: unknown;
             } | null;
         };
+        /** ErrorData */
+        ErrorData: {
+            /** Code */
+            code: string;
+            /** Message */
+            message: string;
+        };
+        /** ErrorEvent */
+        ErrorEvent: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            event: "error";
+            data: components["schemas"]["ErrorData"];
+        };
         /** ErrorResponse */
         ErrorResponse: {
             error: components["schemas"]["ErrorBody"];
+        };
+        /** Evidence */
+        Evidence: {
+            /** Static */
+            static: components["schemas"]["EvidenceItem"][];
+            dynamic: components["schemas"]["DynamicEvidence"] | null;
+        };
+        /** EvidenceItem */
+        EvidenceItem: {
+            /** Kind */
+            kind: string;
+            /** Text */
+            text: string;
+            /** Node Id */
+            node_id: string | null;
+        };
+        /** ExceptionChange */
+        ExceptionChange: {
+            /** Expected */
+            expected: string | null;
+            /** Actual */
+            actual: string | null;
+        };
+        /** ExitCodeChange */
+        ExitCodeChange: {
+            /** Expected */
+            expected: number | null;
+            /** Actual */
+            actual: number | null;
+        };
+        /** ExpressionCheck */
+        ExpressionCheck: {
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "expression" | "type" | "identifier";
+            /** Text */
+            text: string;
+            /** Context Node Id */
+            context_node_id?: string | null;
+        };
+        /** ExpressionIssue */
+        ExpressionIssue: {
+            /** Message */
+            message: string;
+            /** Line */
+            line: number | null;
+            /** Column */
+            column: number | null;
+        };
+        /** ExpressionResult */
+        ExpressionResult: {
+            /** Ok */
+            ok: boolean;
+            error: components["schemas"]["ExpressionIssue"] | null;
+        };
+        /** ExtractMethodApply */
+        ExtractMethodApply: {
+            /** Node Ids */
+            node_ids?: string[] | null;
+            range?: components["schemas"]["SourceRange"] | null;
+            /** Name */
+            name?: string | null;
+            /** Base Version Id */
+            base_version_id: number;
+        };
+        /** ExtractMethodPreview */
+        ExtractMethodPreview: {
+            /** Name */
+            name: string;
+            /** Signature */
+            signature: string;
+            /** Code */
+            code: string;
+            /** Preconditions */
+            preconditions: components["schemas"]["Precondition"][];
+            /** Warnings */
+            warnings: string[];
+            /** Diff */
+            diff: components["schemas"]["FileDiff"][];
+        };
+        /**
+         * ExtractMethodRequest
+         * @description Предпросмотр: версия не обязательна, по умолчанию HEAD.
+         */
+        ExtractMethodRequest: {
+            /** Node Ids */
+            node_ids?: string[] | null;
+            range?: components["schemas"]["SourceRange"] | null;
+            /** Name */
+            name?: string | null;
+            /** Version Id */
+            version_id?: number | null;
+        };
+        /** FileContent */
+        FileContent: {
+            /** Path */
+            path: string;
+            /** Version Id */
+            version_id: number;
+            /** Content */
+            content: string;
+            /** Syntax Errors */
+            syntax_errors: components["schemas"]["SyntaxIssue"][];
+        };
+        /** FileCreate */
+        FileCreate: {
+            /** Path */
+            path: string;
+            /**
+             * Content
+             * @default
+             */
+            content?: string;
+        };
+        /**
+         * FileDiff
+         * @description Изменение одного файла между версиями или в предпросмотре преобразования.
+         */
+        FileDiff: {
+            /** Path */
+            path: string;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "added" | "removed" | "modified";
+            /** Unified */
+            unified: string;
+            /** Before */
+            before: string | null;
+            /** After */
+            after: string | null;
+        };
+        /** FileEntry */
+        FileEntry: {
+            /** Path */
+            path: string;
+            /** Lines */
+            lines: number;
+            /**
+             * Size
+             * @default 0
+             */
+            size: number;
+        };
+        /** FileList */
+        FileList: {
+            /** Version Id */
+            version_id: number;
+            /** Files */
+            files: components["schemas"]["FileEntry"][];
+        };
+        /** FileSave */
+        FileSave: {
+            /** Base Version Id */
+            base_version_id: number;
+            /** Content */
+            content: string;
+        };
+        /** Finding */
+        Finding: {
+            /** Id */
+            id: string;
+            /** Rule Id */
+            rule_id: string;
+            /**
+             * Severity
+             * @enum {string}
+             */
+            severity: "high" | "medium" | "low";
+            /**
+             * Category
+             * @enum {string}
+             */
+            category: "PERF" | "BUG" | "MAINT";
+            /** Title */
+            title: string;
+            location: components["schemas"]["FindingLocation"];
+            /** Explanation */
+            explanation: string;
+            /** Defect */
+            defect: string;
+            /** Risk */
+            risk: string;
+            /** Recommendation */
+            recommendation: string;
+            complexity: components["schemas"]["ComplexityEstimate"] | null;
+            fix: components["schemas"]["FixAvailability"] | null;
+            evidence: components["schemas"]["Evidence"];
+        };
+        /** FindingLocation */
+        FindingLocation: {
+            /** File */
+            file: string;
+            /** Start Line */
+            start_line: number;
+            /** End Line */
+            end_line: number;
+            /** Node Id */
+            node_id: string | null;
+            /** Method Id */
+            method_id: string | null;
+        };
+        /** FindingsResponse */
+        FindingsResponse: {
+            /** Version Id */
+            version_id: number;
+            /** Findings */
+            findings: components["schemas"]["Finding"][];
+        };
+        /** FixApply */
+        FixApply: {
+            /** Base Version Id */
+            base_version_id: number;
+            /** Params */
+            params?: {
+                [key: string]: unknown;
+            } | null;
+        };
+        /** FixAvailability */
+        FixAvailability: {
+            /** Fix Id */
+            fix_id: string;
+            /** Available */
+            available: boolean;
+            /** Behavior Preserving */
+            behavior_preserving: boolean;
+            /** Preconditions */
+            preconditions: components["schemas"]["Precondition"][];
+        };
+        /** FixList */
+        FixList: {
+            /** Version Id */
+            version_id: number;
+            /** Fixes */
+            fixes: components["schemas"]["FixListItem"][];
+        };
+        /** FixListItem */
+        FixListItem: {
+            /** Finding Id */
+            finding_id: string;
+            /** Fix Id */
+            fix_id: string;
+            /** Title */
+            title: string;
+            /** Behavior Preserving */
+            behavior_preserving: boolean;
+            /** Available */
+            available: boolean;
+        };
+        /**
+         * FixPreview
+         * @description Предпросмотр преобразования (TransformProposal): diff, эффект, предусловия.
+         */
+        FixPreview: {
+            /** Fix Id */
+            fix_id: string;
+            /** Finding Id */
+            finding_id: string | null;
+            /** Title */
+            title: string;
+            /** Summary */
+            summary: string;
+            /** Preconditions */
+            preconditions: components["schemas"]["Precondition"][];
+            effect: components["schemas"]["Effect"];
+            /** Diff */
+            diff: components["schemas"]["FileDiff"][];
+            /** Behavior Preserving */
+            behavior_preserving: boolean;
+        };
+        /** FixPreviewRequest */
+        FixPreviewRequest: {
+            /** Version Id */
+            version_id?: number | null;
+            /** Params */
+            params?: {
+                [key: string]: unknown;
+            } | null;
+        };
+        /** FlowEdge */
+        FlowEdge: {
+            /** Id */
+            id: string;
+            /** Source */
+            source: string;
+            /** Target */
+            target: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "next" | "true" | "false" | "case" | "body" | "back" | "break" | "continue" | "exception" | "call" | "return";
+            /** Label */
+            label: string | null;
+        };
+        /** FlowGraph */
+        FlowGraph: {
+            /** Method Id */
+            method_id: string;
+            /** Signature */
+            signature: string;
+            /** File */
+            file: string;
+            /** Nodes */
+            nodes: components["schemas"]["FlowNode"][];
+            /** Edges */
+            edges: components["schemas"]["FlowEdge"][];
+            /** Entry */
+            entry: string;
+            /** Exits */
+            exits: string[];
+            /** Version Id */
+            version_id: number;
+            /** Content Hash */
+            content_hash: string;
+        };
+        /** FlowNode */
+        FlowNode: {
+            /** Id */
+            id: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "method" | "var_decl" | "assign" | "operation" | "condition" | "switch" | "case" | "loop_for" | "loop_foreach" | "loop_while" | "try" | "catch" | "finally" | "throw" | "return" | "break" | "continue" | "yield" | "lambda" | "local_type" | "labeled" | "assert" | "sync" | "code";
+            /** Label */
+            label: string;
+            /** Code */
+            code: string;
+            range: components["schemas"]["SourceRange"];
+            /** Parent Id */
+            parent_id: string | null;
+            /**
+             * Data
+             * @default {}
+             */
+            data: {
+                [key: string]: unknown;
+            };
+            /**
+             * Badges
+             * @default []
+             */
+            badges: components["schemas"]["Badge"][];
+            /** Complexity */
+            complexity: string | null;
+            /**
+             * Errors
+             * @default []
+             */
+            errors: string[];
+        };
+        /** GateData */
+        GateData: {
+            /**
+             * Stage
+             * @enum {string}
+             */
+            stage: "syntax" | "compile" | "scenarios" | "coverage";
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "running" | "passed" | "failed";
+            /** Details */
+            details: string | null;
+        };
+        /** GateEvent */
+        GateEvent: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            event: "gate";
+            data: components["schemas"]["GateData"];
+        };
+        /**
+         * GateSummary
+         * @description Статус поведения HEAD: «✓ совпадает (12/12)», «✗ отличается (2)», «? не проверено».
+         */
+        GateSummary: {
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "unknown" | "passed" | "failed";
+            /** Passed */
+            passed: number | null;
+            /** Total */
+            total: number | null;
+            /** Coverage */
+            coverage: number | null;
+            /** Run Id */
+            run_id: number | null;
         };
         /** HealthResponse */
         HealthResponse: {
@@ -62,7 +1870,1285 @@ export interface components {
              * Problems
              * @default []
              */
-            problems: string[];
+            problems?: string[];
+        };
+        /** InputSchema */
+        InputSchema: {
+            /** Inferred */
+            inferred: boolean;
+            /** Root */
+            root: components["schemas"]["InputSchemaNode"][];
+        };
+        /**
+         * InputSchemaNode
+         * @description Узел выведенной схемы ввода: токен, строка, повтор, цикл команд.
+         */
+        InputSchemaNode: {
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "token" | "line" | "repeat" | "command_loop";
+            /** Type */
+            type: ("int" | "long" | "double" | "string" | "word" | "line") | null;
+            /** Source */
+            source: string | null;
+            /** Count Ref */
+            count_ref: string | null;
+            /**
+             * Labels
+             * @default []
+             */
+            labels: string[];
+            /**
+             * Children
+             * @default []
+             */
+            children: components["schemas"]["InputSchemaNode"][];
+        };
+        /** InsertNode */
+        InsertNode: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            op: "insert_node";
+            /** Parent Id */
+            parent_id: string;
+            /** Slot */
+            slot: string;
+            /** Index */
+            index: number;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "method" | "var_decl" | "assign" | "operation" | "condition" | "switch" | "case" | "loop_for" | "loop_foreach" | "loop_while" | "try" | "catch" | "finally" | "throw" | "return" | "break" | "continue" | "yield" | "lambda" | "local_type" | "labeled" | "assert" | "sync" | "code";
+            /**
+             * Fields
+             * @default {}
+             */
+            fields?: {
+                [key: string]: unknown;
+            };
+        };
+        /** ItemData */
+        ItemData: {
+            /** Scenario Id */
+            scenario_id: number | null;
+            /** Name */
+            name: string;
+            /**
+             * Verdict
+             * @enum {string}
+             */
+            verdict: "PASS" | "FAIL" | "ERROR" | "TIMEOUT";
+            /** Duration Ms */
+            duration_ms: number;
+            /** Baseline Ms */
+            baseline_ms: number | null;
+            diff: components["schemas"]["BehaviorDiff"] | null;
+        };
+        /** ItemEvent */
+        ItemEvent: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            event: "item";
+            data: components["schemas"]["ItemData"];
+        };
+        /**
+         * LocateResult
+         * @description Позиция курсора → узел графа (синхронизация код ↔ граф).
+         */
+        LocateResult: {
+            /** Node Id */
+            node_id: string | null;
+            /** Method Id */
+            method_id: string | null;
+        };
+        /** LogData */
+        LogData: {
+            /**
+             * Stream
+             * @enum {string}
+             */
+            stream: "build" | "stdout" | "stderr" | "info";
+            /** Text */
+            text: string;
+        };
+        /** LogEvent */
+        LogEvent: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            event: "log";
+            data: components["schemas"]["LogData"];
+        };
+        /**
+         * Mask
+         * @description Маска нестабильного фрагмента: регулярное выражение → токен (``\d+ мс`` → ``<MS>``).
+         */
+        Mask: {
+            /** Pattern */
+            pattern: string;
+            /** Replacement */
+            replacement: string;
+        };
+        /** MethodMetrics */
+        MethodMetrics: {
+            /** Method Id */
+            method_id: string;
+            /** Name */
+            name: string;
+            /** File */
+            file: string;
+            /** Lines */
+            lines: number;
+            /** Cyclomatic */
+            cyclomatic: number;
+            /** Cognitive */
+            cognitive: number;
+            /** Max Nesting */
+            max_nesting: number;
+            /** Params */
+            params: number;
+            /** Complexity */
+            complexity: string | null;
+        };
+        /** Metrics */
+        Metrics: {
+            totals: components["schemas"]["MetricsTotals"];
+            /** Methods */
+            methods: components["schemas"]["MethodMetrics"][];
+            /** Types */
+            types: components["schemas"]["TypeMetrics"][];
+        };
+        /** MetricsResponse */
+        MetricsResponse: {
+            /** Version Id */
+            version_id: number;
+            metrics: components["schemas"]["Metrics"];
+            /** Compare To Version Id */
+            compare_to_version_id: number | null;
+            compare_to: components["schemas"]["Metrics"] | null;
+        };
+        /** MetricsTotals */
+        MetricsTotals: {
+            /** Lines */
+            lines: number;
+            /** Code Lines */
+            code_lines: number;
+            /** Files */
+            files: number;
+            /** Types */
+            types: number;
+            /** Methods */
+            methods: number;
+            /** Cyclomatic Avg */
+            cyclomatic_avg: number;
+            /** Cyclomatic Max */
+            cyclomatic_max: number;
+            /** Duplication Percent */
+            duplication_percent: number;
+            /** Lcom4 Avg */
+            lcom4_avg: number;
+        };
+        /** MoveNode */
+        MoveNode: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            op: "move_node";
+            /** Node Id */
+            node_id: string;
+            /** New Parent Id */
+            new_parent_id: string;
+            /** Slot */
+            slot: string;
+            /** Index */
+            index: number;
+        };
+        /** NodeDetails */
+        NodeDetails: {
+            /** Node Id */
+            node_id: string;
+            /** Kind */
+            kind: string;
+            /** Name */
+            name: string;
+            range: components["schemas"]["SourceRange"];
+            /**
+             * Data
+             * @default {}
+             */
+            data: {
+                [key: string]: unknown;
+            };
+            /** Complexity */
+            complexity: string | null;
+            /**
+             * Finding Ids
+             * @default []
+             */
+            finding_ids: string[];
+            /**
+             * Errors
+             * @default []
+             */
+            errors: string[];
+        };
+        /**
+         * NodeLookup
+         * @description Тело ``POST /nodes/lookup`` для длинных id, не помещающихся в путь.
+         */
+        NodeLookup: {
+            /** Node Id */
+            node_id: string;
+            /** Version Id */
+            version_id?: number | null;
+        };
+        /** OpError */
+        OpError: {
+            /** Op Index */
+            op_index: number;
+            /**
+             * Code
+             * @enum {string}
+             */
+            code: "INVALID_FRAGMENT" | "PRECONDITION_FAILED" | "NOT_FOUND" | "UNSUPPORTED";
+            /** Message */
+            message: string;
+            /** Field */
+            field: string | null;
+            /** Line */
+            line: number | null;
+            /** Column */
+            column: number | null;
+        };
+        /**
+         * OpsRequest
+         * @description Пакет операций; применяется атомарно.
+         */
+        OpsRequest: {
+            /** Base Version Id */
+            base_version_id: number;
+            /** Ops */
+            ops: (components["schemas"]["InsertNode"] | components["schemas"]["UpdateNode"] | components["schemas"]["DeleteNode"] | components["schemas"]["MoveNode"] | components["schemas"]["DuplicateNode"] | components["schemas"]["WrapNode"] | components["schemas"]["UnwrapNode"] | components["schemas"]["AddBranch"] | components["schemas"]["RemoveBranch"] | components["schemas"]["RenameSymbol"] | components["schemas"]["AddMember"] | components["schemas"]["UpdateMember"] | components["schemas"]["DeleteMember"] | components["schemas"]["ReplaceCode"])[];
+            /** Description */
+            description?: string | null;
+        };
+        /** OpsResult */
+        OpsResult: {
+            version: components["schemas"]["VersionInfo"];
+            /** Changed Files */
+            changed_files: string[];
+            /** Focus Node Id */
+            focus_node_id: string | null;
+            /** Id Map */
+            id_map: {
+                [key: string]: string;
+            };
+            flow: components["schemas"]["FlowGraph"] | null;
+            /** Syntax Errors */
+            syntax_errors: components["schemas"]["SyntaxIssue"][];
+        };
+        /**
+         * OpsValidation
+         * @description Сухая проверка пакета: ничего не сохраняется.
+         */
+        OpsValidation: {
+            /** Ok */
+            ok: boolean;
+            /** Errors */
+            errors: components["schemas"]["OpError"][];
+            /** Diff */
+            diff: components["schemas"]["FileDiff"][];
+        };
+        /** OptimizeApply */
+        OptimizeApply: {
+            /** Base Version Id */
+            base_version_id: number;
+            /** Step Ids */
+            step_ids: string[];
+        };
+        /** OptimizePlan */
+        OptimizePlan: {
+            /** Version Id */
+            version_id: number;
+            /** Steps */
+            steps: components["schemas"]["OptimizeStep"][];
+            effect: components["schemas"]["Effect"];
+        };
+        /** OptimizePlanRequest */
+        OptimizePlanRequest: {
+            /** Version Id */
+            version_id?: number | null;
+        };
+        /** OptimizeStep */
+        OptimizeStep: {
+            /** Step Id */
+            step_id: string;
+            /** Fix Id */
+            fix_id: string;
+            /** Finding Id */
+            finding_id: string;
+            /** Title */
+            title: string;
+            effect: components["schemas"]["Effect"];
+            /** Behavior Preserving */
+            behavior_preserving: boolean;
+        };
+        /** Palette */
+        Palette: {
+            /** Blocks */
+            blocks: components["schemas"]["PaletteBlock"][];
+        };
+        /** PaletteBlock */
+        PaletteBlock: {
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "method" | "var_decl" | "assign" | "operation" | "condition" | "switch" | "case" | "loop_for" | "loop_foreach" | "loop_while" | "try" | "catch" | "finally" | "throw" | "return" | "break" | "continue" | "yield" | "lambda" | "local_type" | "labeled" | "assert" | "sync" | "code";
+            /** Title */
+            title: string;
+            /**
+             * Group
+             * @enum {string}
+             */
+            group: "basic" | "control" | "advanced";
+            /** Color */
+            color: string;
+            /** Icon */
+            icon: string;
+            /** Fields */
+            fields: components["schemas"]["PaletteField"][];
+            /** Template */
+            template: string;
+        };
+        /** PaletteField */
+        PaletteField: {
+            /** Name */
+            name: string;
+            /** Label */
+            label: string;
+            /**
+             * Type
+             * @enum {string}
+             */
+            type: "expression" | "type" | "identifier" | "text" | "boolean" | "select" | "modifiers" | "params";
+            /**
+             * Required
+             * @default true
+             */
+            required: boolean;
+            /** Default */
+            default: string | boolean | null;
+            /**
+             * Options
+             * @default []
+             */
+            options: string[];
+        };
+        /**
+         * ParseRequest
+         * @description Живой разбор без сохранения (``POST /parse``).
+         */
+        ParseRequest: {
+            /** File */
+            file: string;
+            /** Content */
+            content: string;
+            /** Method Key */
+            method_key?: string | null;
+        };
+        /** ParseResult */
+        ParseResult: {
+            /** Syntax Errors */
+            syntax_errors: components["schemas"]["SyntaxIssue"][];
+            flow: components["schemas"]["FlowGraph"] | null;
+        };
+        /** Precondition */
+        Precondition: {
+            /** Name */
+            name: string;
+            /** Passed */
+            passed: boolean;
+            /** Reason */
+            reason: string | null;
+        };
+        /** ProgressData */
+        ProgressData: {
+            /** Done */
+            done: number;
+            /** Total */
+            total: number;
+        };
+        /** ProgressEvent */
+        ProgressEvent: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            event: "progress";
+            data: components["schemas"]["ProgressData"];
+        };
+        /**
+         * ProjectCreateFiles
+         * @description Вставка текста: ``application/json`` с файлами.
+         */
+        ProjectCreateFiles: {
+            /** Name */
+            name: string;
+            /** Files */
+            files: components["schemas"]["ProjectFileIn"][];
+        };
+        /**
+         * ProjectCreateSample
+         * @description Встроенный пример: ``application/json`` с ``sample_id``.
+         */
+        ProjectCreateSample: {
+            /** Name */
+            name?: string | null;
+            /** Sample Id */
+            sample_id: string;
+        };
+        /** ProjectCreated */
+        ProjectCreated: {
+            /** Id */
+            id: number;
+            /** Name */
+            name: string;
+            /** Head Version Id */
+            head_version_id: number;
+            /** Original Version Id */
+            original_version_id: number;
+            /** Main Class */
+            main_class: string | null;
+            /** Main Class Candidates */
+            main_class_candidates: string[];
+            /** Syntax Errors */
+            syntax_errors: components["schemas"]["SyntaxIssue"][];
+            /** Files */
+            files: components["schemas"]["FileEntry"][];
+        };
+        /** ProjectDetail */
+        ProjectDetail: {
+            /** Id */
+            id: number;
+            /** Name */
+            name: string;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /**
+             * Updated At
+             * Format: date-time
+             */
+            updated_at: string;
+            /** Main Class */
+            main_class: string | null;
+            /** Main Class Candidates */
+            main_class_candidates: string[];
+            /** Head Version Id */
+            head_version_id: number;
+            /** Original Version Id */
+            original_version_id: number;
+            /** Baseline Version Id */
+            baseline_version_id: number | null;
+            settings: components["schemas"]["ProjectSettings"];
+            gate: components["schemas"]["GateSummary"];
+        };
+        /** ProjectFileIn */
+        ProjectFileIn: {
+            /** Path */
+            path: string;
+            /** Content */
+            content: string;
+        };
+        /** ProjectList */
+        ProjectList: {
+            /** Projects */
+            projects: components["schemas"]["ProjectSummary"][];
+        };
+        /** ProjectPatch */
+        ProjectPatch: {
+            /** Name */
+            name?: string | null;
+            /** Main Class */
+            main_class?: string | null;
+            settings?: components["schemas"]["ProjectSettingsPatch"] | null;
+        };
+        /** ProjectSettings */
+        ProjectSettings: {
+            /** Run Timeout S */
+            run_timeout_s: number;
+            /** Compile Timeout S */
+            compile_timeout_s: number;
+            /** Output Limit Bytes */
+            output_limit_bytes: number;
+            /** Jvm Xmx */
+            jvm_xmx: string;
+            /** Locale */
+            locale: string;
+            /** Timezone */
+            timezone: string;
+            /** Rule Thresholds */
+            rule_thresholds: {
+                [key: string]: number;
+            };
+            /** Gate Min Scenarios */
+            gate_min_scenarios: number;
+            /** Gate Min Coverage */
+            gate_min_coverage: number;
+        };
+        /** ProjectSettingsPatch */
+        ProjectSettingsPatch: {
+            /** Run Timeout S */
+            run_timeout_s?: number | null;
+            /** Compile Timeout S */
+            compile_timeout_s?: number | null;
+            /** Output Limit Bytes */
+            output_limit_bytes?: number | null;
+            /** Jvm Xmx */
+            jvm_xmx?: string | null;
+            /** Locale */
+            locale?: string | null;
+            /** Timezone */
+            timezone?: string | null;
+            /** Rule Thresholds */
+            rule_thresholds?: {
+                [key: string]: number;
+            } | null;
+            /** Gate Min Scenarios */
+            gate_min_scenarios?: number | null;
+            /** Gate Min Coverage */
+            gate_min_coverage?: number | null;
+        };
+        /** ProjectSummary */
+        ProjectSummary: {
+            /** Id */
+            id: number;
+            /** Name */
+            name: string;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /**
+             * Updated At
+             * Format: date-time
+             */
+            updated_at: string;
+            /** Head Version Id */
+            head_version_id: number;
+            /** Main Class */
+            main_class: string | null;
+            /** Files Count */
+            files_count: number;
+        };
+        /** ProjectTree */
+        ProjectTree: {
+            /** Version Id */
+            version_id: number;
+            /** Roots */
+            roots: components["schemas"]["TreeNode"][];
+        };
+        /** RemoveBranch */
+        RemoveBranch: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            op: "remove_branch";
+            /** Node Id */
+            node_id: string;
+            /** Branch Id */
+            branch_id: string;
+        };
+        /** RenameSymbol */
+        RenameSymbol: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            op: "rename_symbol";
+            /** Symbol Id */
+            symbol_id: string;
+            /** New Name */
+            new_name: string;
+        };
+        /**
+         * ReplaceCode
+         * @description Прямая замена фрагмента текстом: узел или диапазон (ровно одно из полей).
+         */
+        ReplaceCode: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            op: "replace_code";
+            /** Node Id */
+            node_id?: string | null;
+            range?: components["schemas"]["SourceRange"] | null;
+            /** Text */
+            text: string;
+        };
+        /** ResultData */
+        ResultData: {
+            summary: components["schemas"]["RunSummary"];
+        };
+        /** ResultEvent */
+        ResultEvent: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            event: "result";
+            data: components["schemas"]["ResultData"];
+        };
+        /** RunInfo */
+        RunInfo: {
+            /** Id */
+            id: number;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "run" | "trace" | "baseline" | "test" | "gate" | "generate" | "benchmark" | "verify";
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "queued" | "running" | "done" | "failed" | "cancelled" | "error";
+            /** Version Id */
+            version_id: number | null;
+            /** Started At */
+            started_at: string | null;
+            /** Finished At */
+            finished_at: string | null;
+            summary: components["schemas"]["RunSummary"];
+            /**
+             * Items
+             * @default []
+             */
+            items: components["schemas"]["RunItem"][];
+        };
+        /** RunItem */
+        RunItem: {
+            /** Scenario Id */
+            scenario_id: number | null;
+            /** Name */
+            name: string;
+            /**
+             * Verdict
+             * @enum {string}
+             */
+            verdict: "PASS" | "FAIL" | "ERROR" | "TIMEOUT";
+            /**
+             * Stdout
+             * @default
+             */
+            stdout: string;
+            /**
+             * Stderr
+             * @default
+             */
+            stderr: string;
+            /** Exit Code */
+            exit_code: number | null;
+            /** Duration Ms */
+            duration_ms: number;
+            /** Baseline Ms */
+            baseline_ms: number | null;
+            diff: components["schemas"]["BehaviorDiff"] | null;
+            /** Hits */
+            hits: {
+                [key: string]: number;
+            } | null;
+        };
+        /** RunList */
+        RunList: {
+            /** Runs */
+            runs: components["schemas"]["RunInfo"][];
+        };
+        /**
+         * RunRef
+         * @description Ссылка на фоновый запуск: дальше — ``GET /runs/{id}`` и SSE.
+         */
+        RunRef: {
+            /** Run Id */
+            run_id: number;
+            /**
+             * Status
+             * @default queued
+             * @constant
+             */
+            status: "queued";
+        };
+        /**
+         * RunRequest
+         * @description Запуск: поля зависят от ``kind`` (07 § 8.2).
+         */
+        RunRequest: {
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "run" | "trace" | "baseline" | "test" | "gate" | "generate" | "benchmark" | "verify";
+            /** Version Id */
+            version_id?: number | null;
+            /** Scenario Ids */
+            scenario_ids?: number[] | null;
+            /** Stdin */
+            stdin?: string | null;
+            /** Args */
+            args?: string[] | null;
+            /** Sizes */
+            sizes?: number[] | null;
+            /** Finding Id */
+            finding_id?: string | null;
+        };
+        /** RunSummary */
+        RunSummary: {
+            /** Passed */
+            passed: number | null;
+            /** Total */
+            total: number | null;
+            /** Coverage */
+            coverage: number | null;
+            /** Version Status */
+            version_status: ("passed" | "failed" | "unknown") | null;
+            /** Message */
+            message: string | null;
+            /** Data */
+            data: {
+                [key: string]: unknown;
+            } | null;
+        };
+        /** SampleInfo */
+        SampleInfo: {
+            /** Id */
+            id: string;
+            /** Name */
+            name: string;
+            /** Description */
+            description: string;
+            /** Lines */
+            lines: number;
+        };
+        /** SampleList */
+        SampleList: {
+            /** Samples */
+            samples: components["schemas"]["SampleInfo"][];
+        };
+        /** Scenario */
+        Scenario: {
+            /** Id */
+            id: number;
+            /** Name */
+            name: string;
+            /** Description */
+            description: string;
+            /** Stdin */
+            stdin: string;
+            /** Args */
+            args: string[];
+            /**
+             * Source
+             * @enum {string}
+             */
+            source: "manual" | "imported" | "generated" | "scaled";
+            /** Size Factor */
+            size_factor: number | null;
+            /** Enabled */
+            enabled: boolean;
+            /**
+             * Stability
+             * @enum {string}
+             */
+            stability: "stable" | "masked" | "nondeterministic";
+            /** Masks */
+            masks: components["schemas"]["Mask"][];
+            baseline: components["schemas"]["BaselineStatus"];
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+        };
+        /** ScenarioCreate */
+        ScenarioCreate: {
+            /** Name */
+            name: string;
+            /**
+             * Description
+             * @default
+             */
+            description?: string;
+            /**
+             * Stdin
+             * @default
+             */
+            stdin?: string;
+            /**
+             * Args
+             * @default []
+             */
+            args?: string[];
+        };
+        /** ScenarioExport */
+        ScenarioExport: {
+            /** Scenarios */
+            scenarios: components["schemas"]["ScenarioExportItem"][];
+        };
+        /** ScenarioExportItem */
+        ScenarioExportItem: {
+            /** Name */
+            name: string;
+            /** Description */
+            description: string;
+            /** Stdin */
+            stdin: string;
+            /** Args */
+            args: string[];
+            /** Expected Stdout */
+            expected_stdout: string | null;
+            /** Expected Exit Code */
+            expected_exit_code: number | null;
+        };
+        /** ScenarioImport */
+        ScenarioImport: {
+            /** Scenarios */
+            scenarios: components["schemas"]["ScenarioImportItem"][];
+        };
+        /**
+         * ScenarioImportItem
+         * @description Формат импорта/экспорта: ``expected_*`` — ожидание организаторов (07 § 4.3).
+         */
+        ScenarioImportItem: {
+            /** Name */
+            name: string;
+            /**
+             * Description
+             * @default
+             */
+            description?: string;
+            /**
+             * Stdin
+             * @default
+             */
+            stdin?: string;
+            /**
+             * Args
+             * @default []
+             */
+            args?: string[];
+            /** Expected Stdout */
+            expected_stdout?: string | null;
+            /** Expected Exit Code */
+            expected_exit_code?: number | null;
+        };
+        /** ScenarioImportResult */
+        ScenarioImportResult: {
+            /** Imported */
+            imported: number;
+            /** Scenario Ids */
+            scenario_ids: number[];
+            /** Warnings */
+            warnings: string[];
+        };
+        /** ScenarioList */
+        ScenarioList: {
+            /** Scenarios */
+            scenarios: components["schemas"]["Scenario"][];
+        };
+        /**
+         * ScenarioUpdate
+         * @description Изменение сценария сбрасывает его эталон.
+         */
+        ScenarioUpdate: {
+            /** Name */
+            name?: string | null;
+            /** Description */
+            description?: string | null;
+            /** Stdin */
+            stdin?: string | null;
+            /** Args */
+            args?: string[] | null;
+            /** Enabled */
+            enabled?: boolean | null;
+            /** Masks */
+            masks?: components["schemas"]["Mask"][] | null;
+        };
+        /**
+         * SourceRange
+         * @description Диапазон кода: строки с 1, колонки в UTF-16 с 1 (как в Monaco; ADR-11).
+         */
+        SourceRange: {
+            /** File */
+            file: string;
+            /** Start Line */
+            start_line: number;
+            /** Start Col */
+            start_col: number;
+            /** End Line */
+            end_line: number;
+            /** End Col */
+            end_col: number;
+        };
+        /** StatusData */
+        StatusData: {
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "queued" | "running" | "done" | "failed" | "cancelled" | "error";
+        };
+        /** StatusEvent */
+        StatusEvent: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            event: "status";
+            data: components["schemas"]["StatusData"];
+        };
+        /** StepData */
+        StepData: {
+            /** Step Id */
+            step_id: string;
+            /** Title */
+            title: string;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "applying" | "passed" | "skipped";
+            /** Reason */
+            reason: string | null;
+        };
+        /** StepEvent */
+        StepEvent: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            event: "step";
+            data: components["schemas"]["StepData"];
+        };
+        /** StructureEdge */
+        StructureEdge: {
+            /** Id */
+            id: string;
+            /** Source */
+            source: string;
+            /** Target */
+            target: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "extends" | "implements" | "contains" | "calls" | "uses";
+            /**
+             * Weight
+             * @default 1
+             */
+            weight: number;
+        };
+        /** StructureGraph */
+        StructureGraph: {
+            /**
+             * Mode
+             * @enum {string}
+             */
+            mode: "types" | "methods" | "deps";
+            /** Nodes */
+            nodes: components["schemas"]["StructureNode"][];
+            /** Edges */
+            edges: components["schemas"]["StructureEdge"][];
+            /** Version Id */
+            version_id: number;
+            /** Content Hash */
+            content_hash: string;
+        };
+        /** StructureNode */
+        StructureNode: {
+            /** Id */
+            id: string;
+            /**
+             * Node Type
+             * @enum {string}
+             */
+            node_type: "type" | "member";
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "class" | "interface" | "record" | "enum" | "field" | "constructor" | "method" | "initializer";
+            /** Name */
+            name: string;
+            /** Signature */
+            signature: string | null;
+            /**
+             * Modifiers
+             * @default []
+             */
+            modifiers: string[];
+            /**
+             * Type Params
+             * @default []
+             */
+            type_params: string[];
+            /** Parent Id */
+            parent_id: string | null;
+            range: components["schemas"]["SourceRange"];
+            /**
+             * Lines
+             * @default 0
+             */
+            lines: number;
+            /** Method Id */
+            method_id: string | null;
+            /** Complexity */
+            complexity: string | null;
+            /**
+             * Findings Count
+             * @default 0
+             */
+            findings_count: number;
+            /** Cluster */
+            cluster: string | null;
+        };
+        /**
+         * SyntaxIssue
+         * @description Синтаксическая ошибка: узел ``ERROR`` или ``MISSING`` из tree-sitter.
+         */
+        SyntaxIssue: {
+            /** Message */
+            message: string;
+            range: components["schemas"]["SourceRange"];
+        };
+        /** TextChange */
+        TextChange: {
+            /** Expected */
+            expected: string;
+            /** Actual */
+            actual: string;
+            /** Unified */
+            unified: string;
+        };
+        /** TreeBadges */
+        TreeBadges: {
+            /**
+             * High
+             * @default 0
+             */
+            high: number;
+            /**
+             * Medium
+             * @default 0
+             */
+            medium: number;
+            /**
+             * Low
+             * @default 0
+             */
+            low: number;
+        };
+        /**
+         * TreeNode
+         * @description Узел дерева «Проект»: пакеты → файлы → типы → члены.
+         */
+        TreeNode: {
+            /** Id */
+            id: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "package" | "file" | "type" | "member";
+            /** Name */
+            name: string;
+            /** Node Id */
+            node_id: string | null;
+            /** Method Id */
+            method_id: string | null;
+            /** Member Kind */
+            member_kind: ("class" | "interface" | "record" | "enum" | "field" | "constructor" | "method" | "initializer") | null;
+            range: components["schemas"]["SourceRange"] | null;
+            /** Complexity */
+            complexity: string | null;
+            /**
+             * @default {
+             *       "high": 0,
+             *       "medium": 0,
+             *       "low": 0
+             *     }
+             */
+            findings: components["schemas"]["TreeBadges"];
+            /**
+             * Children
+             * @default []
+             */
+            children: components["schemas"]["TreeNode"][];
+        };
+        /** TypeMetrics */
+        TypeMetrics: {
+            /** Type Id */
+            type_id: string;
+            /** Name */
+            name: string;
+            /** File */
+            file: string;
+            /** Lines */
+            lines: number;
+            /** Methods */
+            methods: number;
+            /** Fields */
+            fields: number;
+            /** Lcom4 */
+            lcom4: number;
+        };
+        /** UnwrapNode */
+        UnwrapNode: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            op: "unwrap_node";
+            /** Node Id */
+            node_id: string;
+        };
+        /** UpdateMember */
+        UpdateMember: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            op: "update_member";
+            /** Member Id */
+            member_id: string;
+            /** Fields */
+            fields: {
+                [key: string]: unknown;
+            };
+        };
+        /** UpdateNode */
+        UpdateNode: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            op: "update_node";
+            /** Node Id */
+            node_id: string;
+            /** Fields */
+            fields: {
+                [key: string]: unknown;
+            };
+        };
+        /**
+         * VersionChange
+         * @description Результат действия, создавшего версию или переместившего HEAD.
+         */
+        VersionChange: {
+            version: components["schemas"]["VersionInfo"];
+            /** Head Version Id */
+            head_version_id: number;
+            /** Changed Files */
+            changed_files: string[];
+            /** Syntax Errors */
+            syntax_errors: components["schemas"]["SyntaxIssue"][];
+            /**
+             * Collapsed
+             * @default false
+             */
+            collapsed: boolean;
+        };
+        /** VersionDetail */
+        VersionDetail: {
+            version: components["schemas"]["VersionInfo"];
+            /** Files */
+            files: components["schemas"]["FileEntry"][];
+        };
+        /** VersionDiff */
+        VersionDiff: {
+            /** From Version Id */
+            from_version_id: number;
+            /** To Version Id */
+            to_version_id: number;
+            /** Files */
+            files: components["schemas"]["FileDiff"][];
+        };
+        /** VersionInfo */
+        VersionInfo: {
+            /** Id */
+            id: number;
+            /** Number */
+            number: number;
+            /** Parent Id */
+            parent_id: number | null;
+            /**
+             * Origin
+             * @enum {string}
+             */
+            origin: "upload" | "code_edit" | "graph_op" | "autofix" | "optimize" | "extract_method" | "decompose" | "revert";
+            /** Description */
+            description: string;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /**
+             * Gate Status
+             * @enum {string}
+             */
+            gate_status: "unknown" | "passed" | "failed";
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "active" | "candidate" | "rejected";
+            /** Content Hash */
+            content_hash: string;
+        };
+        /** VersionList */
+        VersionList: {
+            /** Head Version Id */
+            head_version_id: number;
+            /** Versions */
+            versions: components["schemas"]["VersionInfo"][];
+        };
+        /** WrapNode */
+        WrapNode: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            op: "wrap_node";
+            /** Node Ids */
+            node_ids: string[];
+            /**
+             * Wrapper
+             * @enum {string}
+             */
+            wrapper: "if" | "try" | "for" | "while" | "block";
+            /**
+             * Fields
+             * @default {}
+             */
+            fields?: {
+                [key: string]: unknown;
+            };
         };
     };
     responses: never;
@@ -91,8 +3177,2156 @@ export interface operations {
                     "application/json": components["schemas"]["HealthResponse"];
                 };
             };
-            /** @description Internal Server Error */
-            500: {
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_samples: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SampleList"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_projects: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProjectList"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    create_project: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ProjectCreateFiles"] | components["schemas"]["ProjectCreateSample"];
+                "multipart/form-data": {
+                    name: string;
+                    files?: string[];
+                    /** Format: binary */
+                    archive?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProjectCreated"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_project: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProjectDetail"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    delete_project: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    patch_project: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ProjectPatch"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProjectDetail"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_versions: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VersionList"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_version: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+                version_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VersionDetail"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    restore_version: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+                version_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VersionChange"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    undo: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VersionChange"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    redo: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VersionChange"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_files: {
+        parameters: {
+            query?: {
+                version_id?: number | null;
+            };
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FileList"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    create_file: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FileCreate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VersionChange"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_file: {
+        parameters: {
+            query?: {
+                version_id?: number | null;
+            };
+            header?: never;
+            path: {
+                project_id: number;
+                path: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FileContent"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    save_file: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+                path: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FileSave"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VersionChange"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    delete_file: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+                path: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VersionChange"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    diff_versions: {
+        parameters: {
+            query: {
+                from: number;
+                to: number;
+            };
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VersionDiff"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    parse_live: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ParseRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ParseResult"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_structure: {
+        parameters: {
+            query?: {
+                version_id?: number | null;
+                mode?: "types" | "methods" | "deps";
+            };
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StructureGraph"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_flow: {
+        parameters: {
+            query: {
+                method_id: string;
+                version_id?: number | null;
+            };
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FlowGraph"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_tree: {
+        parameters: {
+            query?: {
+                version_id?: number | null;
+            };
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProjectTree"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    lookup_node: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["NodeLookup"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NodeDetails"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_node: {
+        parameters: {
+            query?: {
+                version_id?: number | null;
+            };
+            header?: never;
+            path: {
+                project_id: number;
+                node_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NodeDetails"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    locate: {
+        parameters: {
+            query: {
+                file: string;
+                line: number;
+                column: number;
+                version_id?: number | null;
+            };
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LocateResult"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    apply_ops: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["OpsRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OpsResult"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    validate_ops: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["OpsRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OpsValidation"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_palette: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Palette"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    validate_expression: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ExpressionCheck"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ExpressionResult"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_analysis: {
+        parameters: {
+            query?: {
+                version_id?: number | null;
+            };
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AnalysisResponse"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_findings: {
+        parameters: {
+            query?: {
+                version_id?: number | null;
+                severity?: ("high" | "medium" | "low") | null;
+                category?: ("PERF" | "BUG" | "MAINT") | null;
+                file?: string | null;
+                fixable?: boolean | null;
+            };
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FindingsResponse"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    verify_finding: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+                finding_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RunRef"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_finding: {
+        parameters: {
+            query?: {
+                version_id?: number | null;
+            };
+            header?: never;
+            path: {
+                project_id: number;
+                finding_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Finding"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_complexity: {
+        parameters: {
+            query?: {
+                version_id?: number | null;
+                node_id?: string | null;
+                file?: string | null;
+                start_line?: number | null;
+                end_line?: number | null;
+            };
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ComplexityResponse"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_metrics: {
+        parameters: {
+            query?: {
+                version_id?: number | null;
+                compare_to?: number | null;
+            };
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MetricsResponse"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_fixes: {
+        parameters: {
+            query?: {
+                version_id?: number | null;
+            };
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FixList"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    preview_fix: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+                finding_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FixPreviewRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FixPreview"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    apply_fix: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+                finding_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FixApply"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplyResult"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    plan_optimize: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["OptimizePlanRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OptimizePlan"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    apply_optimize: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["OptimizeApply"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RunRef"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    preview_extract_method: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ExtractMethodRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ExtractMethodPreview"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    apply_extract_method: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ExtractMethodApply"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplyResult"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    plan_decompose: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DecomposePlanRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DecomposePlan"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    preview_decompose: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DecomposeEdit"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DecomposePreview"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    apply_decompose: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DecomposeEdit"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplyResult"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    accept_candidate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+                version_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CandidateDecision"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    reject_candidate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+                version_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CandidateDecision"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_scenarios: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ScenarioList"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    create_scenario: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ScenarioCreate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Scenario"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    import_scenarios: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ScenarioImport"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ScenarioImportResult"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    export_scenarios: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ScenarioExport"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    generate_scenarios: {
+        parameters: {
+            query?: {
+                version_id?: number | null;
+            };
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RunRef"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    update_scenario: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+                scenario_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ScenarioUpdate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Scenario"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    delete_scenario: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+                scenario_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_input_schema: {
+        parameters: {
+            query?: {
+                version_id?: number | null;
+            };
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InputSchema"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_runs: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RunList"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    create_run: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RunRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RunRef"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_run: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                run_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RunInfo"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    run_events: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                run_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Поток событий запуска */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/event-stream": string & (components["schemas"]["StatusEvent"] | components["schemas"]["LogEvent"] | components["schemas"]["GateEvent"] | components["schemas"]["ItemEvent"] | components["schemas"]["StepEvent"] | components["schemas"]["ProgressEvent"] | components["schemas"]["ResultEvent"] | components["schemas"]["ErrorEvent"] | components["schemas"]["DoneEvent"]);
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    cancel_run: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                run_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RunInfo"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_run_report: {
+        parameters: {
+            query?: {
+                format?: "json" | "md" | "junit";
+            };
+            header?: never;
+            path: {
+                run_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Отчёт в выбранном формате */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Record<string, never>;
+                    "text/markdown": string;
+                    "application/xml": string;
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    build_project: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["BuildRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BuildResult"];
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    export_source: {
+        parameters: {
+            query?: {
+                version_id?: number | null;
+                format?: "zip" | "file";
+                path?: string | null;
+            };
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Архив или файл */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/zip": string;
+                    "text/x-java-source": string;
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    export_report: {
+        parameters: {
+            query?: {
+                version_id?: number | null;
+                format?: "md" | "json";
+            };
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Отчёт */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Record<string, never>;
+                    "text/markdown": string;
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    export_bundle: {
+        parameters: {
+            query?: {
+                version_id?: number | null;
+            };
+            header?: never;
+            path: {
+                project_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Архив */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/zip": string;
+                };
+            };
+            /** @description Ошибка в едином формате */
+            default: {
                 headers: {
                     [name: string]: unknown;
                 };

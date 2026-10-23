@@ -1,0 +1,8 @@
+{
+  "status": "ok",
+  "version": "0.1.0-mock",
+  "javac": "21.0.4",
+  "java": "21.0.4",
+  "db": "ok",
+  "problems": []
+}

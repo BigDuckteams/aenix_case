@@ -1,0 +1,7 @@
+{
+  "name": "cyrillic",
+  "description": "Кириллическое имя",
+  "stdin": "Ёжик http://localhost/a?k=v\n",
+  "args": [],
+  "expected_stdout": "привет, Ёжик\n[hello, main]\nhttp localhost /a\n[k=v]"
+}

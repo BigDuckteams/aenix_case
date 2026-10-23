@@ -1,0 +1,7 @@
+{
+  "name": "medium",
+  "description": "Допустимый уровень",
+  "stdin": "6 7 MEDIUM\n",
+  "args": [],
+  "expected_stdout": "6 + 7 = 13 (ADD, 0)\n6 * 7 = 42 (MULTIPLY, 1)\n6 - 7 = -1 (SUBTRACT, 2)\nMERCURY: 3.70\nEARTH: 9.80\nJUPITER: 24.81\nMEDIUM -> средний 0\n{LOW=3, MEDIUM=6, HIGH=4}\nh"
+}

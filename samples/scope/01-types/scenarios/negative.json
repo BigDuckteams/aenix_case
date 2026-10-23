@@ -1,0 +1,7 @@
+{
+  "name": "negative",
+  "description": "Отрицательные значения",
+  "stdin": "-300 -5\n",
+  "args": [],
+  "expected_stdout": "byte=-44 short=-300 char=O\nfloat=-100.0 double=-100.0\nboxed=-300 unboxed=-299\n127 == 127: true, 1000 equals 1000: true\n-5 -100.0 O true\noverflow=-2147483648 safe=2147483648\nlong -> int: -5\nMIN=-2147483648 MAX=9223372036854775807"
+}

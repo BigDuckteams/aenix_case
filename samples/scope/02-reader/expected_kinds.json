@@ -1,0 +1,12 @@
+{
+  "description": "BufferedReader(InputStreamReader(System.in, UTF-8)): readLine до конца ввода",
+  "section": "2",
+  "kinds": [
+    "try",
+    "loop_while",
+    "condition",
+    "var_decl",
+    "operation",
+    "assign"
+  ]
+}

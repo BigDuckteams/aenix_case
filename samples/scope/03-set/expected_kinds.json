@@ -1,0 +1,10 @@
+{
+  "description": "Set: HashSet, LinkedHashSet, TreeSet и их операции",
+  "section": "3",
+  "kinds": [
+    "var_decl",
+    "operation",
+    "loop_foreach",
+    "condition"
+  ]
+}

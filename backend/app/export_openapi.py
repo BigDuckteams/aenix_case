@@ -17,7 +17,8 @@ from app.main import create_app
 def main() -> None:
     target = Path(sys.argv[1] if len(sys.argv) > 1 else "openapi.json")
     schema = create_app().openapi()
-    target.write_text(json.dumps(schema, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    text = json.dumps(schema, ensure_ascii=False, indent=2) + "\n"
+    target.write_text(text, encoding="utf-8", newline="\n")  # LF и на Windows: CI сверяет git diff
     print(f"OpenAPI written: {target}")  # ASCII: консоль Windows может быть не в UTF-8
 
 

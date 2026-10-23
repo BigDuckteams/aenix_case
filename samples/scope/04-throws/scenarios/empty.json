@@ -1,0 +1,7 @@
+{
+  "name": "empty",
+  "description": "Нет пар",
+  "stdin": "",
+  "args": [],
+  "expected_stdout": ""
+}

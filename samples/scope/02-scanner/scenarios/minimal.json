@@ -1,0 +1,7 @@
+{
+  "name": "minimal",
+  "description": "Минимальный ввод",
+  "stdin": "0\n\nT\nW\n",
+  "args": [],
+  "expected_stdout": "сумма = 0.0\nзаголовок = «»\nслово = T\nчисла = 0, слов = 1\ntrue false"
+}

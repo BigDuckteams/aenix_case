@@ -1,0 +1,12 @@
+{
+  "description": "if/else if/else, switch (оператор и выражение), стрелочный case, yield",
+  "section": "1",
+  "kinds": [
+    "condition",
+    "switch",
+    "yield",
+    "var_decl",
+    "operation",
+    "return"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "one",
+  "description": "Один автомобиль",
+  "stdin": "1\nbus\n",
+  "args": [],
+  "expected_stdout": "создан bus (4 колёс)\nвсего создано: 1"
+}

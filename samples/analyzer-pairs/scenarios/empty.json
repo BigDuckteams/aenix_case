@@ -1,0 +1,7 @@
+{
+  "name": "empty",
+  "description": "Нет записей",
+  "stdin": "0\n10\n",
+  "args": [],
+  "expected_stdout": "записей: 0, с общим id: 0\nпар с суммой 10: 0"
+}

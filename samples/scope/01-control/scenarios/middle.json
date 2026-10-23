@@ -1,0 +1,7 @@
+{
+  "name": "middle",
+  "description": "Средний балл, сентябрь",
+  "stdin": "72 9 слово\n",
+  "args": [],
+  "expected_stdout": "хорошо\n30 осень\n50"
+}

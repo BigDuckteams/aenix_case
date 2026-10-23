@@ -1,0 +1,7 @@
+{
+  "name": "medium",
+  "description": "Средний объём работы",
+  "stdin": "1000\n",
+  "args": [],
+  "expected_stdout": "счётчик: 4000\nсумма: 4498500"
+}

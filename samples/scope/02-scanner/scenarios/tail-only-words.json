@@ -1,0 +1,7 @@
+{
+  "name": "tail-only-words",
+  "description": "Хвост без чисел",
+  "stdin": "1\n2\nЗаг\nслово один два три\n",
+  "args": [],
+  "expected_stdout": "сумма = 2.0\nзаголовок = «Заг»\nслово = слово\nчисла = 0, слов = 3\ntrue false"
+}

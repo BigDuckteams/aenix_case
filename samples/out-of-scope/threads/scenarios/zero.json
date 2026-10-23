@@ -1,0 +1,7 @@
+{
+  "name": "zero",
+  "description": "Нет работы",
+  "stdin": "0\n",
+  "args": [],
+  "expected_stdout": "счётчик: 0\nсумма: 0"
+}

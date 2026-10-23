@@ -1,0 +1,7 @@
+{
+  "name": "big-index",
+  "description": "Число 5 и неверный токен",
+  "stdin": "5 xyz\n",
+  "args": [],
+  "expected_stdout": "5\n2\n1\nшаг 3: IndexOutOfBoundsException\nшаг 4: IndexOutOfBoundsException\nшаг 5: IllegalArgumentException слишком короткое слово: 5\nшаг 6: NoSuchElementException\nInputMismatchException"
+}

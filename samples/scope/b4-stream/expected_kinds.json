@@ -1,0 +1,10 @@
+{
+  "description": "Stream API и Collectors: конвейеры filter/map/sorted/distinct/limit/reduce/collect",
+  "section": "bonus",
+  "kinds": [
+    "var_decl",
+    "operation",
+    "lambda",
+    "loop_foreach"
+  ]
+}

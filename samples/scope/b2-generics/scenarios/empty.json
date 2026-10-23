@@ -1,0 +1,7 @@
+{
+  "name": "empty",
+  "description": "Пусто",
+  "stdin": "0\n",
+  "args": [],
+  "expected_stdout": "сумма: 0.0\n[0, 1, 2] []\nключ=0"
+}

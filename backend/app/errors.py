@@ -51,6 +51,10 @@ def bad_request(message: str, **details: Any) -> ApiError:
     return ApiError(400, "BAD_REQUEST", message, details or None)
 
 
+def not_implemented(stage: str) -> ApiError:
+    return ApiError(501, "NOT_IMPLEMENTED", f"Эндпоинт ещё не реализован (этап {stage})")
+
+
 def version_conflict(message: str, **details: Any) -> ApiError:
     return ApiError(409, "VERSION_CONFLICT", message, details or None)
 

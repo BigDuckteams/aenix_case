@@ -1,0 +1,7 @@
+{
+  "name": "text",
+  "description": "Нечисловое слово, затем число",
+  "stdin": "abc 15\n",
+  "args": [],
+  "expected_stdout": "шаг 0: NumberFormatException For input string: \"abc\"\nшаг 1: NumberFormatException For input string: \"abc\"\n3\nшаг 3: NumberFormatException For input string: \"abc\"\nшаг 4: IndexOutOfBoundsException\nслово принято\nшаг 6: NoSuchElementException\n15"
+}

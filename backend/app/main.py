@@ -10,7 +10,18 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app import __version__
-from app.api import health
+from app.api import (
+    analysis,
+    export,
+    graph,
+    health,
+    ops,
+    projects,
+    runs,
+    scenarios,
+    transform,
+    versions,
+)
 from app.config import get_settings
 from app.db.session import init_db
 from app.errors import register_error_handlers
@@ -52,7 +63,19 @@ def create_app() -> FastAPI:
         )
     app.add_middleware(RequestIdMiddleware)
     register_error_handlers(app)
-    app.include_router(health.router, prefix="/api")
+    for module in (
+        health,
+        projects,
+        versions,
+        graph,
+        ops,
+        analysis,
+        transform,
+        scenarios,
+        runs,
+        export,
+    ):
+        app.include_router(module.router, prefix="/api")
     return app
 
 

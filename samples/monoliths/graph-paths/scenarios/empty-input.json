@@ -1,0 +1,7 @@
+{
+  "name": "empty-input",
+  "description": "Пустой ввод: только заголовок и итог",
+  "stdin": "",
+  "args": [],
+  "expected_stdout": "=== Сеть дорог ===\nКоманды: node, edge, oneway, batch, path, bfs, dfs, components, matrix, report, quit\n----------------------------------------\n----------------------------------------\nКоманд: 0, ошибок: 0, узлов: 0, рёбер: 0"
+}

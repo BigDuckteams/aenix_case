@@ -1,0 +1,7 @@
+{
+  "name": "edge",
+  "description": "Граничные значения",
+  "stdin": "2147483647 9223372036854775807\n",
+  "args": [],
+  "expected_stdout": "byte=-1 short=-1 char=X\nfloat=7.158279E8 double=7.158278823333334E8\nboxed=2147483647 unboxed=-2147483648\n127 == 127: true, 1000 equals 1000: true\n9223372036854775807 7.158278823333334E8 X false\noverflow=-2147483648 safe=2147483648\nlong -> int: -1\nMIN=-2147483648 MAX=9223372036854775807"
+}

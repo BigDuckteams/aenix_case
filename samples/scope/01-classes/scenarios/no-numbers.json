@@ -1,0 +1,7 @@
+{
+  "name": "no-numbers",
+  "description": "Только имя",
+  "stdin": "Счётчик\n",
+  "args": [],
+  "expected_stdout": "Счётчик: 0"
+}

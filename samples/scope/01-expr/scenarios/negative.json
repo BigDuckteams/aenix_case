@@ -1,0 +1,7 @@
+{
+  "name": "negative",
+  "description": "Отрицательные числа",
+  "stdin": "-17 5\n",
+  "args": [],
+  "expected_stdout": "-12 -22 -85 -3 -2 -3.4\nfalse true true true\nfalse true true false\n5 -17 -22 16\n-68 -9 15\nx=-52\nнечётное 5 4"
+}

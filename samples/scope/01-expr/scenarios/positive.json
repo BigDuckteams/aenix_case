@@ -1,0 +1,7 @@
+{
+  "name": "positive",
+  "description": "Положительные числа",
+  "stdin": "17 5\n",
+  "args": [],
+  "expected_stdout": "22 12 85 3 2 3.4\ntrue true false false\nfalse true false true\n1 21 20 -18\n68 8 0\nx=84\nнечётное 17 21"
+}

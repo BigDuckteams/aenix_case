@@ -1,0 +1,7 @@
+{
+  "name": "none",
+  "description": "Нет пар",
+  "stdin": "0\n",
+  "args": [],
+  "expected_stdout": "Привет, мир!"
+}

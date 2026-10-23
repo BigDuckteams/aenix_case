@@ -1,0 +1,7 @@
+{
+  "name": "three",
+  "description": "Три точки",
+  "stdin": "3\n1 2\n3 4\n-5 6\n",
+  "args": [],
+  "expected_stdout": "Point[x=1, y=2] расстояние 2.236\nPoint[x=3, y=4] расстояние 5.000\nPoint[x=-5, y=6] расстояние 7.810\nсумма Point[x=-1, y=12] x=-1 y=12\ntrue false\nSegment[from=Point[x=1, y=2], to=Point[x=3, y=4]] длина 2.828\nLabel[text=метка, priority=2] 5"
+}

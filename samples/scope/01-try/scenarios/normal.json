@@ -1,0 +1,7 @@
+{
+  "name": "normal",
+  "description": "Без ошибок",
+  "stdin": "10 2 42\n",
+  "args": [],
+  "expected_stdout": "divide(10, 2) завершён\n5\n42\nоткрыт A\nоткрыт B\nA обрабатывает 10\nB обрабатывает 2\nзакрыт B\nзакрыт A\nготово"
+}

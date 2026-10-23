@@ -1,0 +1,7 @@
+{
+  "name": "limit",
+  "description": "Больше лимита",
+  "stdin": "5\nа\nб\nв\nг\nд\n",
+  "args": [],
+  "expected_stdout": "item-1 [а] count=10 ratio=0.0 active=true slots=1\nitem-2 [б] count=0 ratio=0.0 active=false slots=нет\nitem-3 [в] count=12 ratio=0.0 active=true slots=3\nсоздано: 3 из 3"
+}

@@ -1,0 +1,14 @@
+{
+  "description": "break, continue, return, переходы по меткам",
+  "section": "1",
+  "kinds": [
+    "loop_for",
+    "loop_while",
+    "break",
+    "continue",
+    "return",
+    "labeled",
+    "condition",
+    "var_decl"
+  ]
+}

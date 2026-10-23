@@ -1,0 +1,150 @@
+{
+  "id": 7,
+  "kind": "test",
+  "status": "done",
+  "version_id": 3,
+  "started_at": "2026-10-24T08:00:00Z",
+  "finished_at": "2026-10-24T08:00:04Z",
+  "summary": {
+    "passed": 11,
+    "total": 11,
+    "coverage": 0.87,
+    "version_status": "passed",
+    "message": null,
+    "data": null
+  },
+  "items": [
+    {
+      "scenario_id": 1,
+      "name": "bad-format",
+      "verdict": "PASS",
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "duration_ms": 89,
+      "baseline_ms": 97,
+      "diff": null,
+      "hits": null
+    },
+    {
+      "scenario_id": 2,
+      "name": "boundary-values",
+      "verdict": "PASS",
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "duration_ms": 98,
+      "baseline_ms": 104,
+      "diff": null,
+      "hits": null
+    },
+    {
+      "scenario_id": 3,
+      "name": "cyrillic",
+      "verdict": "PASS",
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "duration_ms": 107,
+      "baseline_ms": 111,
+      "diff": null,
+      "hits": null
+    },
+    {
+      "scenario_id": 4,
+      "name": "empty-input",
+      "verdict": "PASS",
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "duration_ms": 116,
+      "baseline_ms": 118,
+      "diff": null,
+      "hits": null
+    },
+    {
+      "scenario_id": 5,
+      "name": "large-input",
+      "verdict": "PASS",
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "duration_ms": 125,
+      "baseline_ms": 125,
+      "diff": null,
+      "hits": null
+    },
+    {
+      "scenario_id": 6,
+      "name": "many-orders",
+      "verdict": "PASS",
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "duration_ms": 134,
+      "baseline_ms": 132,
+      "diff": null,
+      "hits": null
+    },
+    {
+      "scenario_id": 7,
+      "name": "merge-duplicates",
+      "verdict": "PASS",
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "duration_ms": 143,
+      "baseline_ms": 139,
+      "diff": null,
+      "hits": null
+    },
+    {
+      "scenario_id": 8,
+      "name": "single-order",
+      "verdict": "PASS",
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "duration_ms": 152,
+      "baseline_ms": 146,
+      "diff": null,
+      "hits": null
+    },
+    {
+      "scenario_id": 9,
+      "name": "status-flow",
+      "verdict": "PASS",
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "duration_ms": 161,
+      "baseline_ms": 153,
+      "diff": null,
+      "hits": null
+    },
+    {
+      "scenario_id": 10,
+      "name": "uncaught-exception",
+      "verdict": "PASS",
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 1,
+      "duration_ms": 170,
+      "baseline_ms": 160,
+      "diff": null,
+      "hits": null
+    },
+    {
+      "scenario_id": 11,
+      "name": "vip-discount",
+      "verdict": "PASS",
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "duration_ms": 179,
+      "baseline_ms": 167,
+      "diff": null,
+      "hits": null
+    }
+  ]
+}

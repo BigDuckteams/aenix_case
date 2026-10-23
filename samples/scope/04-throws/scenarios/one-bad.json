@@ -1,0 +1,7 @@
+{
+  "name": "one-bad",
+  "description": "Одна плохая пара",
+  "stdin": "а б\n",
+  "args": [],
+  "expected_stdout": "ввод-вывод: неверное значение «а» (причина: NumberFormatException)"
+}

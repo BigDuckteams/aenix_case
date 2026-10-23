@@ -1,0 +1,8 @@
+{
+  "name": "crash",
+  "description": "Недопустимый уровень, код выхода 1",
+  "stdin": "1 9 2\n",
+  "args": [],
+  "expected_exit_code": 1,
+  "expected_stdout": "проверка 1\nитого 2\nпроверка 9"
+}

@@ -1,0 +1,12 @@
+{
+  "description": "Методы: перегрузка, static, varargs, рекурсия",
+  "section": "1",
+  "kinds": [
+    "method",
+    "return",
+    "condition",
+    "operation",
+    "var_decl",
+    "loop_for"
+  ]
+}

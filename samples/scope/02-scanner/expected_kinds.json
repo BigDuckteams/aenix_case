@@ -1,0 +1,11 @@
+{
+  "description": "Scanner: nextInt, nextDouble, next, nextLine, hasNext*",
+  "section": "2",
+  "kinds": [
+    "loop_while",
+    "condition",
+    "var_decl",
+    "operation",
+    "assign"
+  ]
+}

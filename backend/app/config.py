@@ -16,6 +16,7 @@ class Settings(BaseSettings):
     data_dir: Path = Path("./data")
     db_url: str | None = None  # по умолчанию sqlite:///{data_dir}/app.db
     java_home: Path | None = None  # по умолчанию javac/java берутся из PATH
+    samples_dir: Path = Path(__file__).resolve().parents[2] / "samples"  # встроенные примеры
 
     max_parallel_runs: int = Field(default_factory=lambda: min(4, os.cpu_count() or 2), ge=1)
     run_timeout_s: int = Field(default=10, ge=1)

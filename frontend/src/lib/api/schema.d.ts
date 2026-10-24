@@ -50,7 +50,7 @@ export interface paths {
         put?: never;
         /**
          * Создать проект
-         * @description Один из вариантов тела: `multipart/form-data` (`name`, `files[]` или `archive`), `application/json` с файлами либо с `sample_id`. Пути нормализуются (защита от zip-slip), принимаются только `.java` в UTF-8.
+         * @description Один из вариантов тела: `multipart/form-data` (`name`, `files[]` или `archive`), `application/json` с файлами либо с `sample_id`. Пути нормализуются (защита от zip-slip), принимаются только `.java` в UTF-8; файл ≤ 2 МБ, архив ≤ 10 МБ, файлов ≤ 200.
          */
         post: operations["create_project"];
         delete?: never;
@@ -192,7 +192,7 @@ export interface paths {
         get: operations["get_file"];
         /**
          * Сохранить файл
-         * @description Создаёт версию `code_edit`; подряд идущие правки схлопываются. `409 VERSION_CONFLICT`, если `base_version_id` не равен HEAD.
+         * @description Создаёт версию `code_edit`; подряд идущие правки схлопываются в HEAD. `409 VERSION_CONFLICT`, если `base_version_id` не равен HEAD.
          */
         put: operations["save_file"];
         post?: never;
@@ -368,7 +368,7 @@ export interface paths {
         put?: never;
         /**
          * Применить операции над графом
-         * @description Пакет применяется атомарно: при ошибке любой операции ни одна не применяется. `409 VERSION_CONFLICT` — `base_version_id` не равен HEAD; `422 INVALID_FRAGMENT` — после правки код не разбирается.
+         * @description Пакет применяется атомарно: при ошибке любой операции ни одна не применяется. `409 VERSION_CONFLICT` — `base_version_id` не равен HEAD; `422 INVALID_FRAGMENT` — после правки код не разбирается. Идентификаторы в каждой следующей операции пакета относятся к состоянию после предыдущих.
          */
         post: operations["apply_ops"];
         delete?: never;
@@ -738,7 +738,7 @@ export interface paths {
         put?: never;
         /**
          * Подтвердить кандидата после красного gate
-         * @description Для `behavior_preserving = false`: обновляет эталоны затронутых сценариев.
+         * @description Для `behavior_preserving = false`: кандидат становится HEAD. Эталоны сценариев остаются прежними: после подтверждения расхождений их нужно записать заново (`kind=baseline`).
          */
         post: operations["accept_candidate"];
         delete?: never;
@@ -847,7 +847,10 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
-        /** Изменить сценарий (сбрасывает эталон) */
+        /**
+         * Изменить сценарий (сбрасывает эталон)
+         * @description Меняются `stdin`, `args` или маски — эталон сценария удаляется.
+         */
         put: operations["update_scenario"];
         post?: never;
         /** Удалить сценарий */
@@ -889,7 +892,7 @@ export interface paths {
         put?: never;
         /**
          * Запустить задачу
-         * @description `kind`: `run`, `trace`, `baseline`, `test`, `gate`, `generate`, `benchmark`, `verify`. Ответ `202`; ход выполнения — `GET /runs/{run_id}/events`. `429 BUSY` — слишком много параллельных запусков.
+         * @description `kind`: `run`, `trace`, `baseline`, `test`, `gate`, `generate`, `benchmark`, `verify`. Ответ `202`; ход выполнения — `GET /runs/{run_id}/events`. `429 BUSY` — слишком много параллельных запусков. Пока реализован `run`; остальные виды отвечают `501`.
          */
         post: operations["create_run"];
         delete?: never;
@@ -924,7 +927,7 @@ export interface paths {
         };
         /**
          * SSE-поток запуска
-         * @description `text/event-stream`: события `status`, `log`, `gate`, `item`, `step`, `progress`, `result`, `error`, `done` (каждое — `event:` + `data:` JSON). Поздние подписчики получают replay с начала; heartbeat-комментарий каждые 15 секунд.
+         * @description `text/event-stream`: события `status`, `log`, `gate`, `item`, `step`, `progress`, `result`, `error`, `done` (каждое — `event:` + `data:` JSON). Поздние подписчики получают replay с начала (с заголовком `Last-Event-ID` — после указанного события); heartbeat-комментарий каждые 15 секунд.
          */
         get: operations["run_events"];
         put?: never;
@@ -1018,7 +1021,7 @@ export interface paths {
         };
         /**
          * Сводный отчёт
-         * @description Анализ, преобразования и результаты тестов.
+         * @description Версия, результаты последней проверки, сценарии и история запусков.
          */
         get: operations["export_report"];
         put?: never;
@@ -1038,7 +1041,7 @@ export interface paths {
         };
         /**
          * Комплект: исходники, отчёты, сценарии
-         * @description Zip для комплекта сдачи; достаточен для воспроизведения бага.
+         * @description Zip для комплекта сдачи; достаточен для воспроизведения проверки.
          */
         get: operations["export_bundle"];
         put?: never;
@@ -2297,26 +2300,6 @@ export interface components {
             event: "progress";
             data: components["schemas"]["ProgressData"];
         };
-        /**
-         * ProjectCreateFiles
-         * @description Вставка текста: ``application/json`` с файлами.
-         */
-        ProjectCreateFiles: {
-            /** Name */
-            name: string;
-            /** Files */
-            files: components["schemas"]["ProjectFileIn"][];
-        };
-        /**
-         * ProjectCreateSample
-         * @description Встроенный пример: ``application/json`` с ``sample_id``.
-         */
-        ProjectCreateSample: {
-            /** Name */
-            name?: string | null;
-            /** Sample Id */
-            sample_id: string;
-        };
         /** ProjectCreated */
         ProjectCreated: {
             /** Id */
@@ -2364,13 +2347,6 @@ export interface components {
             baseline_version_id: number | null;
             settings: components["schemas"]["ProjectSettings"];
             gate: components["schemas"]["GateSummary"];
-        };
-        /** ProjectFileIn */
-        ProjectFileIn: {
-            /** Path */
-            path: string;
-            /** Content */
-            content: string;
         };
         /** ProjectList */
         ProjectList: {
@@ -2522,7 +2498,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "run" | "trace" | "baseline" | "test" | "gate" | "generate" | "benchmark" | "verify";
+            kind: "run" | "trace" | "baseline" | "test" | "gate" | "generate" | "benchmark" | "verify" | "optimize";
             /**
              * Status
              * @enum {string}
@@ -2602,7 +2578,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "run" | "trace" | "baseline" | "test" | "gate" | "generate" | "benchmark" | "verify";
+            kind: "run" | "trace" | "baseline" | "test" | "gate" | "generate" | "benchmark" | "verify" | "optimize";
             /** Version Id */
             version_id?: number | null;
             /** Scenario Ids */
@@ -2615,6 +2591,8 @@ export interface components {
             sizes?: number[] | null;
             /** Finding Id */
             finding_id?: string | null;
+            /** Step Ids */
+            step_ids?: string[] | null;
         };
         /** RunSummary */
         RunSummary: {
@@ -3150,6 +3128,36 @@ export interface components {
                 [key: string]: unknown;
             };
         };
+        /** ProjectFileIn */
+        ProjectFileIn: {
+            /** Path */
+            path: string;
+            /** Content */
+            content: string;
+        };
+        /**
+         * ProjectCreateFiles
+         * @description Вставка текста: ``application/json`` с файлами.
+         */
+        ProjectCreateFiles: {
+            /** Name */
+            name: string;
+            /** Files */
+            files: components["schemas"]["ProjectFileIn"][];
+        };
+        /**
+         * ProjectCreateSample
+         * @description Встроенный пример: ``application/json`` с ``sample_id``.
+         */
+        ProjectCreateSample: {
+            /**
+             * Name
+             * @default null
+             */
+            name?: string | null;
+            /** Sample Id */
+            sample_id: string;
+        };
     };
     responses: never;
     parameters: never;
@@ -3416,8 +3424,8 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                project_id: number;
                 version_id: number;
+                project_id: number;
             };
             cookie?: never;
         };
@@ -3448,8 +3456,8 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                project_id: number;
                 version_id: number;
+                project_id: number;
             };
             cookie?: never;
         };
@@ -3612,8 +3620,8 @@ export interface operations {
             };
             header?: never;
             path: {
-                project_id: number;
                 path: string;
+                project_id: number;
             };
             cookie?: never;
         };
@@ -3644,8 +3652,8 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                project_id: number;
                 path: string;
+                project_id: number;
             };
             cookie?: never;
         };
@@ -3680,8 +3688,8 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                project_id: number;
                 path: string;
+                project_id: number;
             };
             cookie?: never;
         };
@@ -3919,8 +3927,8 @@ export interface operations {
             };
             header?: never;
             path: {
-                project_id: number;
                 node_id: string;
+                project_id: number;
             };
             cookie?: never;
         };
@@ -4227,8 +4235,8 @@ export interface operations {
             };
             header?: never;
             path: {
-                project_id: number;
                 finding_id: string;
+                project_id: number;
             };
             cookie?: never;
         };
@@ -4363,8 +4371,8 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                project_id: number;
                 finding_id: string;
+                project_id: number;
             };
             cookie?: never;
         };
@@ -4399,8 +4407,8 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                project_id: number;
                 finding_id: string;
+                project_id: number;
             };
             cookie?: never;
         };
@@ -4680,8 +4688,8 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                project_id: number;
                 version_id: number;
+                project_id: number;
             };
             cookie?: never;
         };
@@ -4712,8 +4720,8 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                project_id: number;
                 version_id: number;
+                project_id: number;
             };
             cookie?: never;
         };
@@ -4909,8 +4917,8 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                project_id: number;
                 scenario_id: number;
+                project_id: number;
             };
             cookie?: never;
         };
@@ -4945,8 +4953,8 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                project_id: number;
                 scenario_id: number;
+                project_id: number;
             };
             cookie?: never;
         };
@@ -5103,7 +5111,9 @@ export interface operations {
     run_events: {
         parameters: {
             query?: never;
-            header?: never;
+            header?: {
+                "last-event-id"?: string | null;
+            };
             path: {
                 run_id: number;
             };

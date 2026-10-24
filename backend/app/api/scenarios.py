@@ -1,10 +1,11 @@
-"""Сценарии (docs/08-api.md § 8.1). Заглушки контракта (S1.1): реализация — этап S6."""
+"""Сценарии (docs/08-api.md § 8.1). CRUD, импорт и экспорт — S6.1; генерация и схема ввода — S6.8–S6.9."""
 
 from __future__ import annotations
 
 from fastapi import APIRouter, Response
 
 from app.api.common import ERROR_RESPONSES
+from app.deps import ProjectDep, SessionDep
 from app.errors import not_implemented
 from app.schemas.verify import (
     InputSchema,
@@ -17,18 +18,19 @@ from app.schemas.verify import (
     ScenarioList,
     ScenarioUpdate,
 )
+from app.services import scenarios as service
 
 router = APIRouter(tags=["scenarios"], responses=ERROR_RESPONSES)
 
 
 @router.get("/projects/{project_id}/scenarios", summary="Сценарии со статусом эталона")
-def list_scenarios(project_id: int) -> ScenarioList:
-    raise not_implemented("S6")
+def list_scenarios(project: ProjectDep, session: SessionDep) -> ScenarioList:
+    return ScenarioList(scenarios=service.listing(session, project))
 
 
 @router.post("/projects/{project_id}/scenarios", status_code=201, summary="Создать сценарий")
-def create_scenario(project_id: int, payload: ScenarioCreate) -> Scenario:
-    raise not_implemented("S6")
+def create_scenario(project: ProjectDep, session: SessionDep, payload: ScenarioCreate) -> Scenario:
+    return service.create(session, project, payload)
 
 
 @router.post(
@@ -36,13 +38,15 @@ def create_scenario(project_id: int, payload: ScenarioCreate) -> Scenario:
     summary="Импорт сценариев",
     description='Формат `{"scenarios": [...]}`; пары `*.in` + `*.out` frontend собирает в этот же формат.',
 )
-def import_scenarios(project_id: int, payload: ScenarioImport) -> ScenarioImportResult:
-    raise not_implemented("S6")
+def import_scenarios(
+    project: ProjectDep, session: SessionDep, payload: ScenarioImport
+) -> ScenarioImportResult:
+    return service.import_items(session, project, payload)
 
 
 @router.get("/projects/{project_id}/scenarios/export", summary="Экспорт всех сценариев в JSON")
-def export_scenarios(project_id: int) -> ScenarioExport:
-    raise not_implemented("S6")
+def export_scenarios(project: ProjectDep, session: SessionDep) -> ScenarioExport:
+    return service.export(session, project)
 
 
 @router.post(
@@ -58,9 +62,12 @@ def generate_scenarios(project_id: int, version_id: int | None = None) -> RunRef
 @router.put(
     "/projects/{project_id}/scenarios/{scenario_id}",
     summary="Изменить сценарий (сбрасывает эталон)",
+    description="Меняются `stdin`, `args` или маски — эталон сценария удаляется.",
 )
-def update_scenario(project_id: int, scenario_id: int, payload: ScenarioUpdate) -> Scenario:
-    raise not_implemented("S6")
+def update_scenario(
+    project: ProjectDep, session: SessionDep, scenario_id: int, payload: ScenarioUpdate
+) -> Scenario:
+    return service.update(session, project, scenario_id, payload)
 
 
 @router.delete(
@@ -69,8 +76,8 @@ def update_scenario(project_id: int, scenario_id: int, payload: ScenarioUpdate) 
     response_class=Response,
     summary="Удалить сценарий",
 )
-def delete_scenario(project_id: int, scenario_id: int) -> None:
-    raise not_implemented("S6")
+def delete_scenario(project: ProjectDep, session: SessionDep, scenario_id: int) -> None:
+    service.remove(session, project, scenario_id)
 
 
 @router.get(

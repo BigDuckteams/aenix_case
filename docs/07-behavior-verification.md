@@ -34,11 +34,13 @@ javac --release 21 -encoding UTF-8 -g -Xlint:all -d classes @sources.txt
 ### 2.3 Запуск
 
 ```
-java -Dfile.encoding=UTF-8 -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 \
+java -Dline.separator=<LF> -Dfile.encoding=UTF-8 -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 \
      -Duser.language=en -Duser.country=US -Duser.timezone=UTC \
      -Xmx256m -Xss1m -XX:+UseSerialGC -XX:TieredStopAtLevel=1 -Xshare:auto \
      -cp classes <MainClass> <args…>
 ```
+
+`-Dline.separator=<LF>` — настоящий перевод строки (один байт `0x0A`): без него `println` на Windows печатает `\r\n`, и вывод не совпал бы с эталоном побайтно.
 
 | Параметр | Значение по умолчанию | Настраивается |
 |---|---|---|

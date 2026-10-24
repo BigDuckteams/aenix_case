@@ -103,21 +103,20 @@
           "projects"
         ],
         "summary": "Создать проект",
-        "description": "Один из вариантов тела: `multipart/form-data` (`name`, `files[]` или `archive`), `application/json` с файлами либо с `sample_id`. Пути нормализуются (защита от zip-slip), принимаются только `.java` в UTF-8.",
+        "description": "Один из вариантов тела: `multipart/form-data` (`name`, `files[]` или `archive`), `application/json` с файлами либо с `sample_id`. Пути нормализуются (защита от zip-slip), принимаются только `.java` в UTF-8; файл ≤ 2 МБ, архив ≤ 10 МБ, файлов ≤ 200.",
         "operationId": "create_project",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "anyOf": [
+                "oneOf": [
                   {
                     "$ref": "#/components/schemas/ProjectCreateFiles"
                   },
                   {
                     "$ref": "#/components/schemas/ProjectCreateSample"
                   }
-                ],
-                "title": "Payload"
+                ]
               }
             },
             "multipart/form-data": {
@@ -347,21 +346,21 @@
         "operationId": "get_version",
         "parameters": [
           {
-            "name": "project_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Project Id"
-            }
-          },
-          {
             "name": "version_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "integer",
               "title": "Version Id"
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Project Id"
             }
           }
         ],
@@ -398,21 +397,21 @@
         "operationId": "restore_version",
         "parameters": [
           {
-            "name": "project_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Project Id"
-            }
-          },
-          {
             "name": "version_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "integer",
               "title": "Version Id"
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Project Id"
             }
           }
         ],
@@ -641,21 +640,21 @@
         "operationId": "get_file",
         "parameters": [
           {
-            "name": "project_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Project Id"
-            }
-          },
-          {
             "name": "path",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
               "title": "Path"
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Project Id"
             }
           },
           {
@@ -703,18 +702,9 @@
           "versions"
         ],
         "summary": "Сохранить файл",
-        "description": "Создаёт версию `code_edit`; подряд идущие правки схлопываются. `409 VERSION_CONFLICT`, если `base_version_id` не равен HEAD.",
+        "description": "Создаёт версию `code_edit`; подряд идущие правки схлопываются в HEAD. `409 VERSION_CONFLICT`, если `base_version_id` не равен HEAD.",
         "operationId": "save_file",
         "parameters": [
-          {
-            "name": "project_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Project Id"
-            }
-          },
           {
             "name": "path",
             "in": "path",
@@ -722,6 +712,15 @@
             "schema": {
               "type": "string",
               "title": "Path"
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Project Id"
             }
           }
         ],
@@ -766,21 +765,21 @@
         "operationId": "delete_file",
         "parameters": [
           {
-            "name": "project_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Project Id"
-            }
-          },
-          {
             "name": "path",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
               "title": "Path"
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Project Id"
             }
           }
         ],
@@ -1184,21 +1183,21 @@
         "operationId": "get_node",
         "parameters": [
           {
-            "name": "project_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Project Id"
-            }
-          },
-          {
             "name": "node_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
               "title": "Node Id"
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Project Id"
             }
           },
           {
@@ -1334,7 +1333,7 @@
           "ops"
         ],
         "summary": "Применить операции над графом",
-        "description": "Пакет применяется атомарно: при ошибке любой операции ни одна не применяется. `409 VERSION_CONFLICT` — `base_version_id` не равен HEAD; `422 INVALID_FRAGMENT` — после правки код не разбирается.",
+        "description": "Пакет применяется атомарно: при ошибке любой операции ни одна не применяется. `409 VERSION_CONFLICT` — `base_version_id` не равен HEAD; `422 INVALID_FRAGMENT` — после правки код не разбирается. Идентификаторы в каждой следующей операции пакета относятся к состоянию после предыдущих.",
         "operationId": "apply_ops",
         "parameters": [
           {
@@ -1780,21 +1779,21 @@
         "operationId": "get_finding",
         "parameters": [
           {
-            "name": "project_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Project Id"
-            }
-          },
-          {
             "name": "finding_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
               "title": "Finding Id"
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Project Id"
             }
           },
           {
@@ -2103,21 +2102,21 @@
         "operationId": "preview_fix",
         "parameters": [
           {
-            "name": "project_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Project Id"
-            }
-          },
-          {
             "name": "finding_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
               "title": "Finding Id"
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Project Id"
             }
           }
         ],
@@ -2165,21 +2164,21 @@
         "operationId": "apply_fix",
         "parameters": [
           {
-            "name": "project_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Project Id"
-            }
-          },
-          {
             "name": "finding_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
               "title": "Finding Id"
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Project Id"
             }
           }
         ],
@@ -2590,18 +2589,9 @@
           "transform"
         ],
         "summary": "Подтвердить кандидата после красного gate",
-        "description": "Для `behavior_preserving = false`: обновляет эталоны затронутых сценариев.",
+        "description": "Для `behavior_preserving = false`: кандидат становится HEAD. Эталоны сценариев остаются прежними: после подтверждения расхождений их нужно записать заново (`kind=baseline`).",
         "operationId": "accept_candidate",
         "parameters": [
-          {
-            "name": "project_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Project Id"
-            }
-          },
           {
             "name": "version_id",
             "in": "path",
@@ -2609,6 +2599,15 @@
             "schema": {
               "type": "integer",
               "title": "Version Id"
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Project Id"
             }
           }
         ],
@@ -2645,21 +2644,21 @@
         "operationId": "reject_candidate",
         "parameters": [
           {
-            "name": "project_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Project Id"
-            }
-          },
-          {
             "name": "version_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "integer",
               "title": "Version Id"
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Project Id"
             }
           }
         ],
@@ -2939,17 +2938,9 @@
           "scenarios"
         ],
         "summary": "Изменить сценарий (сбрасывает эталон)",
+        "description": "Меняются `stdin`, `args` или маски — эталон сценария удаляется.",
         "operationId": "update_scenario",
         "parameters": [
-          {
-            "name": "project_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Project Id"
-            }
-          },
           {
             "name": "scenario_id",
             "in": "path",
@@ -2957,6 +2948,15 @@
             "schema": {
               "type": "integer",
               "title": "Scenario Id"
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Project Id"
             }
           }
         ],
@@ -3001,21 +3001,21 @@
         "operationId": "delete_scenario",
         "parameters": [
           {
-            "name": "project_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Project Id"
-            }
-          },
-          {
             "name": "scenario_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "integer",
               "title": "Scenario Id"
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Project Id"
             }
           }
         ],
@@ -3101,7 +3101,7 @@
           "runs"
         ],
         "summary": "Запустить задачу",
-        "description": "`kind`: `run`, `trace`, `baseline`, `test`, `gate`, `generate`, `benchmark`, `verify`. Ответ `202`; ход выполнения — `GET /runs/{run_id}/events`. `429 BUSY` — слишком много параллельных запусков.",
+        "description": "`kind`: `run`, `trace`, `baseline`, `test`, `gate`, `generate`, `benchmark`, `verify`. Ответ `202`; ход выполнения — `GET /runs/{run_id}/events`. `429 BUSY` — слишком много параллельных запусков. Пока реализован `run`; остальные виды отвечают `501`.",
         "operationId": "create_run",
         "parameters": [
           {
@@ -3236,7 +3236,7 @@
           "runs"
         ],
         "summary": "SSE-поток запуска",
-        "description": "`text/event-stream`: события `status`, `log`, `gate`, `item`, `step`, `progress`, `result`, `error`, `done` (каждое — `event:` + `data:` JSON). Поздние подписчики получают replay с начала; heartbeat-комментарий каждые 15 секунд.",
+        "description": "`text/event-stream`: события `status`, `log`, `gate`, `item`, `step`, `progress`, `result`, `error`, `done` (каждое — `event:` + `data:` JSON). Поздние подписчики получают replay с начала (с заголовком `Last-Event-ID` — после указанного события); heartbeat-комментарий каждые 15 секунд.",
         "operationId": "run_events",
         "parameters": [
           {
@@ -3246,6 +3246,22 @@
             "schema": {
               "type": "integer",
               "title": "Run Id"
+            }
+          },
+          {
+            "name": "last-event-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Last-Event-Id"
             }
           }
         ],
@@ -3580,7 +3596,7 @@
           "export"
         ],
         "summary": "Сводный отчёт",
-        "description": "Анализ, преобразования и результаты тестов.",
+        "description": "Версия, результаты последней проверки, сценарии и история запусков.",
         "operationId": "export_report",
         "parameters": [
           {
@@ -3658,7 +3674,7 @@
           "export"
         ],
         "summary": "Комплект: исходники, отчёты, сценарии",
-        "description": "Zip для комплекта сдачи; достаточен для воспроизведения бага.",
+        "description": "Zip для комплекта сдачи; достаточен для воспроизведения проверки.",
         "operationId": "export_bundle",
         "parameters": [
           {
@@ -7422,53 +7438,6 @@
         ],
         "title": "ProgressEvent"
       },
-      "ProjectCreateFiles": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name"
-          },
-          "files": {
-            "items": {
-              "$ref": "#/components/schemas/ProjectFileIn"
-            },
-            "type": "array",
-            "title": "Files"
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "files"
-        ],
-        "title": "ProjectCreateFiles",
-        "description": "Вставка текста: ``application/json`` с файлами."
-      },
-      "ProjectCreateSample": {
-        "properties": {
-          "name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Name"
-          },
-          "sample_id": {
-            "type": "string",
-            "title": "Sample Id"
-          }
-        },
-        "type": "object",
-        "required": [
-          "sample_id"
-        ],
-        "title": "ProjectCreateSample",
-        "description": "Встроенный пример: ``application/json`` с ``sample_id``."
-      },
       "ProjectCreated": {
         "properties": {
           "id": {
@@ -7612,24 +7581,6 @@
           "gate"
         ],
         "title": "ProjectDetail"
-      },
-      "ProjectFileIn": {
-        "properties": {
-          "path": {
-            "type": "string",
-            "title": "Path"
-          },
-          "content": {
-            "type": "string",
-            "title": "Content"
-          }
-        },
-        "type": "object",
-        "required": [
-          "path",
-          "content"
-        ],
-        "title": "ProjectFileIn"
       },
       "ProjectList": {
         "properties": {
@@ -8066,7 +8017,8 @@
               "gate",
               "generate",
               "benchmark",
-              "verify"
+              "verify",
+              "optimize"
             ],
             "title": "Kind"
           },
@@ -8294,7 +8246,8 @@
               "gate",
               "generate",
               "benchmark",
-              "verify"
+              "verify",
+              "optimize"
             ],
             "title": "Kind"
           },
@@ -8372,6 +8325,20 @@
               }
             ],
             "title": "Finding Id"
+          },
+          "step_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Step Ids"
           }
         },
         "type": "object",
@@ -9781,6 +9748,72 @@
           "wrapper"
         ],
         "title": "WrapNode"
+      },
+      "ProjectFileIn": {
+        "properties": {
+          "path": {
+            "title": "Path",
+            "type": "string"
+          },
+          "content": {
+            "title": "Content",
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "content"
+        ],
+        "title": "ProjectFileIn",
+        "type": "object"
+      },
+      "ProjectCreateFiles": {
+        "description": "Вставка текста: ``application/json`` с файлами.",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "files": {
+            "items": {
+              "$ref": "#/components/schemas/ProjectFileIn"
+            },
+            "title": "Files",
+            "type": "array"
+          }
+        },
+        "required": [
+          "name",
+          "files"
+        ],
+        "title": "ProjectCreateFiles",
+        "type": "object"
+      },
+      "ProjectCreateSample": {
+        "description": "Встроенный пример: ``application/json`` с ``sample_id``.",
+        "properties": {
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          },
+          "sample_id": {
+            "title": "Sample Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "sample_id"
+        ],
+        "title": "ProjectCreateSample",
+        "type": "object"
       }
     }
   }

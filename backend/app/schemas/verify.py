@@ -13,7 +13,9 @@ ScenarioSource = Literal["manual", "imported", "generated", "scaled"]
 Stability = Literal["stable", "masked", "nondeterministic"]
 BaselineState = Literal["none", "recorded", "stale"]
 
-RunKind = Literal["run", "trace", "baseline", "test", "gate", "generate", "benchmark", "verify"]
+RunKind = Literal[
+    "run", "trace", "baseline", "test", "gate", "generate", "benchmark", "verify", "optimize"
+]
 RunStatus = Literal["queued", "running", "done", "failed", "cancelled", "error"]
 Verdict = Literal["PASS", "FAIL", "ERROR", "TIMEOUT"]
 
@@ -131,6 +133,7 @@ class RunRequest(BaseModel):
     args: list[str] | None = None  # kind=run|trace
     sizes: list[int] | None = None  # kind=benchmark
     finding_id: str | None = None  # kind=verify
+    step_ids: list[str] | None = None  # kind=optimize: id находок по порядку применения
 
 
 class RunRef(ApiModel):

@@ -63,6 +63,7 @@ class RunKind(StrEnum):
     BENCHMARK = "benchmark"
     TRACE = "trace"
     VERIFY = "verify"
+    OPTIMIZE = "optimize"
 
 
 class RunStatus(StrEnum):
@@ -131,6 +132,8 @@ class Scenario(SQLModel, table=True):
     enabled: bool = True
     stability: str = Stability.STABLE.value
     masks: list[dict[str, str]] = Field(default_factory=list, sa_column=Column(JSON))
+    expected_stdout: str | None = None  # ожидание организаторов (docs/07 § 4.3)
+    expected_exit_code: int | None = None
     created_at: datetime = Field(default_factory=utcnow)
 
 
@@ -169,11 +172,13 @@ class RunItem(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
     run_id: int = Field(foreign_key="run.id", index=True)
     scenario_id: int | None = Field(default=None, foreign_key="scenario.id")
+    name: str = ""
     status: str
     stdout: str = ""
     stderr: str = ""
     exit_code: int | None = None
     duration_ms: int | None = None
+    baseline_ms: int | None = None
     diff: dict[str, Any] | None = Field(default=None, sa_column=Column(JSON))
     hits: dict[str, Any] | None = Field(default=None, sa_column=Column(JSON))
     op_count: int | None = None

@@ -176,8 +176,12 @@ def test_graph_ops_cover_04_section_5_2():
 
 
 def test_unknown_op_is_rejected_with_bad_request(client):
+    created = client.post(
+        "/api/projects",
+        json={"name": "t", "files": [{"path": "A.java", "content": "class A {}"}]},
+    ).json()
     body = {"base_version_id": 1, "ops": [{"op": "explode", "node_id": "a"}]}
-    response = client.post("/api/projects/1/ops", json=body)
+    response = client.post(f"/api/projects/{created['id']}/ops", json=body)
     assert response.status_code == 400
     assert response.json()["error"]["code"] == "BAD_REQUEST"
 
@@ -185,22 +189,20 @@ def test_unknown_op_is_rejected_with_bad_request(client):
 @pytest.mark.parametrize(
     ("method", "path", "body"),
     [
-        ("GET", "/api/projects", None),
-        ("GET", "/api/projects/1/structure?mode=deps", None),
-        ("GET", "/api/projects/1/flow?method_id=Main.java%23Main.main(String[])", None),
-        ("GET", "/api/projects/1/nodes/Main.java%23Main.main(String[])/for[0]", None),
-        ("GET", "/api/projects/1/findings/PERF-01:Main.java%23Main.run()/for[0]", None),
-        ("POST", "/api/projects/1/findings/PERF-01:Main.java%23Main.run()/for[0]/verify", None),
-        ("POST", "/api/projects/1/ops", {"base_version_id": 1, "ops": ALL_OPS[:1]}),
-        ("POST", "/api/projects/1/runs", {"kind": "test"}),
-        ("GET", "/api/projects/1/diff?from=1&to=2", None),
-        ("DELETE", "/api/projects/1/scenarios/3", None),
-        ("GET", "/api/runs/7/events", None),
-        ("GET", "/api/runs/7/report?format=junit", None),
+        ("POST", "/api/projects/{p}/findings/PERF-01:Main.java%23Main.run()/for[0]/verify", None),
+        ("POST", "/api/projects/{p}/runs", {"kind": "verify"}),
+        ("GET", "/api/projects/{p}/input-schema", None),
+        ("POST", "/api/projects/{p}/scenarios/generate", None),
     ],
 )
 def test_stubs_answer_501_in_error_format(client, method, path, body):
-    response = client.request(method, path, json=body)
+    """Эндпоинты S4–S10 описаны контрактом, но отвечают 501 в едином формате ошибок."""
+    created = client.post(
+        "/api/projects",
+        json={"name": "t", "files": [{"path": "A.java", "content": "class A {}"}]},
+    )
+    assert created.status_code == 201, created.text
+    response = client.request(method, path.format(p=created.json()["id"]), json=body)
     assert response.status_code == 501, response.text
     error = response.json()["error"]
     assert error["code"] == "NOT_IMPLEMENTED"

@@ -51,6 +51,14 @@ def bad_request(message: str, **details: Any) -> ApiError:
     return ApiError(400, "BAD_REQUEST", message, details or None)
 
 
+def payload_too_large(message: str, **details: Any) -> ApiError:
+    return ApiError(413, "PAYLOAD_TOO_LARGE", message, details or None)
+
+
+def busy(message: str) -> ApiError:
+    return ApiError(429, "BUSY", message)
+
+
 def not_implemented(stage: str) -> ApiError:
     return ApiError(501, "NOT_IMPLEMENTED", f"Эндпоинт ещё не реализован (этап {stage})")
 

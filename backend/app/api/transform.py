@@ -1,10 +1,13 @@
-"""Преобразования (docs/08-api.md § 7). Заглушки контракта (S1.1): реализация — этапы S8 и S9."""
+"""Преобразования (docs/08-api.md § 7): исправления и оптимизация — S8; выделение метода и
+декомпозиция — S9 (заглушки контракта)."""
 
 from __future__ import annotations
 
 from fastapi import APIRouter
+from fastapi.concurrency import run_in_threadpool
 
 from app.api.common import ERROR_RESPONSES
+from app.deps import ProjectDep, RunManagerDep, SessionDep, SettingsDep
 from app.errors import not_implemented
 from app.schemas.transform import (
     ApplyResult,
@@ -13,6 +16,7 @@ from app.schemas.transform import (
     DecomposePlan,
     DecomposePlanRequest,
     DecomposePreview,
+    Effect,
     ExtractMethodApply,
     ExtractMethodPreview,
     ExtractMethodRequest,
@@ -23,8 +27,14 @@ from app.schemas.transform import (
     OptimizeApply,
     OptimizePlan,
     OptimizePlanRequest,
+    OptimizeStep,
 )
-from app.schemas.verify import RunRef
+from app.schemas.verify import RunRef, RunRequest
+from app.services import analysis as analysis_service
+from app.services import fixes as service
+from app.services import graphs
+from app.services import versions as versions_service
+from engine.transform.fixes import propose
 
 router = APIRouter(tags=["transform"], responses=ERROR_RESPONSES)
 
@@ -35,8 +45,11 @@ _APPLY_NOTE = (
 
 
 @router.get("/projects/{project_id}/fixes", summary="Доступные исправления версии")
-def list_fixes(project_id: int, version_id: int | None = None) -> FixList:
-    raise not_implemented("S8")
+def list_fixes(
+    project: ProjectDep, session: SessionDep, settings: SettingsDep, version_id: int | None = None
+) -> FixList:
+    version = versions_service.resolve_version(session, project, version_id)
+    return service.listing(graphs.java_project(session, version), project, settings, version)
 
 
 @router.post(
@@ -44,8 +57,15 @@ def list_fixes(project_id: int, version_id: int | None = None) -> FixList:
     summary="Предпросмотр исправления",
     description="Diff, ожидаемый эффект и предусловия. `422 PRECONDITION_FAILED`, если не выполнены.",
 )
-def preview_fix(project_id: int, finding_id: str, payload: FixPreviewRequest) -> FixPreview:
-    raise not_implemented("S8")
+def preview_fix(
+    project: ProjectDep,
+    session: SessionDep,
+    settings: SettingsDep,
+    finding_id: str,
+    payload: FixPreviewRequest,
+) -> FixPreview:
+    version = versions_service.resolve_version(session, project, payload.version_id)
+    return service.preview(graphs.java_project(session, version), project, settings, finding_id)
 
 
 @router.post(
@@ -54,13 +74,73 @@ def preview_fix(project_id: int, finding_id: str, payload: FixPreviewRequest) ->
     summary="Применить исправление",
     description=_APPLY_NOTE,
 )
-def apply_fix(project_id: int, finding_id: str, payload: FixApply) -> ApplyResult:
-    raise not_implemented("S8")
+async def apply_fix(
+    project: ProjectDep,
+    session: SessionDep,
+    settings: SettingsDep,
+    manager: RunManagerDep,
+    finding_id: str,
+    payload: FixApply,
+) -> ApplyResult:
+    def prepare() -> int:
+        versions_service.require_head(project, payload.base_version_id)
+        head = versions_service.head_version(session, project)
+        java = graphs.java_project(session, head)
+        finding = service.find(java, project, settings, finding_id)
+        proposal = service.proposal_for(java, finding)
+        files = service.new_files(java, proposal)
+        return service.create_candidate(session, project, head, proposal, files, finding.id).id or 0
+
+    candidate_id = await run_in_threadpool(prepare)
+    run_id = await manager.submit(
+        project, RunRequest(kind="gate", version_id=candidate_id), candidate_id
+    )
+    return ApplyResult(candidate_version_id=candidate_id, run_id=run_id)
 
 
 @router.post("/projects/{project_id}/optimize/plan", summary="План пакетной оптимизации")
-def plan_optimize(project_id: int, payload: OptimizePlanRequest) -> OptimizePlan:
-    raise not_implemented("S8")
+def plan_optimize(
+    project: ProjectDep, session: SessionDep, settings: SettingsDep, payload: OptimizePlanRequest
+) -> OptimizePlan:
+    version = versions_service.resolve_version(session, project, payload.version_id)
+    java = graphs.java_project(session, version)
+    analysis = analysis_service.run(java, project, settings)
+    steps: list[OptimizeStep] = []
+    taken: list[tuple[str, int, int]] = []
+    for item in analysis.findings:
+        if item.fix is None or not item.fix.available or not item.fix.behavior_preserving:
+            continue
+        place = item.location
+        if any(
+            f == place.file and not (place.end_line < a or place.start_line > b)
+            for f, a, b in taken
+        ):
+            continue  # пересекающиеся диапазоны исправляются по одному
+        taken.append((place.file, place.start_line, place.end_line))
+        proposal = propose(java, item)
+        complexity = item.complexity
+        steps.append(
+            OptimizeStep(
+                step_id=item.id,
+                fix_id=item.fix.fix_id,
+                finding_id=item.id,
+                title=proposal.title if proposal is not None else item.fix.fix_id,
+                effect=Effect(
+                    complexity_before=complexity.current if complexity else None,
+                    complexity_after=complexity.after if complexity else None,
+                ),
+                behavior_preserving=True,
+            )
+        )
+    return OptimizePlan(
+        version_id=version.id or 0,
+        steps=steps,
+        effect=Effect(
+            complexity_before=analysis.complexity.current,
+            complexity_after=analysis.complexity.optimized,
+            notes="оценка по модели Big O; измеренный эффект — после бенчмарка",
+        ),
+    )
 
 
 @router.post(
@@ -69,8 +149,16 @@ def plan_optimize(project_id: int, payload: OptimizePlanRequest) -> OptimizePlan
     summary="Применить шаги оптимизации по очереди",
     description="Прогресс шагов приходит в SSE запуска событиями `step`.",
 )
-def apply_optimize(project_id: int, payload: OptimizeApply) -> RunRef:
-    raise not_implemented("S8")
+async def apply_optimize(
+    project: ProjectDep, session: SessionDep, manager: RunManagerDep, payload: OptimizeApply
+) -> RunRef:
+    def prepare() -> int:
+        versions_service.require_head(project, payload.base_version_id)
+        return versions_service.head_version(session, project).id or 0
+
+    head_id = await run_in_threadpool(prepare)
+    request = RunRequest(kind="optimize", version_id=head_id, step_ids=payload.step_ids)
+    return RunRef(run_id=await manager.submit(project, request, head_id))
 
 
 @router.post(
@@ -116,12 +204,19 @@ def apply_decompose(project_id: int, payload: DecomposeEdit) -> ApplyResult:
 @router.post(
     "/projects/{project_id}/versions/{version_id}/accept",
     summary="Подтвердить кандидата после красного gate",
-    description="Для `behavior_preserving = false`: обновляет эталоны затронутых сценариев.",
+    description=(
+        "Для `behavior_preserving = false`: кандидат становится HEAD. Эталоны сценариев остаются "
+        "прежними: после подтверждения расхождений их нужно записать заново (`kind=baseline`)."
+    ),
 )
-def accept_candidate(project_id: int, version_id: int) -> CandidateDecision:
-    raise not_implemented("S8")
+def accept_candidate(
+    project: ProjectDep, session: SessionDep, version_id: int
+) -> CandidateDecision:
+    return service.accept(session, project, version_id)
 
 
 @router.post("/projects/{project_id}/versions/{version_id}/reject", summary="Отклонить кандидата")
-def reject_candidate(project_id: int, version_id: int) -> CandidateDecision:
-    raise not_implemented("S8")
+def reject_candidate(
+    project: ProjectDep, session: SessionDep, version_id: int
+) -> CandidateDecision:
+    return service.reject(session, project, version_id)

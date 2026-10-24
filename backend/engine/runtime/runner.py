@@ -64,6 +64,7 @@ class RunResult:
 def jvm_flags(limits: RunLimits, locale: str = "en_US", timezone: str = "UTC") -> list[str]:
     language, _, country = locale.partition("_")
     return [
+        "-Dline.separator=\n",  # LF и на Windows: вывод детерминирован (эталоны сравниваются побайтно)
         "-Dfile.encoding=UTF-8",
         "-Dstdout.encoding=UTF-8",
         "-Dstderr.encoding=UTF-8",
